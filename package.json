@@ -1,0 +1,43 @@
+{
+  "name": "helium",
+  "module": "src/index.ts",
+  "devDependencies": {
+    "@types/core-js": "^2.5.8",
+    "@types/js-yaml": "^4.0.9",
+    "@types/lodash": "^4.14.202",
+    "bun-types": "latest",
+    "typescript-json-schema": "^0.62.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@opentelemetry/auto-instrumentations-node": "^0.40.2",
+    "@opentelemetry/context-async-hooks": "^1.18.1",
+    "@opentelemetry/exporter-metrics-otlp-proto": "^0.45.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.45.1",
+    "@opentelemetry/instrumentation": "^0.45.1",
+    "@opentelemetry/otlp-exporter-base": "^0.45.1",
+    "@opentelemetry/propagator-b3": "^1.18.1",
+    "@opentelemetry/sdk-metrics": "^1.18.1",
+    "@opentelemetry/sdk-node": "^0.45.1",
+    "@opentelemetry/sdk-trace-node": "^1.18.1",
+    "cheerio": "^1.0.0-rc.12",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "commander": "^11.1.0",
+    "core-js": "^3.34.0",
+    "fetch-cookie": "^2.1.0",
+    "ioredis": "^5.3.2",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "node-fetch": "^3.3.2",
+    "pino": "^8.16.2",
+    "pino-pretty": "^10.2.3",
+    "query-string": "^8.1.0",
+    "reflect-metadata": "^0.1.14",
+    "ts-node": "^10.9.2",
+    "tsyringe": "^4.8.0"
+  }
+}

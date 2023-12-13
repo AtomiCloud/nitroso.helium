@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  #  consumer:
+  #    build: .
+  #    command: watch -d 2023-12-15 -i 5 -f JB
+  #    volumes:
+  #      - ./config:/app/config
+  redis:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly
+    ports:
+      - "6379:6379"
+    ulimits:
+      memlock: -1
+    environment:
+      DFLY_requirepass: supersecret

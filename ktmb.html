@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-175560898-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-175560898-1");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="description" content="Book your KTMB train tickets here." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to the KTMB Integrated Ticketing System</title>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      crossorigin="anonymous"
+      integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          "\u003Cscript src=\u0022/lib/jquery/jquery.min.js\u0022 crossorigin=\u0022anonymous\u0022\u003E\u003C/script\u003E",
+        );
+    </script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"
+      crossorigin="anonymous"
+      integrity="sha384-jR1IKAba71QSQwPRf3TY+RAEovSBBqf4Hyp7Txom+SfpO0RCZPgXbINV+5ncw+Ph"
+    ></script>
+    <script>
+      (window.jQuery && window.jQuery.validator) ||
+        document.write(
+          "\u003Cscript src=\u0022/lib/jquery-validate/jquery.validate.min.js\u0022 crossorigin=\u0022anonymous\u0022\u003E\u003C/script\u003E",
+        );
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"
+      crossorigin="anonymous"
+      integrity="sha384-R3vNCHsZ+A2Lo3d5A6XNP7fdQkeswQWTIPfiYwSpEP3YV079R+93YzTeZRah7f/F"
+    ></script>
+    <script>
+      (window.jQuery &&
+        window.jQuery.validator &&
+        window.jQuery.validator.unobtrusive) ||
+        document.write(
+          "\u003Cscript src=\u0022/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js\u0022 crossorigin=\u0022anonymous\u0022\u003E\u003C/script\u003E",
+        );
+    </script>
+
+    <script src="/lib/mvcfoolproof/mvcfoolproof.core.js?v=E9iQVankSq6cdmoKMW8XKrJCuGozMlzgjGOc1lwD2Dc"></script>
+    <script src="/lib/mvcfoolproof/mvcfoolproof.jquery.validation.js?v=ngiJsnin5JFafEy1G4HZOLmHsLYsXCJ7cMhsYxPpoUE"></script>
+    <script src="/lib/mvcfoolproof/mvcfoolproof.unobtrusive.js?v=17Kyu_CPimqNjecEAu1lyEuV2pBS9XU5ERoDEWgb-m8"></script>
+    <script src="/lib/jquery-validate-mvc/jquery.validate.mvc.js?v=cTglAT-8JZlgcp1thjuHQeqF_EUHA3fMAiuOC-VJjo0"></script>
+
+    <link
+      rel="stylesheet"
+      href="/lib/jqueryui/jquery-ui.css?v=p6xU9YulB7E2Ic62_PX-h59ayb3PBJ0WFTEQxq0EjHw"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+      crossorigin="anonymous"
+      integrity="sha384-PtTRqvDhycIBU6x1wwIqnbDo8adeWIWP3AHmnrvccafo35E7oIvW7HPXn2YimvWu"
+    ></script>
+    <script>
+      window.jQuery.ui ||
+        document.write(
+          "\u003Cscript src=\u0022/lib/jqueryui/jquery-ui.min.js\u0022 crossorigin=\u0022anonymous\u0022\u003E\u003C/script\u003E",
+        );
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      crossorigin="anonymous"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    />
+    <meta name="x-stylesheet-fallback-test" content="" class="sr-only" />
+    <script>
+      !(function (a, b, c, d) {
+        var e,
+          f = document,
+          g = f.getElementsByTagName("SCRIPT"),
+          h = g[g.length - 1].previousElementSibling,
+          i =
+            f.defaultView && f.defaultView.getComputedStyle
+              ? f.defaultView.getComputedStyle(h)
+              : h.currentStyle;
+        if (i && i[a] !== b)
+          for (e = 0; e < c.length; e++)
+            f.write('<link href="' + c[e] + '" ' + d + "/>");
+      })(
+        "position",
+        "absolute",
+        ["/lib/bootstrap/dist/css/bootstrap.min.css"],
+        "rel=\u0022stylesheet\u0022 crossorigin=\u0022anonymous\u0022 ",
+      );
+    </script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+      integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+    ></script>
+    <script>
+      $.fn.modal ||
+        document.write(
+          "\u003Cscript src=\u0022/lib/bootstrap/dist/js/bootstrap.bundle.min.js\u0022 crossorigin=\u0022anonymous\u0022\u003E\u003C/script\u003E",
+        );
+    </script>
+
+    <script>
+      $.fn.slider = null;
+    </script>
+    <link
+      rel="stylesheet"
+      href="/v3/css/bootstrap-slider.min.css?v=x9bDbiMas6C0hYvIs9ZiVeFYDkOeMDvNFe3i8Fb3Wi0"
+    />
+    <script src="/v3/js/bootstrap-slider.min.js?v=QNbOvfaNvJ6BG7gNkEfWwSs6ksIN4WrlXFN6toBasD4"></script>
+
+    <script src="/lib/moment.js/moment.min.js?v=4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ"></script>
+
+    <link
+      rel="stylesheet"
+      href="/v3/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw"
+    />
+
+    <script src="/v3/js/mobile.js?v=VHghnROEOQ1OacCm-IWhzR_9uQU1FMzOav1z9wWbZOk"></script>
+
+    <link
+      rel="stylesheet"
+      href="/v3/css/lightpick.css?v=CTP_K5hf4VHUbKhxRlpeOvATiCw6s6Akeq4Uz0OlLVY"
+    />
+    <script src="/v3/js/lightpick.js?v=nCFJ8WE2qffZinDgqllqk6D3r1gIT5nYbNZDQVLc52A"></script>
+
+    <link
+      rel="stylesheet"
+      href="/lib/file-input/file-input.min.css?v=gChuub3IiNtU0VM3NSDX-bTKlVYVBuN8r1zwooHd394"
+    />
+    <script src="/lib/file-input/fileinput.js?v=xWf5mf6nBTD3wZGf-i5baKz38sabupg1t9kZN6gNCC4"></script>
+
+    <link
+      rel="stylesheet"
+      href="/lib/select2/css/select2.min.css?v=FdatTf20PQr_rWg-cAKfl6j4_IY3oohFAJ7gVC3M34E"
+    />
+    <link
+      rel="stylesheet"
+      href="/lib/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css?v=J6L5BfjnEuIwj6-OSc2OBxc8-BEGW3ZTz7wDHepaayI"
+    />
+    <script src="/lib/select2/js/select2.min.js?v=AFAYEOkzB6iIKnTYZOdUf9FFje6lOTYdwRJKwTN5mks"></script>
+
+    <link
+      rel="stylesheet"
+      href="/v3/css/nss.css?v=dki2jOAm6nVKCwP3IZMWKy3WTd-eBD-IG6Cz5LEtlrY"
+    />
+    <link
+      rel="stylesheet"
+      href="/v3/css/custom.css?v=9ZBtTh0IwUZcLQS-9BqYoqk6vwqLW8fzaHkngh3o0G8"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/site.css?v=outa_10t1Moq0NwD-hniM3GtxH4LMt6SB3d3XAxMqWs"
+    />
+    <script src="/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+    <script src="/js/Ajax.js?v=Bo3LQlXulvxh8jgH9PICMJPeecry2zXSd7OSL98ibIo"></script>
+    <script src="/js/Common.js?v=38Fa2JAxdCuhjKKO_HhUkw8RhqKQ1FYb8aSmF-YSxB8"></script>
+    <script src="/js/Datetime.js?v=X6VsXFG1elnLSspuyOXD_CKEyHgSmZZ17cHteJnQHgQ"></script>
+    <script src="/js/Form.js?v=eevmWLaGoRsKzJmNgsV1FHUCOkMB2oQw1DZjwa4JfbY"></script>
+    <script src="/js/Popup_v2.js?v=G_sUUCOlFLC5oz3qrDqByHF71dxim3PI-msEIJbT3VE"></script>
+    <script src="/lib/bootpag/jquery.bootpag.min.js?v=UIv0OYCzZ_L5l66IwfM7heXAnujMLjEKvNmqQpAKgHs"></script>
+
+    <link
+      rel="icon"
+      type="image/ico"
+      href="/favicon.ico?v=K0Aya3CUXC3mWLsOQzMJvOunW00pv69_Z8R462XdnFI"
+    />
+
+    <style type="text/css">
+      media only screen and (max-width:900px) {
+          .lightpick__day:not(.is-disabled):not(.is-start-date):hover;
+
+      {
+          background-size: contain;
+          background-image: unset;
+      }
+      }
+    </style>
+  </head>
+
+  <body class="back-f6f6f6">
+    <div
+      class="modal fade"
+      id="popupModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="popupModalTitle"
+      aria-hidden="true"
+      data-show="false"
+      data-backdrop="static"
+      data-keyboard="false"
+    >
+      <div class="modal-dialog modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header payment-modal-header">
+            <div id="popupModalHeader"></div>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12">
+              <div class="text-secondary text-center font-14">
+                <div id="popupModalBody"></div>
+              </div>
+              <div class="text-center">
+                <button
+                  id="popupModalOkButton"
+                  type="button"
+                  class="btn payment-modal-btn"
+                  style="display: none"
+                >
+                  OK
+                </button>
+                <button
+                  id="popupModalCancelButton"
+                  type="button"
+                  class="btn payment-modal-btn"
+                  style="display: none"
+                >
+                  CANCEL
+                </button>
+                <button
+                  id="popupModalCloseButton"
+                  type="button"
+                  class="btn payment-modal-btn"
+                  style="display: none"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav
+      class="navbar navbar-expand-lg fixed-top navbar-light bg-theme"
+      style="z-index: 999999997 !important"
+    >
+      <a class="navbar-brand" href="/">
+        <img
+          src="/v3/assets/logo.png?v=8u_yVkQVKb-evdEFntX96V-LlXYn7UZWF7cHTFb6kPk"
+          width="100"
+          class="d-inline-block align-top"
+          alt=""
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+
+        <ul class="navbar-nav justify-content-end p20">
+          <li class="nav-item">
+            <a class="nav-link" href="/">ETS/INTERCITY</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarFileDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              KOMUTER
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarFileDropdown">
+              <a
+                class="dropdown-item"
+                href="/BookAFC?p=8UiUp950MCP0cPqrXrRV3d7KnWoREDhci%2FrY11vLNvt2CXLZY16XXycv2b%2FRwbbEbWnT8pU8Qu8L7S%2BLs0dHS%2FrN06j97jX257DuBE%2B23MucPas9Rkiwq88RhUYenAEAzCVbGtyF3NoTueJPA8RVu1HrejG0kKmCtCXRzIcWClOs%2FlhKRnlNSmbHsuAFH%2BmQDUObZoPFUE9e4eMGbD732Ew9p2by24jE9l5TCbAoMiyXYj5MFfCpMu8axIfxHRcQWSxdLPBAPbJ22z33Q8hvxQ%3D%3D"
+                >KOMUTER KLANG VALLEY</a
+              >
+              <a
+                class="dropdown-item"
+                href="/BookAFC?p=UyUZNHYNKHZr2Ywy9PCangFvBov8Gye2ecr0fg7XO1Mj%2BgQDTHtfvGaLMU482ZF1GrB3t31cIhNk2WE71pdGBZYGJ6n%2B6x%2FP9OfaGqm%2BecYLqaYMXZdKOqD43G%2BWi1HlG6L5zcyFVDcd1t3Vbwe4EXvvZH22TbS5yLg9bOnwqEdCB4pngReuRIbysFal9Wa5GSHdXqeEXJIiV33LwrXzR0e6wqZq3gIVY8f9Aq59DTahlTyMLVZvnAgAehtc27ZRGurl6mWg5SbE%2BNEakrPbvQ%3D%3D"
+                >KOMUTER UTARA</a
+              >
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/Home/Shuttle">SHUTTLE TEBRAU</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarPackageDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              RAIL PASS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarPackageDropdown">
+              <a class="dropdown-item" href="/Account/SpecialRegistration"
+                >Special registration</a
+              >
+              <a
+                class="dropdown-item"
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/MyRailLifeBorangPengesahanPelajar.pdf"
+                target="_blank"
+                >Student verification letter</a
+              >
+              <div class="dropdown-divider"></div>
+              <a
+                class="dropdown-item"
+                href="/BookPackage?p=HJRb9m3WBSJtgTm4HXrsdejOqyJ%2F31U%2BZH8VGGkAqnr3uAgUx7AbXXRorkTogapRkCKkH1FohAoGhfjS72NVAg%3D%3D"
+                >MyRailLife - Klang Valley</a
+              >
+              <a
+                class="dropdown-item"
+                href="/BookPackage?p=jUI%2FUQbCWvTAjEEOnjnNPA5NKg%2BmXbpVzc7CiEWf0UUnHWi95KwW236CRHV3RT2Bf8xwBlFIo4kGQ7YMsP91nQ%3D%3D"
+                >MyRailLife - Northern</a
+              >
+              <a
+                class="dropdown-item"
+                href="/BookPackage?p=8LDKBKLSTZmjxPMUzliJNEEcRv75ClgjSnlihpSrcl5Rbddki8V1LL0SZVaCPsBrCj9F44NL6bGAzRydH32TMg%3D%3D"
+                >MyRailLife - Shuttle Timuran</a
+              >
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/TimeTable/Search">MYRAILTIME</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto text-right">
+          <li class="nav-item mr-20">
+            <a class="nav-link" href="/Account/Login"
+              ><i class="fa fa-user"></i> Login / sign up</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid body plr0">
+      <div
+        class="col-md-12"
+        id="trainBack"
+        style="
+          background-image: url(&quot;/img/bg.jpg?v=2c335e2f-9f50-4895-b62b-4857b72fe597&quot;);
+        "
+      >
+        <div class="home-tabs">
+          <div class="home-tab active">Shuttle Tebrau</div>
+        </div>
+
+        <div
+          class="modal fade"
+          id="validationSummaryModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="validationSummaryModalTitle"
+          aria-hidden="true"
+          data-show="false"
+        >
+          <div class="modal-dialog modal modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header payment-modal-header">
+                <div id="validationSummaryModalHeader"></div>
+              </div>
+              <div class="modal-body">
+                <div class="col-md-12">
+                  <div class="text-secondary font-14">
+                    <div id="validationSummaryModalBody"></div>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      type="button"
+                      class="btn payment-modal-btn"
+                      data-dismiss="modal"
+                    >
+                      OK
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          id="theForm"
+          autocomplete="off"
+          method="post"
+          class="ticket-search"
+          action="/ShuttleTrip"
+        >
+          <input
+            type="hidden"
+            data-val="true"
+            data-val-required="Data is invalid."
+            id="FromStationData"
+            name="FromStationData"
+            value="UAYGrZ3IhagUAw1&#x2B;C6PnqZxEltgYUE85E1SGMEw3F6EgpSIglt2kIxv5UI4OH1spcqbnOrCAH5mvMCcztLJ8QyQofHmNRKLs9EyYf69C&#x2B;hzsSHVmW5u4k&#x2B;B3XBOR&#x2B;XPdH0w18vC9lFK0dZplyWpWE3YYuTDSph/GhdUzQg2IFy9Y21F6WfYJRyPBhRAlcyjlooEakevNyH6Tj/6j4&#x2B;swHFahL&#x2B;iDhGRl4x/mWnjCKaA="
+          />
+          <input
+            type="hidden"
+            data-val="true"
+            data-val-required="Data is invalid."
+            id="ToStationData"
+            name="ToStationData"
+            value="UTDq4YNkH9iWWY/&#x2B;UUF1y3OZLJHcZG855oPCBPQ7PYZIwXOspDylFl7j5SCUjiqWQCdM6Yj3mJpJNMNERTGwdwKTrlR75dUR50YvhPeDyFnnq17mLlY34Xyu9uxMXbvmf0MrhZXGML3DQuaXhLFUrZExvvkrNm5BqwcDDPKVitH9gfqm39di800tTZHI0GxggKeVEwYam7UgGsNwi8aqGxhK&#x2B;M0tql2dGdAVjk5Uyo0="
+          />
+          <div class="row">
+            <div class="col-md-6 col-lg-3 col-sm-12">
+              <label class="depart-arrival">Origin</label>
+              <input
+                class="form-control"
+                readonly
+                type="text"
+                data-val="true"
+                data-val-required="Please select origin."
+                id="FromStationId"
+                name="FromStationId"
+                value="JB SENTRAL"
+              />
+              <span
+                class="field-validation-valid"
+                data-valmsg-for="FromStationId"
+                data-valmsg-replace="true"
+                style="display: none"
+              ></span>
+              <script type="text/javascript">
+                $(function () {
+                  $("#FromStationId").tooltipValidation({
+                    placement: "bottom",
+                  });
+                });
+              </script>
+              <i
+                class="fa fa-exchange web-exchange d-none d-md-block mt22"
+                style="cursor: pointer"
+                onclick="SwapFromToTerminal()"
+              ></i>
+            </div>
+            <div class="col-sm-12 d-md-none d-xs-block">
+              <div class="text-center">
+                <i
+                  class="fa fa-exchange mobile-exchange mt22"
+                  onclick="SwapFromToTerminal()"
+                ></i>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 col-sm-12">
+              <label class="depart-arrival">Destination</label>
+              <input
+                class="form-control"
+                readonly
+                type="text"
+                data-val="true"
+                data-val-required="Please select destination."
+                id="ToStationId"
+                name="ToStationId"
+                value="WOODLANDS CIQ"
+              />
+              <span
+                class="field-validation-valid"
+                data-valmsg-for="ToStationId"
+                data-valmsg-replace="true"
+                style="display: none"
+              ></span>
+              <script type="text/javascript">
+                $(function () {
+                  $("#ToStationId").tooltipValidation({ placement: "bottom" });
+                });
+              </script>
+            </div>
+            <div class="col-sm-12 d-md-none d-xs-block">
+              <div style="margin-bottom: 10px"></div>
+            </div>
+            <div class="col-md-12 col-lg-6 col-sm-12 mt-10">
+              <div class="row">
+                <div class="col-md-6 col-sm-12 col-lg-3 mt-10">
+                  <label class="depart-arrival text-nowrap"
+                    >Departure date</label
+                  >
+                  <input
+                    type="text"
+                    class="close-others form-control text-center bg-white"
+                    placeholder="Depart"
+                    data-rule-isdate="true"
+                    readonly
+                    data-val="true"
+                    data-val-required="Please select departing date."
+                    id="OnwardDate"
+                    name="OnwardDate"
+                    value=""
+                  />
+                  <span
+                    class="field-validation-valid"
+                    data-valmsg-for="OnwardDate"
+                    data-valmsg-replace="true"
+                    style="display: none"
+                  ></span>
+                  <script type="text/javascript">
+                    $(function () {
+                      $("#OnwardDate").tooltipValidation({
+                        placement: "bottom",
+                      });
+                    });
+                  </script>
+                </div>
+
+                <div class="col-md-6 col-sm-12 col-lg-3 mt-10">
+                  <div class="clearfix d-md-none d-xs-block"></div>
+                  <label class="depart-arrival text-nowrap">Return date</label>
+                  <input
+                    type="text"
+                    class="close-others form-control text-center bg-white"
+                    placeholder="Return"
+                    data-rule-isdate="true"
+                    readonly
+                    id="ReturnDate"
+                    name="ReturnDate"
+                    value=""
+                  />
+                  <span
+                    class="field-validation-valid"
+                    data-valmsg-for="ReturnDate"
+                    data-valmsg-replace="true"
+                    style="display: none"
+                  ></span>
+                  <script type="text/javascript">
+                    $(function () {
+                      $("#ReturnDate").tooltipValidation({
+                        placement: "bottom",
+                      });
+                    });
+                  </script>
+                </div>
+
+                <div class="col-md-6 col-sm-12 col-lg-3 mt-10">
+                  <div class="dropdown pax-dropdown2">
+                    <label class="depart-arrival">Pax</label>
+                    <select
+                      class="form-control text-center"
+                      required
+                      data-val="true"
+                      data-val-range="Number of passenger is invalid."
+                      data-val-range-max="99"
+                      data-val-range-min="1"
+                      data-val-required="The PassengerCount field is required."
+                      id="PassengerCount"
+                      max="99"
+                      min="1"
+                      name="PassengerCount"
+                    >
+                      <option selected="selected" value="1">1 Pax</option>
+                      <option value="2">2 Pax</option>
+                      <option value="3">3 Pax</option>
+                      <option value="4">4 Pax</option>
+                      <option value="5">5 Pax</option>
+                      <option value="6">6 Pax</option>
+                    </select>
+                    <span
+                      class="field-validation-valid"
+                      data-valmsg-for="PassengerCount"
+                      data-valmsg-replace="true"
+                      style="display: none"
+                    ></span>
+                    <script type="text/javascript">
+                      $(function () {
+                        $("#PassengerCount").tooltipValidation({
+                          placement: "bottom",
+                        });
+                      });
+                    </script>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 col-lg-3 mt-10">
+                  <button
+                    id="btnSubmit"
+                    class="close-others btn pull-right ticket-search-btn text-dark"
+                    type="button"
+                  >
+                    SEARCH
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input
+            name="__RequestVerificationToken"
+            type="hidden"
+            value="CfDJ8INTwVi1HQZGsxUoHywWuINxyQU-FTnaKa100GGDTP2WDuhmh8bfmHh9akf9UvF5X1OFUHesyYn-rSsX-uGToQP3phOBFFHKVNk8H8CtSxfnaexT2i3tItaF7Tfn5fUUu95awPY2CqL-DaNwv3bMAVc"
+          />
+        </form>
+      </div>
+    </div>
+
+    <input type="hidden" id="TimeTableIndexUrl" value="/TimeTable/Search" />
+
+    <footer class="pb-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4 order-md-2 pt-4 copyrights">
+            <div class="f16">Helpful Links</div>
+            <div>
+              <a
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/TakafulProductDisclosure.pdf?v=2c335e2f-9f50-4895-b62b-4857b72fe597"
+                class="text-light"
+                target="_blank"
+                >Takaful Product Disclosure</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/TakafulFAQ.pdf?v=2c335e2f-9f50-4895-b62b-4857b72fe597"
+                class="text-light"
+                target="_blank"
+                >Takaful FAQ</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/KITSFAQ.pdf?v=2c335e2f-9f50-4895-b62b-4857b72fe597"
+                class="text-light"
+                target="_blank"
+                >KITS FAQ</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://online.ktmb.com.my/Home/ShuttleFAQ"
+                class="text-light"
+                target="_self"
+                >Shuttle Tebrau FAQ</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/PrivacyPolicy.pdf?v=2c335e2f-9f50-4895-b62b-4857b72fe597"
+                class="text-light"
+                target="_blank"
+                >Privacy Policy</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/TermsAndConditions.pdf?v=2c335e2f-9f50-4895-b62b-4857b72fe597"
+                class="text-light"
+                target="_blank"
+                >Terms and conditions</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/HelpfulLink/KomuterTermsAndConditions.pdf?v=2c335e2f-9f50-4895-b62b-4857b72fe597"
+                class="text-light"
+                target="_blank"
+                >Komuter terms and conditions</a
+              >
+            </div>
+          </div>
+          <div class="col-12 col-md-4 order-md-1 pt-4 copyrights">
+            <img
+              src="/v3/assets/logo.png?v=8u_yVkQVKb-evdEFntX96V-LlXYn7UZWF7cHTFb6kPk"
+              alt=""
+            />
+            <div>&nbsp;</div>
+            <div>Copyright 2023 By KTM Berhad</div>
+            <div>
+              <a
+                href="http://www.nssit.com.my"
+                class="text-light"
+                target="_blank"
+                >Powered by NSSIT</a
+              >
+            </div>
+          </div>
+          <div class="col-12 col-md-4 order-md-3 pt-4 copyrights">
+            <div>
+              <span>Legal and Secretarial Services Unit,</span><br />
+              <span>2nd Floor, KTMB Corporate Headquarters,</span><br />
+              <span>Jalan Sultan Hishamuddin,</span><br />
+              <span>50621 Wilayah Persekutuan,</span><br />
+              <span>Kuala Lumpur.</span><br />
+              <span>Call Center +603 - 2267 1200</span><br />
+              <span>Email: callcenter@ktmb.com.my</span><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/Home/Shuttle.js?v=PrGfCZfjBnTw_DLmmskqkgWWr6Ydb8_g3KZ6lJXctCY"></script>
+    <script type="text/javascript">
+      //List Of all the Id and info needed
+      var id_form = "#theForm";
+      var id_onwardDate = "OnwardDate";
+      var id_returnDate = "ReturnDate";
+      var id_fromStationId = "#FromStationId";
+      var id_toStationId = "#ToStationId";
+      var id_fromStationData = "#FromStationData";
+      var id_toStationData = "#ToStationData";
+      var timeTableIndexUrl = "#TimeTableIndexUrl";
+
+      var minimumDate = moment("2023-10-28");
+      var maximumDate = moment("2024-12-31)");
+      var lightPickDateJsFormat = "D MMM YYYY";
+      var defaultStartDate = "";
+      var defaultEndDate = "";
+      var currentYear = 2023;
+      var currentYearPlusOne = 2024;
+      var id_btnSubmit = "#btnSubmit";
+
+      $(id_btnSubmit).on("click", function (e) {
+        if ($(id_fromStationId).val().length <= 0) {
+          $(id_fromStationId).select2("open");
+          e.stopImmediatePropagation();
+        } else if ($(id_toStationId).val().length <= 0) {
+          $(id_toStationId).select2("open");
+          e.stopImmediatePropagation();
+        }
+      });
+
+      BindFunctionButton2(
+        $(id_form),
+        $(id_btnSubmit),
+        "",
+        false,
+        null,
+        SearchTrip,
+      );
+    </script>
+  </body>
+</html>

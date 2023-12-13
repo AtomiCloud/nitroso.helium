@@ -1,0 +1,24 @@
+version: "3"
+vars:
+  PLATFORM: nitroso
+  SERVICE: helium
+  USER: kirinnee/
+
+includes:
+  docker: tasks/Taskfile.docker.yaml
+
+tasks:
+  setup:
+    desc: Setups
+    cmds:
+      - bun i
+  dev:
+    desc: Start
+    env:
+      LANDSCAPE: lapras
+    cmds:
+      - bun run src/index.ts {{.CLI_ARGS}}
+  generate:config:schema:
+    desc: Generates configuration schema for better IDE completions
+    cmds:
+      - bun run typescript-json-schema ./src/config/root.config.ts RootConfig -o config/app/schema.json

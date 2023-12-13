@@ -1,0 +1,15 @@
+version: 3
+
+tasks:
+  build:
+    desc: "Build docker images"
+    cmds:
+      - docker build . --load -t {{.USER}}{{.PLATFORM}}-{{.SERVICE}}:{{.CLI_ARGS |default "latest"}}
+  run:
+    desc: "Run docker images"
+    cmds:
+      - docker run --rm -it {{.USER}}{{.PLATFORM}}-{{.SERVICE}}:{{.CLI_ARGS |default "latest"}} watch -i 1 -d 2023-12-15 -f JB
+  push:
+    desc: "Push docker images"
+    cmds:
+      - docker push {{.USER}}{{.PLATFORM}}-{{.SERVICE}}:{{.CLI_ARGS |default "latest"}}
