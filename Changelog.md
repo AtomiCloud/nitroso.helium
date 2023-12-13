@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.2.0...v1.3.0) (2023-12-13)
+
+
+### ✨ Features ✨
+
+* release helm ([2b5d4bf](https://github.com/AtomiCloud/nitroso.helium/commit/2b5d4bf8d8d8412bb60bd8f37f518304d0495b10))
+
 ## [1.2.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.1.0...v1.2.0) (2023-12-13)
 
 
