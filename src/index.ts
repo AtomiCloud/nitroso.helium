@@ -44,8 +44,6 @@ cfg.caches.forEach((v, k) => {
 
   if (v.tls) o.tls = {};
 
-  console.log(o);
-
   const redis = new Redis(o);
   container.register(svc[k + "cache"], { useValue: redis });
 });

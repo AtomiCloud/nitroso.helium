@@ -103,7 +103,7 @@ class SearchCore {
     const referer = "https://shuttleonline.ktmb.com.my/Home/Shuttle";
 
     const [FromStationData, ToStationData, FromStationId, ToStationId] =
-      from === "JB"
+      from === "JToW"
         ? [jbToken, woodlandToken, JB_STATION_ID, WOODLANDS_STATION_ID]
         : [woodlandToken, jbToken, WOODLANDS_STATION_ID, JB_STATION_ID];
 

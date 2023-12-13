@@ -32,10 +32,7 @@ class Cli {
         "Start repeatedly poll and watch for changes for a fixed day and direction",
       )
       .option("-d, --date <date>", "Date to poll")
-      .option(
-        "-f, --from <from>",
-        `Direction to poll, either 'JB' or 'Woodlands'`,
-      )
+      .option("-f, --from <from>", `Direction to poll, either 'JToW' or 'WToJ'`)
       .option(
         "-i, --interval <interval>",
         `Interval to poll in seconds, default 180`,
@@ -51,12 +48,14 @@ class Cli {
           interval: string;
         }) => {
           await tracer.startActiveSpan("watch", async (span) => {
+            const [day, month, year] = date.split("-");
+            date = `${year}-${month}-${day}`;
             const d = new Date(date);
             const i = parseInt(interval);
             if (isNaN(i)) throw new Error("Interval must be a number");
-            if (from !== "JB" && from !== "Woodlands")
-              throw new Error("From must be either 'JB' or 'Woodlands'");
-            const f = from as "JB" | "Woodlands";
+            if (from !== "JToW" && from !== "WToJ")
+              throw new Error("From must be either 'JToW' or 'WToJ'");
+            const f = from as "JToW" | "WToJ";
             const a = await this.builder.BuildFixed(f, d);
             const loopDuration = i * 1000;
             const startTime = Date.now();
@@ -75,10 +74,6 @@ class Cli {
             while (true) {
               const currentTime = Date.now();
               const elapsedTime = currentTime - startTime;
-              this.logger.info(
-                { index: index++, elapsedTime, loopDuration },
-                "Running search",
-              );
               if (elapsedTime >= loopDuration) break;
 
               // run the searcher

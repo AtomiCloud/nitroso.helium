@@ -6,7 +6,7 @@ interface TrainSchedule {
   min_fare: string;
 }
 
-type From = "JB" | "Woodlands";
+type From = "JToW" | "WToJ";
 
 interface IScheduleSearcher {
   Search(from: From, date: Date): Promise<TrainSchedule[]>;
