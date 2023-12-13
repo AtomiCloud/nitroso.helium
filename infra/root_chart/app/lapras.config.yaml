@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=./schema.json
+$schema: ./schema.json
+
+app:
+  landscape: lapras
+caches:
+  live:
+    endpoints:
+      0: localhost:6379
+    password: supersecret
+    tls: false
+otel:
+  logging:
+    enabled: true
+    level: info
+    prettify: true
+    safe: true

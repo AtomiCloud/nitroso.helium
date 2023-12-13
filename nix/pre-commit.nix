@@ -75,6 +75,25 @@ pre-commit-lib.run {
       language = "system";
       pass_filenames = true;
     };
+
+    a-config-sync = {
+      enable = true;
+      name = "Sync configurations to helm charts";
+      entry = "${packages.bash}/bin/bash scripts/local/config-sync.sh";
+      files = "config/app/.*\\.yaml";
+      language = "system";
+      pass_filenames = false;
+    };
+
+    a-helm-docs = {
+      enable = true;
+      name = "Helm Docs";
+      entry = "${packages.helm-docs}/bin/helm-docs";
+      files = ".*";
+      language = "system";
+      pass_filenames = false;
+    };
+
   };
 
   settings = {

@@ -26,6 +26,7 @@ let
       {
         nodejs = nodejs_18;
         npm = nodePackages.npm;
+        helm = kubernetes-helm;
         inherit
           coreutils
           yq-go
@@ -35,6 +36,9 @@ let
           jq
           findutils
           hadolint
+          helm-docs
+          kubectl
+          docker
 
           git
 

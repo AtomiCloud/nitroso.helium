@@ -4,8 +4,12 @@ vars:
   SERVICE: helium
   USER: kirinnee/
 
+  CHART_PATH: infra/root_chart
+  RELEASE_NAME: nitroso-helium
+
 includes:
   docker: tasks/Taskfile.docker.yaml
+  helm: Taskfile.helm.yml
 
 tasks:
   setup:

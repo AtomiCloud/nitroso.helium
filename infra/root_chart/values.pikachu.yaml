@@ -1,0 +1,5 @@
+serviceTree:
+  landscape: &landscape pikachu
+
+bromine:
+  enable: true

@@ -16,6 +16,9 @@ with packages;
   ];
 
   infra = [
+    helm
+    kubectl
+    docker
   ];
 
   main = [

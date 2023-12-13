@@ -34,6 +34,9 @@ plugins:
   - module: "@semantic-release/exec"
     config:
       prepareCmd: scripts/ci/publish.sh ${nextRelease.version}
+  - module: "@semantic-release/exec"
+    config:
+      prepareCmd: scripts/ci/publish-helm.sh ${nextRelease.version}
   - module: "@semantic-release/github"
 
 # Angular Conventional Commit Example: https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines

@@ -1,0 +1,4 @@
+serviceTree:
+  landscape: &landscape tauros
+bromine:
+  enable: true

@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=./schema.json
+$schema: ./schema.json
+
+app:
+  landscape: pichu
+caches:
+  live:
+    endpoints:
+      0: tin-livecache:6379
+    tls: false
+otel:
+  logging:
+    enabled: true
+    level: info
+    prettify: false
+    safe: true
+  metrics:
+    exporter:
+      interval: 1000
+      use: otlp
+      otlp:
+        compression: gzip
+        headers: {}
+        timeout: 3000
+        url: "http://silicon-otlp-collector.sulfoxide.svc:4318"
+  trace:
+    exporter:
+      use: otlp
+      otlp:
+        compression: gzip
+        headers: {}
+        timeout: 3000
+        url: "http://silicon-otlp-collector.sulfoxide.svc:4318"

@@ -1,0 +1,5 @@
+serviceTree:
+  landscape: &landscape pichu
+
+bromine:
+  enable: true

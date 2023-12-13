@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AppConfig": {
+      "properties": {
+        "landscape": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CacheConfig": {
+      "properties": {
+        "autoResubscribe": {
+          "type": "boolean"
+        },
+        "commandTimeout": {
+          "type": "number"
+        },
+        "connectTimeout": {
+          "type": "number"
+        },
+        "enableAutoPipelining": {
+          "type": "boolean"
+        },
+        "endpoints": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "keyPrefix": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "readOnly": {
+          "type": "boolean"
+        },
+        "tls": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "ExporterConfig": {
+      "properties": {
+        "interval": {
+          "type": "number"
+        },
+        "otlp": {
+          "$ref": "#/definitions/OtlpConfig"
+        },
+        "use": {
+          "enum": ["console", "none", "otlp"],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ExporterConfig_1": {
+      "properties": {
+        "otlp": {
+          "$ref": "#/definitions/OtlpConfig_1"
+        },
+        "use": {
+          "enum": ["console", "none", "otlp"],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LoggingConfig": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "level": {
+          "type": "string"
+        },
+        "prettify": {
+          "type": "boolean"
+        },
+        "safe": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "MetricsConfig": {
+      "properties": {
+        "exporter": {
+          "$ref": "#/definitions/ExporterConfig"
+        }
+      },
+      "type": "object"
+    },
+    "OtelConfig": {
+      "properties": {
+        "logging": {
+          "$ref": "#/definitions/LoggingConfig"
+        },
+        "metrics": {
+          "$ref": "#/definitions/MetricsConfig"
+        },
+        "trace": {
+          "$ref": "#/definitions/TraceConfig"
+        }
+      },
+      "type": "object"
+    },
+    "OtlpConfig": {
+      "properties": {
+        "compression": {
+          "enum": ["gzip", "none"],
+          "type": "string"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "timeout": {
+          "type": "number"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "OtlpConfig_1": {
+      "properties": {
+        "compression": {
+          "enum": ["gzip", "none"],
+          "type": "string"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "timeout": {
+          "type": "number"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "TraceConfig": {
+      "properties": {
+        "exporter": {
+          "$ref": "#/definitions/ExporterConfig_1"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "app": {
+      "$ref": "#/definitions/AppConfig"
+    },
+    "caches": {
+      "additionalProperties": {
+        "$ref": "#/definitions/CacheConfig"
+      },
+      "type": "object"
+    },
+    "otel": {
+      "$ref": "#/definitions/OtelConfig"
+    }
+  },
+  "type": "object"
+}

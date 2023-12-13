@@ -1,0 +1,5 @@
+serviceTree:
+  landscape: &landscape raichu
+
+bromine:
+  enable: true

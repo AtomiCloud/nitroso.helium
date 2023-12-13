@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=./schema.json
+$schema: ./schema.json
+
+app:
+  landscape: lapras
+  platform: nitroso
+  service: helium
+  module: pollee
+caches:
+  live:
+    autoResubscribe: true
+    commandTimeout: 3000
+    connectTimeout: 3000
+    enableAutoPipelining: true
+    endpoints:
+      0: tin-livecache:6379
+    keyPrefix: ""
+    password: supersecret
+    readOnly: false
+    tls: false
+otel:
+  logging:
+    enabled: true
+    level: info
+    prettify: false
+    safe: true
+  metrics:
+    exporter:
+      interval: 1000
+      use: none
+  trace:
+    exporter:
+      use: none

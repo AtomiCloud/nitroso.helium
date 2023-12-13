@@ -16,8 +16,6 @@ env:
   DOCKER_CACHE_BUCKET: "ci-cache"
   DOCKER_CACHE_REGION: "APAC"
 
-  # Helm
-
 jobs:
   precommit:
     name: Pre-commit Check
@@ -76,6 +74,28 @@ jobs:
           S3_REGION: ${{ env.DOCKER_CACHE_REGION }}
 
           LATEST_BRANCH: ${{ env.DOCKER_LATEST_BRANCH}}
+  publish:
+    name: Publish Helm
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Publish
+        env:
+          GITHUB_REPO_REF: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_BRANCH: ${{ env.GITHUB_REF_SLUG_URL }}
+
+          DOMAIN: ${{ env.DOCKER_DOMAIN }}
+
+          DOCKER_PASSWORD: ${{ env.DOCKER_PASSWORD }}
+          DOCKER_USER: ${{ env.DOCKER_USER }}
+
+        run: nix develop .#ci -c scripts/ci/publish-helm.sh
 
   release:
     name: Semantic Release

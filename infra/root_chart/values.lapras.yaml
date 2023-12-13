@@ -1,0 +1,5 @@
+serviceTree:
+  landscape: &landscape lapras
+
+bromine:
+  enable: true

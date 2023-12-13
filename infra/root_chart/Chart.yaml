@@ -1,0 +1,14 @@
+apiVersion: v2
+name: root-chart
+description: Root Chart to a single Service
+
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+
+dependencies:
+  - name: sulfoxide-bromine
+    version: 1.3.0
+    condition: bromine.enable
+    alias: bromine
+    repository: oci://ghcr.io/atomicloud/sulfoxide.bromine
