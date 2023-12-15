@@ -36,7 +36,7 @@
     "pino": "^8.16.2",
     "pino-pretty": "^10.2.3",
     "query-string": "^8.1.0",
-    "reflect-metadata": "^0.1.14",
+    "reflect-metadata": "^0.2.1",
     "ts-node": "^10.9.2",
     "tsyringe": "^4.8.0"
   }
