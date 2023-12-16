@@ -82,10 +82,9 @@ class Cli {
               const timing: Record<string, number> = {};
               for (const s of sch) timing[s.departure_time] = s.available_seats;
               const cmd = await this.redis.publish(
-                `ktmb:schedule:${date}`,
+                `ktmb:schedule:${from}:${date}`,
                 JSON.stringify(timing),
               );
-              this.logger.info({ cmd, index: index++ }, "Published schedule");
             }
             this.logger.info({ index: index++ }, "Watch complete");
             span.end();
