@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.2...v1.3.3) (2023-12-16)
+
+
+### 🐛 Bug Fixes 🐛
+
+* publishing direction and date ([c0e5b0a](https://github.com/AtomiCloud/nitroso.helium/commit/c0e5b0a29d3e53442b082a66777fc55ac3906fff))
+
 ## [1.3.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.1...v1.3.2) (2023-12-16)
 
 
