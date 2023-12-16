@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.1...v1.3.2) (2023-12-16)
+
+
+### 🐛 Bug Fixes 🐛
+
+* syntax error and logging sensitive info ([b2552b2](https://github.com/AtomiCloud/nitroso.helium/commit/b2552b240b9cf8d135e7534bf56831214fdddc46))
+
 ## [1.3.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.0...v1.3.1) (2023-12-16)
 
 
