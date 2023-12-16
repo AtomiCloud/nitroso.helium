@@ -3,7 +3,7 @@ $schema: ./schema.json
 
 app:
   landscape: lapras
-caches:
+cache:
   live:
     endpoints:
       0: localhost:6379

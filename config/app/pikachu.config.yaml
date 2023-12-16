@@ -3,7 +3,7 @@ $schema: ./schema.json
 
 app:
   landscape: pikachu
-caches:
+cache:
   live:
     endpoints:
       0: tin-livecache:6379

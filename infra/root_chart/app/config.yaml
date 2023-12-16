@@ -6,7 +6,7 @@ app:
   platform: nitroso
   service: helium
   module: pollee
-caches:
+cache:
   live:
     autoResubscribe: true
     commandTimeout: 3000

@@ -17,5 +17,5 @@ export class RootConfig {
     each: true,
   })
   @Type(() => CacheConfig)
-  caches!: Map<string, CacheConfig>;
+  cache!: Map<string, CacheConfig>;
 }
