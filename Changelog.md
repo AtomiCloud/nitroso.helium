@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.0...v1.3.1) (2023-12-16)
+
+
+### 🐛 Bug Fixes 🐛
+
+* make it compatible with atomi systems using cache instead of caches ([9bce575](https://github.com/AtomiCloud/nitroso.helium/commit/9bce57596486378d4bfa85724c71eccd1bd372b5))
+
 ## [1.3.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.2.0...v1.3.0) (2023-12-13)
 
 
