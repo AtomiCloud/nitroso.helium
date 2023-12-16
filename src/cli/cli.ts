@@ -19,7 +19,7 @@ class Cli {
   ) {}
 
   async start(): Promise<void> {
-    this.logger.info(this.cfg, "Starting CLI");
+    this.logger.debug(this.cfg, "Starting CLI");
     const a = this.cfg.app;
     const tracer = trace.getTracer(`${a.platform}.${a.service}.${a.module}`);
     program

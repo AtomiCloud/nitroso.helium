@@ -23,7 +23,7 @@ const otel = new OtelService(cfg);
 const logger = await otel.start();
 
 // Start DI
-cfg.caches.forEach((v, k) => {
+cfg.cache.forEach((v, k) => {
   const endpoint = v.endpoints.get("0")!;
 
   const [host, port] = endpoint.split(":") as [string, string];
