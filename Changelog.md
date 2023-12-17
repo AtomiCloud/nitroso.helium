@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.0...v1.4.1) (2023-12-17)
+
+
+### 🐛 Bug Fixes 🐛
+
+* missing modules for production ([e0a5137](https://github.com/AtomiCloud/nitroso.helium/commit/e0a5137a3c862fedd5e943396e41d6d140239ea4))
+
 ## [1.4.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.3...v1.4.0) (2023-12-17)
 
 
