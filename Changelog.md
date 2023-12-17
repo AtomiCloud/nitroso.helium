@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.1...v1.4.2) (2023-12-17)
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect configuration for lapras ([093d0dc](https://github.com/AtomiCloud/nitroso.helium/commit/093d0dccc121896d6e47405e15a9344b6246cc0b))
+
 ## [1.4.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.0...v1.4.1) (2023-12-17)
 
 
