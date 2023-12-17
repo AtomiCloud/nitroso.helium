@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.3...v1.4.0) (2023-12-17)
+
+
+### ✨ Features ✨
+
+* remove tsyringe and use JS for production ([5e50383](https://github.com/AtomiCloud/nitroso.helium/commit/5e5038320e0cd00a0ed25f6696f78cf7be6c0b63))
+
 ## [1.3.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.3.2...v1.3.3) (2023-12-16)
 
 
