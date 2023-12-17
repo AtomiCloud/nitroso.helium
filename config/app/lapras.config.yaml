@@ -6,7 +6,7 @@ app:
 cache:
   live:
     endpoints:
-      0: localhost:6379
+      0: tin-livecache:6379
     password: supersecret
     tls: false
 otel:
