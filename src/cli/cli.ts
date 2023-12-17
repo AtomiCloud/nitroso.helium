@@ -1,20 +1,15 @@
-import { autoInjectable, inject } from "tsyringe";
 import { program } from "commander";
 import { SearcherBuilder } from "../domain/searcher/builder.ts";
-import { svc } from "../system/constants.ts";
 import type { Logger } from "pino";
 import { trace } from "@opentelemetry/api";
 import { RootConfig } from "../config/root.config.ts";
 import Redis from "ioredis";
 
-@autoInjectable()
 class Cli {
   constructor(
     private readonly builder: SearcherBuilder,
-    @inject(svc.Logger)
     private readonly logger: Logger,
     private readonly cfg: RootConfig,
-    @inject(svc.livecache)
     private readonly redis: Redis,
   ) {}
 
@@ -50,6 +45,7 @@ class Cli {
         }) => {
           await tracer.startActiveSpan("watch", async (span) => {
             const [day, month, year] = date.split("-");
+            const originalDate = date;
             date = `${year}-${month}-${day}`;
             const d = new Date(date);
             const i = parseInt(interval);
@@ -81,10 +77,8 @@ class Cli {
               const sch = await a.Search();
               const timing: Record<string, number> = {};
               for (const s of sch) timing[s.departure_time] = s.available_seats;
-              const cmd = await this.redis.publish(
-                `ktmb:schedule:${from}:${date}`,
-                JSON.stringify(timing),
-              );
+              const key = `ktmb:schedule:${from}:${originalDate}`;
+              const _ = await this.redis.publish(key, JSON.stringify(timing));
             }
             this.logger.info({ index: index++ }, "Watch complete");
             span.end();

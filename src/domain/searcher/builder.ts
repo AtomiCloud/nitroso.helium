@@ -7,9 +7,7 @@ import {
 import { StatelessScheduleSearcher } from "./stateless_schedule_searcher.ts";
 import { LoadedScheduleSearcher } from "./loaded_schedule_searcher.ts";
 import { FixedScheduleSearcher } from "./fixed_schedule_searcher.ts";
-import { autoInjectable } from "tsyringe";
 
-@autoInjectable()
 class SearcherBuilder {
   constructor(private readonly searchCore: SearchCore) {}
 

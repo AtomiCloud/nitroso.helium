@@ -4,7 +4,6 @@ import * as cheerio from "cheerio";
 import { From, TrainSchedule } from "./interface.ts";
 import { stringify } from "querystring";
 import moment from "moment";
-import { autoInjectable } from "tsyringe";
 
 const fetch = fetchCookie(nodeFetch);
 
@@ -61,7 +60,6 @@ interface TrainScheduleResp {
   data: string;
 }
 
-@autoInjectable()
 class SearchCore {
   async mainKTMBPage(): Promise<MainPageToken> {
     const referer = "https://online.ktmb.com.my/";
