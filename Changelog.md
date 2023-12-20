@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.2...v1.4.3) (2023-12-20)
+
+
+### 🐛 Bug Fixes 🐛
+
+* use different cache to point to redis ([3acf96a](https://github.com/AtomiCloud/nitroso.helium/commit/3acf96a28fd0d7016f4992a7ecbe20f009d4565d))
+
 ## [1.4.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.1...v1.4.2) (2023-12-17)
 
 
