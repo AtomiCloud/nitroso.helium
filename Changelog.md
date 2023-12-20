@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.3...v1.4.4) (2023-12-20)
+
+
+### 🐛 Bug Fixes 🐛
+
+* fullname override for pichu, pikachu and raichu landscapes ([a1adc37](https://github.com/AtomiCloud/nitroso.helium/commit/a1adc3777bb0bd971b4f6a55874db32fb4ed2a71))
+
 ## [1.4.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.2...v1.4.3) (2023-12-20)
 
 
