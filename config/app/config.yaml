@@ -13,7 +13,7 @@ cache:
     connectTimeout: 3000
     enableAutoPipelining: true
     endpoints:
-      0: tin-livecache:6379
+      0: tin-livecache-master:6379
     keyPrefix: ""
     password: supersecret
     readOnly: false
