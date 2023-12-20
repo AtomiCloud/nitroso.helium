@@ -3,3 +3,5 @@ serviceTree:
 
 bromine:
   enable: true
+
+fullnameOverride: "helium-pollee"
