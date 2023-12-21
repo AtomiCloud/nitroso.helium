@@ -21,5 +21,5 @@ export class OtlpConfig {
   @IsString({
     each: true,
   })
-  headers?: { [s: string]: string };
+  headers?: Map<string, string>;
 }

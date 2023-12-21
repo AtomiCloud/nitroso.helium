@@ -50,7 +50,9 @@ class OtelService {
           const url = otlp.url;
           const ex = new OTLPTraceExporter({
             url: `${url}/v1/traces`,
-            headers: otel.trace.exporter.otlp?.headers,
+            headers: Object.fromEntries(
+              otel.trace.exporter.otlp?.headers ?? [],
+            ),
             timeoutMillis: otlp.timeout,
             compression: this.compressionAlgoMapper(otlp.compression),
           });
@@ -78,7 +80,7 @@ class OtelService {
             exportIntervalMillis: otel.metrics.exporter.interval,
             exporter: new OTLPMetricExporter({
               url: `${url}/v1/metrics`,
-              headers: otlp.headers,
+              headers: Object.fromEntries(otlp.headers?.entries() ?? []),
               timeoutMillis: otlp.timeout,
               compression: this.compressionAlgoMapper(otlp.compression),
             }),
