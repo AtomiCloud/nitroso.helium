@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.4...v1.4.5) (2023-12-21)
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect OTEL configuration ([9b881c8](https://github.com/AtomiCloud/nitroso.helium/commit/9b881c8e55875454637330bed6a0c1aa9fac0b69))
+
 ## [1.4.4](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.3...v1.4.4) (2023-12-20)
 
 
