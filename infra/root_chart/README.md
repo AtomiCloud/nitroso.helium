@@ -17,7 +17,7 @@ Root Chart to a single Service
 | appSettings | object | `{}` |  |
 | bromine.annotations."argocd.argoproj.io/sync-wave" | string | `"1"` |  |
 | bromine.enable | bool | `true` |  |
-| bromine.rootSecret | object | `{"ref":"NITROSO_HELIUM"}` | Secret of Secrets reference |
+| bromine.rootSecret | object | `{"name":"nitroso-helium-doppler","ref":"NITROSO_HELIUM"}` | Secret of Secrets reference |
 | bromine.rootSecret.ref | string | `"NITROSO_HELIUM"` | DOPPLER Token Reference |
 | bromine.storeName | string | `"nitroso-helium"` | Store name to create |
 | bromine.target | string | `"nitroso-helium"` |  |

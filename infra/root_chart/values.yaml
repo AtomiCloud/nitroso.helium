@@ -16,6 +16,8 @@ bromine:
     # -- DOPPLER Token Reference
     ref: "NITROSO_HELIUM"
 
+    name: "nitroso-helium-doppler"
+
   target: &target "nitroso-helium"
 
 appSettings: {}
