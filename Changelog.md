@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.5...v1.4.6) (2023-12-27)
+
+
+### 🐛 Bug Fixes 🐛
+
+* conflicting root secret name ([e51f318](https://github.com/AtomiCloud/nitroso.helium/commit/e51f318fa25be58a1a819b51afd9b27d8c2cec8e))
+
 ## [1.4.5](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.4...v1.4.5) (2023-12-21)
 
 
