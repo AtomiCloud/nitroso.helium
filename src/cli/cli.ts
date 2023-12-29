@@ -1,17 +1,25 @@
 import { program } from "commander";
-import { SearcherBuilder } from "../domain/searcher/builder.ts";
 import type { Logger } from "pino";
 import { trace } from "@opentelemetry/api";
 import { RootConfig } from "../config/root.config.ts";
-import Redis from "ioredis";
+import { ZincDate } from "../util/zinc_date.ts";
+import { Watcher } from "../lib/watcher.ts";
+import { Get } from "../lib/get.ts";
+import { AsciiTable3 } from "ascii-table3";
 
 class Cli {
   constructor(
-    private readonly builder: SearcherBuilder,
     private readonly logger: Logger,
     private readonly cfg: RootConfig,
-    private readonly redis: Redis,
+    private readonly zincDate: ZincDate,
+    private readonly watcher: Watcher,
+    private readonly getter: Get,
   ) {}
+
+  err(message: string): never {
+    this.logger.error(message);
+    process.exit(1);
+  }
 
   async start(): Promise<void> {
     this.logger.debug(this.cfg, "Starting CLI");
@@ -21,6 +29,27 @@ class Cli {
       .name("nitroso-helium")
       .description("Nitroso Helium - Pollee Job")
       .version("0.0.0");
+
+    program
+      .command("get <date> <from>")
+      .description("Get schedule for a fixed day and direction")
+      .action(async (date: string, from: string) => {
+        if (date == null) this.err("Date is required");
+        if (from == null) this.err("From is required");
+        if (from !== "JToW" && from !== "WToJ")
+          this.err("From must be either 'JToW' or 'WToJ'");
+
+        const d = this.zincDate.from(date);
+        const f = from as "JToW" | "WToJ";
+
+        const out = await this.getter.Get(d, f);
+
+        const table = new AsciiTable3().setAlignCenter(2).addRowMatrix(out);
+
+        console.log(table.toString());
+
+        process.exit(0);
+      });
 
     program
       .command("watch")
@@ -44,43 +73,21 @@ class Cli {
           interval: string;
         }) => {
           await tracer.startActiveSpan("watch", async (span) => {
-            const [day, month, year] = date.split("-");
-            const originalDate = date;
-            date = `${year}-${month}-${day}`;
-            const d = new Date(date);
+            if (date == null) this.err("Date is required, -d <dd-mm-yyyy>");
+            if (from == null) this.err("From is required, -f <JToW|WToJ>");
+            if (interval == null)
+              this.err("Interval is required, -i <seconds>");
+
+            const d = this.zincDate.from(date);
             const i = parseInt(interval);
-            if (isNaN(i)) throw new Error("Interval must be a number");
-            if (from !== "JToW" && from !== "WToJ")
-              throw new Error("From must be either 'JToW' or 'WToJ'");
             const f = from as "JToW" | "WToJ";
-            const a = await this.builder.BuildFixed(f, d);
-            const loopDuration = i * 1000;
-            const startTime = Date.now();
 
-            this.logger.info(
-              {
-                date,
-                from,
-                interval,
-              },
-              "Starting watch",
-            );
-
-            let index = 0;
-
-            while (true) {
-              const currentTime = Date.now();
-              const elapsedTime = currentTime - startTime;
-              if (elapsedTime >= loopDuration) break;
-
-              // run the searcher
-              const sch = await a.Search();
-              const timing: Record<string, number> = {};
-              for (const s of sch) timing[s.departure_time] = s.available_seats;
-              const key = `ktmb:schedule:${from}:${originalDate}`;
-              const _ = await this.redis.publish(key, JSON.stringify(timing));
-            }
-            this.logger.info({ index: index++ }, "Watch complete");
+            if (isNaN(i)) this.err("Interval must be a number");
+            if (from !== "JToW" && from !== "WToJ")
+              this.err("From must be either 'JToW' or 'WToJ'");
+            const now = Date.now();
+            this.logger.info({ date, from, interval }, "Starting watch");
+            await this.watcher.Watch(d, now, i, f);
             span.end();
           });
           process.exit(0);
