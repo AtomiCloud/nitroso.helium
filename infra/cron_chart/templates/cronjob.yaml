@@ -6,7 +6,9 @@ metadata:
   annotations: {{- include "bun-cron-chart.annotations" . | nindent 4 }}
 spec:
   schedule: "{{ .Values.schedule }}"
-  timeZone: "{{ .Values.timeZone }}"
+  {{- with .Values.timeZone }}
+  timeZone: "{{ . }}"
+  {{- end }}
   jobTemplate:
     metadata:
       labels: {{- include "bun-cron-chart.labels" . | nindent 8 }}

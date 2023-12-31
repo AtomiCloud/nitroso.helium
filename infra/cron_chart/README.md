@@ -33,7 +33,6 @@ A Chart to deploy Bun Cronjob
 | serviceTree.module | string | `"scheduler"` |  |
 | serviceTree.platform | string | `"nitroso"` |  |
 | serviceTree.service | string | `"helium"` |  |
-| timeZone | string | `"Asia/Singapore"` |  |
 | tolerations | list | `[]` |  |
 | topologySpreadConstraints | object | `{}` |  |
 

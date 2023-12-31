@@ -36,8 +36,7 @@ scheduler:
     <<: *serviceTree
     module: scheduler
 
-  schedule: "@midnight"
-  timeZone: "Asia/Shanghai"
+  schedule: "5 16 * * *"
 
   restartPolicy: "Never"
 

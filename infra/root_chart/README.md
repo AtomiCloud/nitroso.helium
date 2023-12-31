@@ -25,14 +25,13 @@ Root Chart to a single Service
 | bromine.target | string | `"nitroso-helium"` |  |
 | scheduler.envFromSecret | string | `"nitroso-helium"` |  |
 | scheduler.restartPolicy | string | `"Never"` |  |
-| scheduler.schedule | string | `"@midnight"` |  |
+| scheduler.schedule | string | `"5 16 * * *"` |  |
 | scheduler.serviceTree.<<.landscape | string | `"lapras"` |  |
 | scheduler.serviceTree.<<.layer | string | `"2"` |  |
 | scheduler.serviceTree.<<.module | string | `"pollee"` |  |
 | scheduler.serviceTree.<<.platform | string | `"nitroso"` |  |
 | scheduler.serviceTree.<<.service | string | `"helium"` |  |
 | scheduler.serviceTree.module | string | `"scheduler"` |  |
-| scheduler.timeZone | string | `"Asia/Shanghai"` |  |
 | serviceTree.landscape | string | `"lapras"` |  |
 | serviceTree.layer | string | `"2"` |  |
 | serviceTree.module | string | `"pollee"` |  |

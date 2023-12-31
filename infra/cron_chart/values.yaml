@@ -5,7 +5,6 @@ serviceTree:
   module: scheduler
 
 schedule: "@midnight"
-timeZone: "Asia/Singapore"
 
 appSettings: {}
 
