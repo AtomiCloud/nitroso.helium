@@ -1,0 +1,77 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "bun-cron-chart.fullname" . }}
+  labels: {{- include "bun-cron-chart.labels" . | nindent 4 }}
+  annotations: {{- include "bun-cron-chart.annotations" . | nindent 4 }}
+spec:
+  schedule: "{{ .Values.schedule }}"
+  timeZone: "{{ .Values.timeZone }}"
+  jobTemplate:
+    metadata:
+      labels: {{- include "bun-cron-chart.labels" . | nindent 8 }}
+      annotations: {{- include "bun-cron-chart.annotations" . | nindent 8 }}
+    spec:
+      {{ with .Values.backoffLimit }}
+      backoffLimit: {{ . }}
+      {{ end }}
+      template:
+        metadata:
+          annotations: {{- include "bun-cron-chart.annotations" . | nindent 12 }}
+          {{- with .Values.podAnnotations }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          labels: {{- include "bun-cron-chart.labels" . | nindent 12 }}
+        spec:
+          restartPolicy: "{{ .Values.restartPolicy }}"
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "bun-cron-chart.serviceAccountName" . }}
+          securityContext: {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+            - name: {{ .Chart.Name }}
+              {{- with .Values.command }}
+              command: {{ toYaml . | nindent 16 }}
+              {{- end }}
+              {{- if .Values.envFromSecret }}
+              envFrom:
+                - secretRef:
+                    name: {{ .Values.envFromSecret }}
+              {{- end }}
+              securityContext: {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              env:
+                - name: LANDSCAPE
+                  value: {{ .Values.serviceTree.landscape }}
+              volumeMounts:
+                - mountPath: "{{ .Values.configMountPath }}/{{ .Values.serviceTree.landscape }}.config.yaml"
+                  name: config-volume
+                  subPath: "{{ .Values.serviceTree.landscape }}.config.yaml"
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+          volumes:
+            - name: config-volume
+              configMap:
+                name: {{ include "bun-cron-chart.fullname-with-suffix" (dict "arg" "config" "root" .) }}
+                items:
+                  - key: "{{ .Values.serviceTree.landscape }}.config.yaml"
+                    path: "{{ .Values.serviceTree.landscape }}.config.yaml"
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.topologySpreadConstraints }}
+          topologySpreadConstraints:
+             {{- toYaml . | nindent 12 }}
+          {{- end -}}

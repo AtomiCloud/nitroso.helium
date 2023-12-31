@@ -16,4 +16,8 @@ export class AppConfig {
   @IsString()
   @MinLength(1)
   module!: string;
+
+  @IsString()
+  @MinLength(1)
+  version!: string;
 }

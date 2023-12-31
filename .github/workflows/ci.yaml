@@ -33,11 +33,11 @@ jobs:
       matrix:
         configs:
           - image-name: nitroso-helium-arm
-            dockerfile: Dockerfile
+            dockerfile: ./infra/Dockerfile
             context: .
             platform: linux/arm64
           - image-name: nitroso-helium-amd
-            dockerfile: Dockerfile
+            dockerfile: ./infra/Dockerfile
             context: .
             platform: linux/amd64
     env:

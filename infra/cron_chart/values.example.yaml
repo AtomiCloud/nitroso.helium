@@ -1,0 +1,61 @@
+serviceTree:
+  landscape: lapras
+  platform: nitroso
+  service: helium
+  module: scheduler
+
+schedule: "@midnight"
+timeZone: "Asia/Singapore"
+
+appSettings: {}
+
+annotations: {}
+
+envFromSecret: nitroso-helium
+
+configMountPath: /app/config/app
+
+command:
+  - /bin/sh
+  - -c
+  - sleep infinity
+
+image:
+  repository: golang-chart
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+topologySpreadConstraints: {}
+
+backoffLimit: 3
+
+restartPolicy: Never

@@ -14,44 +14,43 @@
         },
         "service": {
           "type": "string"
+        },
+        "version": {
+          "type": "string"
         }
       },
       "type": "object"
     },
-    "CacheConfig": {
+    "AuthConfig": {
       "properties": {
-        "autoResubscribe": {
-          "type": "boolean"
-        },
-        "commandTimeout": {
-          "type": "number"
-        },
-        "connectTimeout": {
-          "type": "number"
-        },
-        "enableAutoPipelining": {
-          "type": "boolean"
-        },
-        "endpoints": {
-          "additionalProperties": false,
-          "patternProperties": {
-            "^[0-9]+$": {
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "keyPrefix": {
+        "descope": {
+          "$ref": "#/definitions/DescopeConfig"
+        }
+      },
+      "type": "object"
+    },
+    "DescopeConfig": {
+      "properties": {
+        "id": {
           "type": "string"
         },
-        "password": {
+        "key": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ErrorConfig": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "host": {
           "type": "string"
         },
-        "readOnly": {
-          "type": "boolean"
-        },
-        "tls": {
-          "type": "boolean"
+        "scheme": {
+          "enum": ["http", "https"],
+          "type": "string"
         }
       },
       "type": "object"
@@ -100,6 +99,28 @@
       },
       "type": "object"
     },
+    "Map<string,CacheConfig>": {
+      "properties": {
+        "__@toStringTag@24": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "Map<string,string>": {
+      "properties": {
+        "__@toStringTag@24": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "MetricsConfig": {
       "properties": {
         "exporter": {
@@ -129,10 +150,7 @@
           "type": "string"
         },
         "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
+          "$ref": "#/definitions/Map<string,string>"
         },
         "timeout": {
           "type": "number"
@@ -150,10 +168,7 @@
           "type": "string"
         },
         "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
+          "$ref": "#/definitions/Map<string,string>"
         },
         "timeout": {
           "type": "number"
@@ -171,20 +186,37 @@
         }
       },
       "type": "object"
+    },
+    "ZincConfig": {
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     }
   },
   "properties": {
     "app": {
       "$ref": "#/definitions/AppConfig"
     },
-    "caches": {
-      "additionalProperties": {
-        "$ref": "#/definitions/CacheConfig"
-      },
-      "type": "object"
+    "auth": {
+      "$ref": "#/definitions/AuthConfig"
+    },
+    "cache": {
+      "$ref": "#/definitions/Map<string,CacheConfig>"
+    },
+    "error": {
+      "$ref": "#/definitions/ErrorConfig"
     },
     "otel": {
       "$ref": "#/definitions/OtelConfig"
+    },
+    "zinc": {
+      "$ref": "#/definitions/ZincConfig"
     }
   },
   "type": "object"

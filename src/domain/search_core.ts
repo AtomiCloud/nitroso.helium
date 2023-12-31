@@ -1,11 +1,10 @@
-import nodeFetch from "node-fetch";
 import fetchCookie from "fetch-cookie";
 import * as cheerio from "cheerio";
 import { From, TrainSchedule } from "./interface.ts";
 import { stringify } from "querystring";
 import moment from "moment";
 
-const fetch = fetchCookie(nodeFetch);
+const f = fetchCookie(fetch);
 
 const htmlHeaders = {
   accept:
@@ -63,7 +62,7 @@ interface TrainScheduleResp {
 class SearchCore {
   async mainKTMBPage(): Promise<MainPageToken> {
     const referer = "https://online.ktmb.com.my/";
-    const resp = await fetch("https://shuttleonline.ktmb.com.my/Home/Shuttle", {
+    const resp = await f("https://shuttleonline.ktmb.com.my/Home/Shuttle", {
       headers: {
         ...defaultHeaders,
         ...htmlHeaders,
@@ -115,7 +114,7 @@ class SearchCore {
       PassengerCount: 1,
       __RequestVerificationToken: requestVerificationToken,
     };
-    const resp = await fetch("https://shuttleonline.ktmb.com.my/ShuttleTrip", {
+    const resp = await f("https://shuttleonline.ktmb.com.my/ShuttleTrip", {
       headers: {
         ...htmlHeaders,
         ...defaultHeaders,
@@ -165,7 +164,7 @@ class SearchCore {
       method: "POST",
     };
 
-    const r = await fetch(
+    const r = await f(
       "https://shuttleonline.ktmb.com.my/ShuttleTrip/Trip",
       init,
     );

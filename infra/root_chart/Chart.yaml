@@ -12,3 +12,13 @@ dependencies:
     condition: bromine.enable
     alias: bromine
     repository: oci://ghcr.io/atomicloud/sulfoxide.bromine
+  - name: root-chart
+    version: 1.8.7
+    condition: zinc.enable
+    alias: zinc
+    repository: oci://ghcr.io/atomicloud/nitroso.zinc
+  - name: bun-cron-chart
+    version: 0.1.0
+    repository: file://../cron_chart
+    alias: scheduler
+    condition: scheduler.enabled

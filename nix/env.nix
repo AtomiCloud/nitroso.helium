@@ -13,9 +13,15 @@ with packages;
   dev = [
     pls
     git
+    swagger_typescript_api
+    skopeo
+    doppler
+    mirrord
   ];
 
   infra = [
+    k3d
+    tilt
     helm
     kubectl
     docker

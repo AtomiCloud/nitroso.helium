@@ -1,7 +1,43 @@
 serviceTree:
   landscape: &landscape pichu
 
+# -- YAML Anchor for PodSecurityContext
+podSecurityContext: &podSecurityContext
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+  runAsNonRoot: true
+
+# -- YAML Anchor for SecurityContext
+securityContext: &securityContext
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  capabilities:
+    drop:
+      - ALL
+
 bromine:
   enable: true
 
 fullnameOverride: "helium-pollee"
+
+zinc:
+  enable: false
+
+scheduler:
+  enable: true
+  serviceTree:
+    landscape: *landscape
+  securityContext: *securityContext
+  podSecurityContext: *podSecurityContext
+  fullnameOverride: "helium-scheduler"
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "50m"
+    limits:
+      memory: "512Mi"
+      cpu: "250m"

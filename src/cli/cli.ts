@@ -6,6 +6,9 @@ import { ZincDate } from "../util/zinc_date.ts";
 import { Watcher } from "../lib/watcher.ts";
 import { Get } from "../lib/get.ts";
 import { AsciiTable3 } from "ascii-table3";
+import { Utility } from "../utility.ts";
+import { Checker } from "../lib/checker.ts";
+import { Updater } from "../lib/updater.ts";
 
 class Cli {
   constructor(
@@ -14,6 +17,8 @@ class Cli {
     private readonly zincDate: ZincDate,
     private readonly watcher: Watcher,
     private readonly getter: Get,
+    private readonly updater: Updater,
+    private readonly utility: Utility,
   ) {}
 
   err(message: string): never {
@@ -31,6 +36,31 @@ class Cli {
       .version("0.0.0");
 
     program
+      .command("schedule")
+      .description(
+        "Poll Schedules to update database on which schedules are available",
+      )
+      .action(async () => {
+        this.logger.info("Starting updating schedule");
+        await this.updater.Update();
+        this.logger.info("Completed updating schedule");
+        process.exit(0);
+      });
+
+    program
+      .command("wait")
+      .description("Wait indefinitely")
+      .action(async () => {
+        process.on("SIGINT", () => {
+          console.log("Received SIGINT signal. Terminating...");
+          process.exit();
+        });
+        while (true) {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      });
+
+    program
       .command("get <date> <from>")
       .description("Get schedule for a fixed day and direction")
       .action(async (date: string, from: string) => {
@@ -44,10 +74,14 @@ class Cli {
 
         const out = await this.getter.Get(d, f);
 
-        const table = new AsciiTable3().setAlignCenter(2).addRowMatrix(out);
+        this.logger.info({ length: out.length }, "Length obtained");
 
-        console.log(table.toString());
-
+        if (out.length > 0) {
+          const table = new AsciiTable3().setAlignCenter(2).addRowMatrix(out);
+          console.log(table.toString());
+        } else {
+          console.log("No data found");
+        }
         process.exit(0);
       });
 

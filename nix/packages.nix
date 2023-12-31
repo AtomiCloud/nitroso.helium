@@ -1,6 +1,5 @@
-{ pkgs, pkgs-2305, atomi, atomi_classic, pkgs-dec-12-23 }:
+{ pkgs, pkgs-2305, atomi, atomi_classic, pkgs-dec-31-23 }:
 let
-
   all = {
     atomipkgs_classic = (
       with atomi_classic;
@@ -13,6 +12,8 @@ let
       with atomi;
       {
         inherit
+          mirrord
+          swagger_typescript_api
           infisical
           pls;
       }
@@ -21,8 +22,8 @@ let
       with pkgs-2305;
       { }
     );
-    dec-12-23 = (
-      with pkgs-dec-12-23;
+    dec-31-23 = (
+      with pkgs-dec-31-23;
       {
         nodejs = nodejs_18;
         npm = nodePackages.npm;
@@ -39,8 +40,11 @@ let
           helm-docs
           kubectl
           docker
-
+          skopeo
+          k3d
+          tilt
           git
+          doppler
 
           bun
           treefmt
@@ -55,4 +59,4 @@ with all;
 nix-2305 //
 atomipkgs //
 atomipkgs_classic //
-dec-12-23
+dec-31-23

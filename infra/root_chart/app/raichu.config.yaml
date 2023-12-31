@@ -8,6 +8,12 @@ cache:
     endpoints:
       0: tin-livecache-master:6379
     tls: false
+
+auth:
+  descope:
+    id: "P2Z1Hu1nQxO8Ak5gdWFCtYXdHzZp"
+    key: ""
+
 otel:
   logging:
     enabled: true

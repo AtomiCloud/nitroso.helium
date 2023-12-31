@@ -21,3 +21,24 @@ bromine:
   target: &target "nitroso-helium"
 
 appSettings: {}
+
+zinc:
+  api:
+    configMountPath: /app/Config
+    image:
+      repository: ghcr.io/atomicloud/nitroso.zinc/api-arm
+
+  migration:
+    enabled: false
+
+scheduler:
+  serviceTree:
+    <<: *serviceTree
+    module: scheduler
+
+  schedule: "@midnight"
+  timeZone: "Asia/Singapore"
+
+  restartPolicy: "Never"
+
+  envFromSecret: *target

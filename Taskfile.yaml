@@ -6,17 +6,25 @@ vars:
 
   CHART_PATH: infra/root_chart
   RELEASE_NAME: nitroso-helium
+  ZINC_API: http://api.zinc.nitroso.lapras.lvh.me:20010
 
 includes:
   docker: tasks/Taskfile.docker.yaml
+  tear: tasks/Taskfile.tear.yml
   helm: Taskfile.helm.yml
+  util: tasks/Taskfile.util.yml
 
 tasks:
   setup:
     desc: Setups
     cmds:
+      - ./scripts/local/secrets.sh
       - bun i
   dev:
+    desc: Run in development
+    cmds:
+      - ./scripts/local/dev.sh ./config/dev.yaml bun run --hot ./src/index.ts {{.CLI_ARGS}}
+  run:
     desc: Start
     env:
       LANDSCAPE: lapras
@@ -26,3 +34,21 @@ tasks:
     desc: Generates configuration schema for better IDE completions
     cmds:
       - bun run typescript-json-schema ./src/config/root.config.ts RootConfig -o config/app/schema.json
+  latest:
+    desc: Get the latest versions of dependencies
+    cmds:
+      - task: util:latest-oci
+        vars:
+          NAME: bromine
+          OCI: ghcr.io/atomicloud/sulfoxide.bromine/sulfoxide-bromine
+      - task: util:latest-oci
+        vars:
+          NAME: zinc
+          OCI: ghcr.io/atomicloud/nitroso.zinc/root-chart
+
+  sdk:gen:
+    desc: Generate the SDK
+    env:
+      ZINC_API: "{{.ZINC_API}}"
+    cmds:
+      - ./scripts/local/gen-sdk.sh v1

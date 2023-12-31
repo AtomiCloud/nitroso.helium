@@ -1,0 +1,48 @@
+serviceTree:
+  landscape: lapras
+  platform: nitroso
+  service: helium
+  module: scheduler
+
+schedule: "@midnight"
+timeZone: "Asia/Singapore"
+
+appSettings: {}
+
+annotations: {}
+
+envFromSecret: nitroso-helium
+
+configMountPath: /app/config/app
+
+image:
+  repository: nitroso-helium-scheduler
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+topologySpreadConstraints: {}
+
+restartPolicy: Never

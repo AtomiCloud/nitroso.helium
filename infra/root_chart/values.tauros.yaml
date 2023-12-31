@@ -2,3 +2,57 @@ serviceTree:
   landscape: &landscape tauros
 bromine:
   enable: true
+
+zinc:
+  enable: true
+  serviceTree:
+    landscape: *landscape
+
+  api:
+    enabled: true
+    replicaCount: 1
+    configMountPath: /app/Config
+    fullnameOverride: "zinc-api"
+
+    service:
+      type: ClusterIP
+      port: 80
+      containerPort: 9001
+    serviceTree:
+      landscape: *landscape
+    ingress:
+      enabled: true
+      className: traefik
+      hosts:
+        - host: api.zinc.nitroso.tauros.lvh.me
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
+  migration:
+    enabled: true
+    image:
+      repository: ghcr.io/atomicloud/nitroso.zinc/migrate-arm
+
+  maincache:
+    enable: true
+    fullnameOverride: "zinc-maincache"
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "512Mi"
+        cpu: "250m"
+  maindb:
+    enable: true
+    fullnameOverride: "zinc-maindb"
+  mainstorage:
+    enable: true
+    fullnameOverride: "zinc-mainstorage"
+
+scheduler:
+  enable: true
+  fullnameOverride: "helium-scheduler"
+  serviceTree:
+    landscape: *landscape
