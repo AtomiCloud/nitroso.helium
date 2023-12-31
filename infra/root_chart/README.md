@@ -23,9 +23,13 @@ Root Chart to a single Service
 | bromine.rootSecret.ref | string | `"NITROSO_HELIUM"` | DOPPLER Token Reference |
 | bromine.storeName | string | `"nitroso-helium"` | Store name to create |
 | bromine.target | string | `"nitroso-helium"` |  |
+| scheduler.command[0] | string | `"bun"` |  |
+| scheduler.command[1] | string | `"run"` |  |
+| scheduler.command[2] | string | `"index.js"` |  |
+| scheduler.command[3] | string | `"schedule"` |  |
 | scheduler.envFromSecret | string | `"nitroso-helium"` |  |
 | scheduler.restartPolicy | string | `"Never"` |  |
-| scheduler.schedule | string | `"35 16 * * *"` |  |
+| scheduler.schedule | string | `"0 16 * * *"` |  |
 | scheduler.serviceTree.<<.landscape | string | `"lapras"` |  |
 | scheduler.serviceTree.<<.layer | string | `"2"` |  |
 | scheduler.serviceTree.<<.module | string | `"pollee"` |  |
