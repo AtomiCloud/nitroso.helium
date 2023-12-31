@@ -25,7 +25,7 @@ Root Chart to a single Service
 | bromine.target | string | `"nitroso-helium"` |  |
 | scheduler.envFromSecret | string | `"nitroso-helium"` |  |
 | scheduler.restartPolicy | string | `"Never"` |  |
-| scheduler.schedule | string | `"25 16 * * *"` |  |
+| scheduler.schedule | string | `"35 16 * * *"` |  |
 | scheduler.serviceTree.<<.landscape | string | `"lapras"` |  |
 | scheduler.serviceTree.<<.layer | string | `"2"` |  |
 | scheduler.serviceTree.<<.module | string | `"pollee"` |  |
