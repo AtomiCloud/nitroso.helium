@@ -1,3 +1,11 @@
+## [1.5.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.2...v1.5.3) (2023-12-31)
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect image ([22b6d8a](https://github.com/AtomiCloud/nitroso.helium/commit/22b6d8a2c791a8ac0fe88e884613c784009c7d90))
+* increase schedule timing ([07a039e](https://github.com/AtomiCloud/nitroso.helium/commit/07a039ee9e3cbb02cdeec66e7484e531f13bb21c))
+
 ## [1.5.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.1...v1.5.2) (2023-12-31)
 
 
