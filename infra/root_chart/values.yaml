@@ -36,7 +36,7 @@ scheduler:
     <<: *serviceTree
     module: scheduler
 
-  schedule: "5 16 * * *"
+  schedule: "25 16 * * *"
 
   restartPolicy: "Never"
 

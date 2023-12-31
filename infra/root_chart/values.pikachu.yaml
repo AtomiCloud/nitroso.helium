@@ -29,6 +29,8 @@ zinc:
 
 scheduler:
   enable: true
+  image:
+    repository: ghcr.io/atomicloud/nitroso.helium/nitroso-helium-amd
   serviceTree:
     landscape: *landscape
   fullnameOverride: "helium-scheduler"
