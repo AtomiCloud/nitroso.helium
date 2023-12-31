@@ -32,7 +32,7 @@ Root Chart to a single Service
 | scheduler.serviceTree.<<.platform | string | `"nitroso"` |  |
 | scheduler.serviceTree.<<.service | string | `"helium"` |  |
 | scheduler.serviceTree.module | string | `"scheduler"` |  |
-| scheduler.timeZone | string | `"Asia/Singapore"` |  |
+| scheduler.timeZone | string | `"Asia/Shanghai"` |  |
 | serviceTree.landscape | string | `"lapras"` |  |
 | serviceTree.layer | string | `"2"` |  |
 | serviceTree.module | string | `"pollee"` |  |

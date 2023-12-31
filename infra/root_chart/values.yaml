@@ -37,7 +37,7 @@ scheduler:
     module: scheduler
 
   schedule: "@midnight"
-  timeZone: "Asia/Singapore"
+  timeZone: "Asia/Shanghai"
 
   restartPolicy: "Never"
 
