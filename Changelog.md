@@ -1,3 +1,15 @@
+## [1.5.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.6...v1.5.0) (2023-12-31)
+
+
+### ✨ Features ✨
+
+* utility command to see tickets on CLI ([f50e2f3](https://github.com/AtomiCloud/nitroso.helium/commit/f50e2f3f2555da5277bd8e5527429cddcda90e30))
+
+
+### 🐛 Bug Fixes 🐛
+
+* schedule updater ([52aa82a](https://github.com/AtomiCloud/nitroso.helium/commit/52aa82ae52a24d9247f99446958d7ae4e568259d))
+
 ## [1.4.6](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.5...v1.4.6) (2023-12-27)
 
 
