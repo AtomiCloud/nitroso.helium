@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.1...v1.5.2) (2023-12-31)
+
+
+### 🐛 Bug Fixes 🐛
+
+* attempt to use UTC timing ([0052a08](https://github.com/AtomiCloud/nitroso.helium/commit/0052a0890373efde4d2939f9697b6d5d9476b6da))
+
 ## [1.5.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.0...v1.5.1) (2023-12-31)
 
 
