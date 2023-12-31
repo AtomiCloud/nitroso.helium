@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.3...v1.5.4) (2023-12-31)
+
+
+### 🐛 Bug Fixes 🐛
+
+* correct schedeule and command ([f67655c](https://github.com/AtomiCloud/nitroso.helium/commit/f67655c622a6fd7baef215a9108d18a5d60e2e18))
+
 ## [1.5.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.2...v1.5.3) (2023-12-31)
 
 
