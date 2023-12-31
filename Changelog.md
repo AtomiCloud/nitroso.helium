@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.0...v1.5.1) (2023-12-31)
+
+
+### 🐛 Bug Fixes 🐛
+
+* attempt to change timezone ([1784402](https://github.com/AtomiCloud/nitroso.helium/commit/17844020552005a6a4d52492dac86ba9752b4b44))
+
 ## [1.5.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.4.6...v1.5.0) (2023-12-31)
 
 
