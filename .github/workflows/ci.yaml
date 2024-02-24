@@ -53,7 +53,7 @@ jobs:
       STRAT_DOCKER_PLATFORM: ${{ matrix.configs.platform }}
     steps:
       # Setup
-      - uses: AtomiCloud/actions.cache-docker@v1.2.0
+      - uses: AtomiCloud/actions.setup-docker@v1.2.0
 
       # Action
       - uses: rlespinasse/github-slug-action@v3.x
