@@ -30,7 +30,7 @@ zinc:
 scheduler:
   enable: true
   image:
-    repository: ghcr.io/atomicloud/nitroso.helium/nitroso-helium-amd
+    repository: ghcr.io/atomicloud/nitroso.helium/nitroso-helium
   serviceTree:
     landscape: *landscape
   securityContext: *securityContext
