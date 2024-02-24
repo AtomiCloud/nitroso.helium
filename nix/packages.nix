@@ -1,13 +1,6 @@
-{ pkgs, pkgs-2305, atomi, atomi_classic, pkgs-dec-31-23 }:
+{ pkgs, pkgs-2305, atomi, pkgs-feb-23-24 }:
 let
   all = {
-    atomipkgs_classic = (
-      with atomi_classic;
-      {
-        inherit
-          sg;
-      }
-    );
     atomipkgs = (
       with atomi;
       {
@@ -15,15 +8,16 @@ let
           mirrord
           swagger_typescript_api
           infisical
-          pls;
+          pls
+          sg;
       }
     );
     nix-2305 = (
       with pkgs-2305;
       { }
     );
-    dec-31-23 = (
-      with pkgs-dec-31-23;
+    feb-23-24 = (
+      with pkgs-feb-23-24;
       {
         nodejs = nodejs_18;
         npm = nodePackages.npm;
@@ -58,5 +52,4 @@ in
 with all;
 nix-2305 //
 atomipkgs //
-atomipkgs_classic //
-dec-31-23
+feb-23-24
