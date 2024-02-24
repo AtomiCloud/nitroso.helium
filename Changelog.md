@@ -1,3 +1,17 @@
+## [1.6.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.4...v1.6.0) (2024-02-24)
+
+
+### ✨ Features ✨
+
+* incorrect flake versions ([a68dc90](https://github.com/AtomiCloud/nitroso.helium/commit/a68dc901de433e6ad0d737f802cbf4399ef57216))
+* migrate to new CI ([7704fcd](https://github.com/AtomiCloud/nitroso.helium/commit/7704fcd505c2c1af6ab7f6963087183b377966cd))
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect release ([4f841d2](https://github.com/AtomiCloud/nitroso.helium/commit/4f841d2b4a623bd0bfe9bceb6e5c26056f97f821))
+* incorrect setup docker action ([9c5526c](https://github.com/AtomiCloud/nitroso.helium/commit/9c5526c068b49d7f3e7f895958e5208ee6260150))
+
 ## [1.5.4](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.3...v1.5.4) (2023-12-31)
 
 
