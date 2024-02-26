@@ -1,3 +1,15 @@
+## [1.7.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.6.0...v1.7.0) (2024-02-26)
+
+
+### ✨ Features ✨
+
+* allow for proxy ([48a8fa2](https://github.com/AtomiCloud/nitroso.helium/commit/48a8fa25f64635838f359c295cf01326db7fd65d))
+
+
+### 🐛 Bug Fixes 🐛
+
+* missing config sync ([f2ab9ab](https://github.com/AtomiCloud/nitroso.helium/commit/f2ab9abd92cc90a258a9b684b94734d489468155))
+
 ## [1.6.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.5.4...v1.6.0) (2024-02-24)
 
 
