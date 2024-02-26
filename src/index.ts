@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import { Cli } from "./cli/cli.ts";
+import pinoCaller from "pino-caller";
 
 import { RootConfig } from "./config/root.config";
 import { ConfigLoader } from "./system/loader.ts";
@@ -28,7 +29,8 @@ const configLoader = new ConfigLoader(prefix, delimiter, paths, RootConfig);
 const cfg = await configLoader.load();
 
 const otel = new OtelService(cfg);
-const logger = await otel.start();
+const baseLogger = await otel.start();
+const logger = pinoCaller(baseLogger);
 
 // Start DI
 const caches = loadRedis(cfg);

@@ -36,6 +36,7 @@
     "moment": "^2.29.4",
     "node-fetch": "^3.3.2",
     "pino": "^8.16.2",
+    "pino-caller": "^3.4.0",
     "pino-pretty": "^10.2.3",
     "query-string": "^8.1.0",
     "reflect-metadata": "^0.2.1",
