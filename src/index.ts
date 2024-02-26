@@ -35,7 +35,7 @@ const caches = loadRedis(cfg);
 const descope = loadDescope(cfg.auth.descope);
 const auth: Auth = new DescopeAuth(descope, cfg.auth.descope);
 const zincDate = new ZincDate();
-const searchCore = new SearchCore();
+const searchCore = new SearchCore(cfg.app.searcher);
 const searchBuilder = new SearcherBuilder(searchCore);
 const detailFactory = new DetailFactory(cfg.error, cfg.app);
 const utility = new Utility(detailFactory);
@@ -59,6 +59,6 @@ const updater = new Updater(
   populator,
 );
 
-const cli = new Cli(logger, cfg, zincDate, watcher, getter, updater, utility);
+const cli = new Cli(logger, cfg, zincDate, watcher, getter, updater);
 
 await cli.start();

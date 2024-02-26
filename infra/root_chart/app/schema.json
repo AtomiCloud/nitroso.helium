@@ -12,6 +12,9 @@
         "platform": {
           "type": "string"
         },
+        "searcher": {
+          "$ref": "#/definitions/SearcherConfig"
+        },
         "service": {
           "type": "string"
         },
@@ -174,6 +177,14 @@
           "type": "number"
         },
         "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SearcherConfig": {
+      "properties": {
+        "proxy": {
           "type": "string"
         }
       },

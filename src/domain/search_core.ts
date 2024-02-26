@@ -3,6 +3,7 @@ import * as cheerio from "cheerio";
 import { From, TrainSchedule } from "./interface.ts";
 import { stringify } from "querystring";
 import moment from "moment";
+import { SearcherConfig } from "../config/searcher.config.ts";
 
 const f = fetchCookie(fetch);
 
@@ -60,6 +61,12 @@ interface TrainScheduleResp {
 }
 
 class SearchCore {
+  #config: SearcherConfig;
+
+  constructor(config: SearcherConfig) {
+    this.#config = config;
+  }
+
   async mainKTMBPage(): Promise<MainPageToken> {
     const referer = "https://online.ktmb.com.my/";
     const resp = await f("https://shuttleonline.ktmb.com.my/Home/Shuttle", {
@@ -68,6 +75,7 @@ class SearchCore {
         ...htmlHeaders,
         Referer: referer,
       },
+      proxy: this.#config.proxy,
       method: "GET",
     });
     const text = await resp.text();
@@ -120,6 +128,7 @@ class SearchCore {
         ...defaultHeaders,
         Referer: referer,
       },
+      proxy: this.#config.proxy,
       body: stringify(queryParams),
       method: "POST",
     });
@@ -154,6 +163,7 @@ class SearchCore {
         RequestVerificationToken: token,
         Referer: referer,
       },
+      proxy: this.#config.proxy,
       body: JSON.stringify({
         SearchData: searchData,
         FormValidationCode: formValidation,

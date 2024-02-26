@@ -6,8 +6,6 @@ import { ZincDate } from "../util/zinc_date.ts";
 import { Watcher } from "../lib/watcher.ts";
 import { Get } from "../lib/get.ts";
 import { AsciiTable3 } from "ascii-table3";
-import { Utility } from "../utility.ts";
-import { Checker } from "../lib/checker.ts";
 import { Updater } from "../lib/updater.ts";
 
 class Cli {
@@ -18,12 +16,11 @@ class Cli {
     private readonly watcher: Watcher,
     private readonly getter: Get,
     private readonly updater: Updater,
-    private readonly utility: Utility,
   ) {}
 
   err(message: string): never {
     this.logger.error(message);
-    process.exit(1);
+    return process.exit(1);
   }
 
   async start(): Promise<void> {
