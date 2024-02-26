@@ -188,7 +188,8 @@ class SearchCore {
     try {
       o = JSON.parse(text);
     } catch (e) {
-      this.#logger.error(e, "Error parsing response from KTMB", { text });
+      this.#logger.info({ text }, "Error parsing response from KTMB");
+      this.#logger.error(e, "Error parsing response from KTMB");
       throw e;
     }
 
