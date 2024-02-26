@@ -1,3 +1,5 @@
+## [1.9.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.8.0...v1.9.0) (2024-02-26)
+
 ## [1.8.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.7.1...v1.8.0) (2024-02-26)
 
 
