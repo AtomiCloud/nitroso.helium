@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.9.0...v1.9.1) (2024-02-26)
+
+
+### 🐛 Bug Fixes 🐛
+
+* buffer scheduler with 1s delays ([6140d95](https://github.com/AtomiCloud/nitroso.helium/commit/6140d954edff970a6786baf7e462501379500d61))
+
 ## [1.9.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.8.0...v1.9.0) (2024-02-26)
 
 ## [1.8.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.7.1...v1.8.0) (2024-02-26)
