@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.7.1...v1.8.0) (2024-02-26)
+
+
+### ✨ Features ✨
+
+* include caller logs ([a1535cc](https://github.com/AtomiCloud/nitroso.helium/commit/a1535cc738a96c39061335efbdc84aa8b9fdff93))
+
 ## [1.7.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.7.0...v1.7.1) (2024-02-26)
 
 
