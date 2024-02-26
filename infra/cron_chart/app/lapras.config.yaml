@@ -3,8 +3,6 @@ $schema: ./schema.json
 
 app:
   landscape: lapras
-  searcher:
-    proxy: socks5://lu4945630:EIrbJk@154.196.156.60:7777
 cache:
   live:
     endpoints:

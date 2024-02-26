@@ -7,7 +7,6 @@ app:
   service: helium
   module: pollee
   version: "1.0"
-  searcher: {}
 auth:
   descope:
     id: "P2Ya46UVwFV8nTwNGZWpxRtyL7Jj"
