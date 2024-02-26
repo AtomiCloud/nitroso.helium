@@ -4,6 +4,7 @@ import { From, TrainSchedule } from "./interface.ts";
 import { stringify } from "querystring";
 import moment from "moment";
 import { SearcherConfig } from "../config/searcher.config.ts";
+import { Logger } from "pino";
 
 const f = fetchCookie(fetch);
 
@@ -62,9 +63,11 @@ interface TrainScheduleResp {
 
 class SearchCore {
   #config: SearcherConfig;
+  #logger: Logger;
 
-  constructor(config: SearcherConfig) {
+  constructor(config: SearcherConfig, logger: Logger) {
     this.#config = config;
+    this.#logger = logger;
   }
 
   async mainKTMBPage(): Promise<MainPageToken> {
@@ -179,7 +182,17 @@ class SearchCore {
       init,
     );
 
-    const obj = (await r.json()) as TrainScheduleResp;
+    let o: TrainScheduleResp | null = null;
+    const text = await r.text();
+
+    try {
+      o = JSON.parse(text);
+    } catch (e) {
+      this.#logger.error(e, "Error parsing response from KTMB", { text });
+      throw e;
+    }
+
+    const obj = o as TrainScheduleResp;
 
     const $ = cheerio.load(obj.data);
 

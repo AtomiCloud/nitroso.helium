@@ -9,8 +9,8 @@ Root Chart to a single Service
 | Repository | Name | Version |
 |------------|------|---------|
 | file://../cron_chart | scheduler(bun-cron-chart) | 0.1.0 |
-| oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.8.7 |
-| oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.3.0 |
+| oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.17.2 |
+| oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.4.0 |
 
 ## Values
 
@@ -42,7 +42,7 @@ Root Chart to a single Service
 | serviceTree.platform | string | `"nitroso"` |  |
 | serviceTree.service | string | `"helium"` |  |
 | zinc.api.configMountPath | string | `"/app/Config"` |  |
-| zinc.api.image.repository | string | `"ghcr.io/atomicloud/nitroso.zinc/api-arm"` |  |
+| zinc.api.image.repository | string | `"ghcr.io/atomicloud/nitroso.zinc/api"` |  |
 | zinc.migration.enabled | bool | `false` |  |
 
 ----------------------------------------------

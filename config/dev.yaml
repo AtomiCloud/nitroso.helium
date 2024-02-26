@@ -7,7 +7,7 @@ service: helium
 port: 11000
 
 # "local" or "cluster"
-type: cluster
+type: local
 
 # fast mode
 # 1. does not start the cluster, automatically assumes that your cluster already created
