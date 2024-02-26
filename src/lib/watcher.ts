@@ -17,17 +17,28 @@ class Watcher {
     let index = 0;
     const od = this.zincDate.to(d);
 
-    while (true) {
-      const currentTime = Date.now();
-      const elapsedTime = currentTime - startTime;
-      if (elapsedTime >= loopDuration) break;
+    let failureCount = 0;
 
-      // run the searcher
-      const sch = await a.Search();
-      const timing: Record<string, number> = {};
-      for (const s of sch) timing[s.departure_time] = s.available_seats;
-      const key = `ktmb:schedule:${f}:${od}`;
-      const _ = await this.redis.publish(key, JSON.stringify(timing));
+    while (true) {
+      try {
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - startTime;
+        if (elapsedTime >= loopDuration) break;
+
+        // run the searcher
+        const sch = await a.Search();
+        const timing: Record<string, number> = {};
+        for (const s of sch) timing[s.departure_time] = s.available_seats;
+        const key = `ktmb:schedule:${f}:${od}`;
+        const _ = await this.redis.publish(key, JSON.stringify(timing));
+      } catch (e) {
+        this.logger.error({ error: e }, "Failed to poll schedule");
+        failureCount++;
+        if (failureCount > 10) {
+          this.logger.error("Failed to poll schedule too many times, exiting");
+          throw e;
+        }
+      }
     }
     this.logger.info({ index: index++ }, "Watch complete");
   }
