@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.9.1...v1.9.2) (2024-02-26)
+
+
+### 🐛 Bug Fixes 🐛
+
+* allow buffer to prevent rate limit ([bafa1ee](https://github.com/AtomiCloud/nitroso.helium/commit/bafa1ee16465a049f36b6be0169091efa2ea0fc5))
+
 ## [1.9.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.9.0...v1.9.1) (2024-02-26)
 
 
