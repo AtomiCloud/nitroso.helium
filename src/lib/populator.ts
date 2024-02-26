@@ -2,6 +2,7 @@ import { Logger } from "pino";
 import { SearcherBuilder } from "../domain/searcher/builder.ts";
 import { addDays, differenceInDays } from "date-fns";
 import { RetrieveResult } from "./interfaces.ts";
+import { __ } from "../utility.ts";
 
 class Populator {
   constructor(
@@ -30,6 +31,8 @@ class Populator {
 
       const j2w = await searcher.Search("JToW", currentDate);
       const w2j = await searcher.Search("WToJ", currentDate);
+
+      await __(1);
 
       const j2wR = j2w.map((s) => `${s.departure_time}:00`);
       const w2jR = w2j.map((s) => `${s.departure_time}:00`);
