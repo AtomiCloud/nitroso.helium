@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.11.0...v1.11.1) (2024-02-28)
+
+
+### 🐛 Bug Fixes 🐛
+
+* missing config keys ([2facf38](https://github.com/AtomiCloud/nitroso.helium/commit/2facf38462ec538104ed75fc7433c2564b1eb632))
+
 ## [1.11.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.10.0...v1.11.0) (2024-02-28)
 
 
