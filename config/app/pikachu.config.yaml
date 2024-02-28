@@ -3,6 +3,10 @@ $schema: ./schema.json
 
 app:
   landscape: pikachu
+  populator:
+    delay: 0.5
+  watcher:
+    delay: 1
 cache:
   live:
     endpoints:
