@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.9.3...v1.10.0) (2024-02-28)
+
+
+### ✨ Features ✨
+
+* emulate rotating proxy ([b3404d1](https://github.com/AtomiCloud/nitroso.helium/commit/b3404d18a1a46c3384ca53ec9332a5db0fa65639))
+
 ## [1.9.3](https://github.com/AtomiCloud/nitroso.helium/compare/v1.9.2...v1.9.3) (2024-02-26)
 
 
