@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.10.0...v1.11.0) (2024-02-28)
+
+
+### ✨ Features ✨
+
+* delay configurations ([a3e8a90](https://github.com/AtomiCloud/nitroso.helium/commit/a3e8a9041af655524b487a8d0ba0ced0ce911fda))
+
 ## [1.10.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.9.3...v1.10.0) (2024-02-28)
 
 
