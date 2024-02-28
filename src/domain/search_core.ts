@@ -5,6 +5,7 @@ import { stringify } from "querystring";
 import moment from "moment";
 import { SearcherConfig } from "../config/searcher.config.ts";
 import { Logger } from "pino";
+import { WatcherConfig } from "../config/watcher.config.ts";
 
 const f = fetchCookie(fetch);
 
@@ -80,13 +81,16 @@ class SearchCore {
 
   async mainKTMBPage(): Promise<MainPageToken> {
     const referer = "https://online.ktmb.com.my/";
+
+    const proxy1 = this.proxy;
+    this.#logger.info({ proxy: proxy1 }, "Using Proxy");
     const resp = await f("https://shuttleonline.ktmb.com.my/Home/Shuttle", {
       headers: {
         ...defaultHeaders,
         ...htmlHeaders,
         Referer: referer,
       },
-      proxy: this.proxy,
+      proxy: proxy1,
       method: "GET",
     });
     const text = await resp.text();
@@ -133,13 +137,16 @@ class SearchCore {
       PassengerCount: 1,
       __RequestVerificationToken: requestVerificationToken,
     };
+
+    const proxy1 = this.proxy;
+    this.#logger.info({ proxy: proxy1 }, "Using Proxy");
     const resp = await f("https://shuttleonline.ktmb.com.my/ShuttleTrip", {
       headers: {
         ...htmlHeaders,
         ...defaultHeaders,
         Referer: referer,
       },
-      proxy: this.proxy,
+      proxy: proxy1,
       body: stringify(queryParams),
       method: "POST",
     });
@@ -167,6 +174,8 @@ class SearchCore {
 
     const referer = "https://shuttleonline.ktmb.com.my/ShuttleTrip";
 
+    const proxy1 = this.proxy;
+    this.#logger.info({ proxy: proxy1 }, "Using Proxy");
     const init = {
       headers: {
         ...jsonHeaders,
@@ -174,7 +183,7 @@ class SearchCore {
         RequestVerificationToken: token,
         Referer: referer,
       },
-      proxy: this.proxy,
+      proxy: proxy1,
       body: JSON.stringify({
         SearchData: searchData,
         FormValidationCode: formValidation,

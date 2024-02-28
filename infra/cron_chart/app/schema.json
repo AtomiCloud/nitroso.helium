@@ -12,6 +12,9 @@
         "platform": {
           "type": "string"
         },
+        "populator": {
+          "$ref": "#/definitions/PopulatorConfig"
+        },
         "searcher": {
           "$ref": "#/definitions/SearcherConfig"
         },
@@ -20,6 +23,9 @@
         },
         "version": {
           "type": "string"
+        },
+        "watcher": {
+          "$ref": "#/definitions/WatcherConfig"
         }
       },
       "type": "object"
@@ -182,6 +188,14 @@
       },
       "type": "object"
     },
+    "PopulatorConfig": {
+      "properties": {
+        "delay": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "SearcherConfig": {
       "properties": {
         "proxy": {
@@ -194,6 +208,14 @@
       "properties": {
         "exporter": {
           "$ref": "#/definitions/ExporterConfig_1"
+        }
+      },
+      "type": "object"
+    },
+    "WatcherConfig": {
+      "properties": {
+        "delay": {
+          "type": "number"
         }
       },
       "type": "object"

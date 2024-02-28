@@ -2,9 +2,12 @@ import { Logger } from "pino";
 import { SearcherBuilder } from "../domain/searcher/builder.ts";
 import { addDays, differenceInDays } from "date-fns";
 import { RetrieveResult } from "./interfaces.ts";
+import { PopulatorConfig } from "../config/populator.config.ts";
+import { __ } from "../utility.ts";
 
 class Populator {
   constructor(
+    private readonly config: PopulatorConfig,
     private readonly logger: Logger,
     private readonly builder: SearcherBuilder,
   ) {}
@@ -34,6 +37,7 @@ class Populator {
 
         const j2wR = j2w.map((s) => `${s.departure_time}:00`);
         const w2jR = w2j.map((s) => `${s.departure_time}:00`);
+
         ret.push({
           date: currentDate,
           jToW: j2wR,
@@ -43,6 +47,7 @@ class Populator {
         this.logger.error({ error: e }, "Failed to retrieve schedule");
         break;
       }
+      await __(this.config.delay);
     }
     return ret;
   }

@@ -7,6 +7,10 @@ app:
   service: helium
   module: pollee
   version: "1.0"
+  populator:
+    delay: 0.5
+  watcher:
+    delay: 1
 auth:
   descope:
     id: "P2Ya46UVwFV8nTwNGZWpxRtyL7Jj"

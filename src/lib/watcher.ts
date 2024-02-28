@@ -2,9 +2,12 @@ import { Logger } from "pino";
 import Redis from "ioredis";
 import { SearcherBuilder } from "../domain/searcher/builder.ts";
 import { ZincDate } from "../util/zinc_date.ts";
+import { __ } from "../utility.ts";
+import { WatcherConfig } from "../config/watcher.config.ts";
 
 class Watcher {
   constructor(
+    private readonly config: WatcherConfig,
     private readonly logger: Logger,
     private readonly redis: Redis,
     private readonly builder: SearcherBuilder,
@@ -31,6 +34,7 @@ class Watcher {
         for (const s of sch) timing[s.departure_time] = s.available_seats;
         const key = `ktmb:schedule:${f}:${od}`;
         const _ = await this.redis.publish(key, JSON.stringify(timing));
+        await __(this.config.delay);
       } catch (e) {
         this.logger.error({ error: e }, "Failed to poll schedule");
         failureCount++;
