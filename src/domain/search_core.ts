@@ -70,6 +70,14 @@ class SearchCore {
     this.#logger = logger;
   }
 
+  get proxy(): string | undefined {
+    const p = this.#config.proxy;
+    if (p == null) return undefined;
+    const arr = p.split(";");
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
   async mainKTMBPage(): Promise<MainPageToken> {
     const referer = "https://online.ktmb.com.my/";
     const resp = await f("https://shuttleonline.ktmb.com.my/Home/Shuttle", {
@@ -78,7 +86,7 @@ class SearchCore {
         ...htmlHeaders,
         Referer: referer,
       },
-      proxy: this.#config.proxy,
+      proxy: this.proxy,
       method: "GET",
     });
     const text = await resp.text();
@@ -131,7 +139,7 @@ class SearchCore {
         ...defaultHeaders,
         Referer: referer,
       },
-      proxy: this.#config.proxy,
+      proxy: this.proxy,
       body: stringify(queryParams),
       method: "POST",
     });
@@ -166,7 +174,7 @@ class SearchCore {
         RequestVerificationToken: token,
         Referer: referer,
       },
-      proxy: this.#config.proxy,
+      proxy: this.proxy,
       body: JSON.stringify({
         SearchData: searchData,
         FormValidationCode: formValidation,

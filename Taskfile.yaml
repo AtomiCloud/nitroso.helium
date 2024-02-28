@@ -13,6 +13,7 @@ includes:
   tear: tasks/Taskfile.tear.yml
   helm: Taskfile.helm.yml
   util: tasks/Taskfile.util.yml
+  stop: tasks/Taskfile.stop.yml
 
 tasks:
   setup:

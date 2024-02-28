@@ -2,7 +2,6 @@ import { Logger } from "pino";
 import { SearcherBuilder } from "../domain/searcher/builder.ts";
 import { addDays, differenceInDays } from "date-fns";
 import { RetrieveResult } from "./interfaces.ts";
-import { __ } from "../utility.ts";
 
 class Populator {
   constructor(
@@ -44,7 +43,6 @@ class Populator {
         this.logger.error({ error: e }, "Failed to retrieve schedule");
         break;
       }
-      await __(2);
     }
     return ret;
   }
