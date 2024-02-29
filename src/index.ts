@@ -43,6 +43,7 @@ const detailFactory = new DetailFactory(cfg.error, cfg.app);
 const utility = new Utility(detailFactory);
 
 const watcher = new Watcher(
+  cfg.app.watcher,
   logger,
   caches.get("live")!,
   searchBuilder,
@@ -51,7 +52,7 @@ const watcher = new Watcher(
 const getter = new Get(searchBuilder);
 const zinc = loadZinc(cfg.zinc, auth);
 const checker = new Checker(zinc, utility, zincDate);
-const populator = new Populator(logger, searchBuilder);
+const populator = new Populator(cfg.app.populator, logger, searchBuilder);
 const updater = new Updater(
   zinc,
   utility,
