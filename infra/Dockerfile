@@ -1,4 +1,4 @@
-﻿FROM oven/bun:1.0.18 as builder
+﻿FROM oven/bun:1.0.27 as builder
 WORKDIR /app
 COPY package.json .
 COPY bun.lockb .

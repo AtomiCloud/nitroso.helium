@@ -9,8 +9,6 @@
  * ---------------------------------------------------------------
  */
 
-import { Body } from "node-fetch";
-
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
@@ -230,9 +228,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
       const data = !responseFormat
         ? r
-        : // @ts-ignore
-          await response[responseFormat]()
-            // @ts-ignore
+        : await response[responseFormat]()
             .then((data) => {
               if (r.ok) {
                 r.data = data;
@@ -241,8 +237,6 @@ export class HttpClient<SecurityDataType = unknown> {
               }
               return r;
             })
-
-            // @ts-ignore
             .catch((e) => {
               r.error = e;
               return r;

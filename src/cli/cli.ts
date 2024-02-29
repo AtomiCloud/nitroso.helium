@@ -7,6 +7,7 @@ import { Watcher } from "../lib/watcher.ts";
 import { Get } from "../lib/get.ts";
 import { AsciiTable3 } from "ascii-table3";
 import { Updater } from "../lib/updater.ts";
+import { Refunder } from "../lib/refunder.ts";
 
 class Cli {
   constructor(
@@ -16,6 +17,7 @@ class Cli {
     private readonly watcher: Watcher,
     private readonly getter: Get,
     private readonly updater: Updater,
+    private readonly refunder: Refunder,
   ) {}
 
   err(message: string): never {
@@ -55,6 +57,14 @@ class Cli {
         while (true) {
           await new Promise((resolve) => setTimeout(resolve, 1000));
         }
+      });
+
+    program
+      .command("refunder")
+      .description("Initiate Refund Process")
+      .action(async () => {
+        await this.refunder.Refund();
+        process.exit(0);
       });
 
     program

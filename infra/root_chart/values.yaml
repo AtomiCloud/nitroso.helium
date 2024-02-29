@@ -46,3 +46,20 @@ scheduler:
   restartPolicy: "Never"
 
   envFromSecret: *target
+
+refunder:
+  serviceTree:
+    <<: *serviceTree
+    module: refunder
+
+  schedule: "30 5-23 * * *"
+  timeZone: "Asia/Singapore"
+  command:
+    - "bun"
+    - "run"
+    - "index.js"
+    - "refunder"
+
+  restartPolicy: "Never"
+
+  envFromSecret: *target

@@ -56,3 +56,9 @@ scheduler:
   fullnameOverride: "helium-scheduler"
   serviceTree:
     landscape: *landscape
+
+refunder:
+  enable: true
+  fullnameOverride: "helium-refunder"
+  serviceTree:
+    landscape: *landscape

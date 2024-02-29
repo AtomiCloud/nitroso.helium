@@ -43,3 +43,20 @@ scheduler:
     limits:
       memory: "512Mi"
       cpu: "250m"
+
+refunder:
+  enable: true
+  image:
+    repository: ghcr.io/atomicloud/nitroso.helium/nitroso-helium
+  serviceTree:
+    landscape: *landscape
+  securityContext: *securityContext
+  podSecurityContext: *podSecurityContext
+  fullnameOverride: "helium-refunder"
+  resources:
+    requests:
+      memory: "5Mi"
+      cpu: "5m"
+    limits:
+      memory: "128Mi"
+      cpu: "125m"

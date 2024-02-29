@@ -8,6 +8,14 @@ def start(landscape, platform, service, port, live):
         dockerfile = './infra/Dockerfile',
     )
 
+    # build API image
+    refunder_image_name = platform + "-" + service + "-refunder"
+    docker_build(
+        refunder_image_name,
+        '.',
+        dockerfile = './infra/Dockerfile',
+    )
+
     # Add Link
     k8s_resource(
        workload = api_image_name,

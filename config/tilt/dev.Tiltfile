@@ -11,3 +11,15 @@ def start(landscape, platform, service, port, live):
         ]
 
     )
+
+    refunder_image_name = platform + "-" + service + "-refunder"
+    docker_build(
+        refunder_image_name,
+        '.',
+        dockerfile = './infra/dev.Dockerfile',
+        entrypoint='bun run ./src/index.ts refunder',
+        live_update=[
+            sync('.', '/app'),
+        ]
+
+    )

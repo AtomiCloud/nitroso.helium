@@ -36,6 +36,9 @@ zinc:
       tls: []
   migration:
     enabled: false
+  streamcache:
+    enable: true
+    fullnameOverride: "zinc-streamcache"
   maincache:
     enable: true
     fullnameOverride: "zinc-maincache"
@@ -56,5 +59,16 @@ zinc:
 scheduler:
   schedule: "02 12 * * *"
   fullnameOverride: "helium-scheduler"
+  image:
+    repository: nitroso-helium-scheduler
+  serviceTree:
+    landscape: *landscape
+
+refunder:
+  schedule: "0 10-23 * * *"
+  timezone: "Asia/Singapore"
+  fullnameOverride: "helium-refunder"
+  image:
+    repository: nitroso-helium-refunder
   serviceTree:
     landscape: *landscape

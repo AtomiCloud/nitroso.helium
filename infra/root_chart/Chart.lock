@@ -4,9 +4,12 @@ dependencies:
   version: 1.4.0
 - name: root-chart
   repository: oci://ghcr.io/atomicloud/nitroso.zinc
-  version: 1.17.2
+  version: 1.19.1
 - name: bun-cron-chart
   repository: file://../cron_chart
   version: 0.1.0
-digest: sha256:3ff9c590c293fa5bc7ddf3ff8ddb0774c68d5c719b89fca890e63ea153355d67
-generated: "2024-02-26T12:43:34.276733+08:00"
+- name: bun-cron-chart
+  repository: file://../cron_chart
+  version: 0.1.0
+digest: sha256:48b2f958b0d41e224bd3fb5188ad461d83d972e05d47bbd48d7ab72e7cf681fe
+generated: "2024-02-29T12:31:01.139433+08:00"

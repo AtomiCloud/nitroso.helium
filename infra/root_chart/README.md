@@ -9,7 +9,8 @@ Root Chart to a single Service
 | Repository | Name | Version |
 |------------|------|---------|
 | file://../cron_chart | scheduler(bun-cron-chart) | 0.1.0 |
-| oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.17.2 |
+| file://../cron_chart | refunder(bun-cron-chart) | 0.1.0 |
+| oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.19.1 |
 | oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.4.0 |
 
 ## Values
@@ -23,6 +24,20 @@ Root Chart to a single Service
 | bromine.rootSecret.ref | string | `"NITROSO_HELIUM"` | DOPPLER Token Reference |
 | bromine.storeName | string | `"nitroso-helium"` | Store name to create |
 | bromine.target | string | `"nitroso-helium"` |  |
+| refunder.command[0] | string | `"bun"` |  |
+| refunder.command[1] | string | `"run"` |  |
+| refunder.command[2] | string | `"index.js"` |  |
+| refunder.command[3] | string | `"refunder"` |  |
+| refunder.envFromSecret | string | `"nitroso-helium"` |  |
+| refunder.restartPolicy | string | `"Never"` |  |
+| refunder.schedule | string | `"30 5-23 * * *"` |  |
+| refunder.serviceTree.<<.landscape | string | `"lapras"` |  |
+| refunder.serviceTree.<<.layer | string | `"2"` |  |
+| refunder.serviceTree.<<.module | string | `"pollee"` |  |
+| refunder.serviceTree.<<.platform | string | `"nitroso"` |  |
+| refunder.serviceTree.<<.service | string | `"helium"` |  |
+| refunder.serviceTree.module | string | `"refunder"` |  |
+| refunder.timeZone | string | `"Asia/Singapore"` |  |
 | scheduler.command[0] | string | `"bun"` |  |
 | scheduler.command[1] | string | `"run"` |  |
 | scheduler.command[2] | string | `"index.js"` |  |
