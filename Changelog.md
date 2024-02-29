@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.11.1...v1.11.2) (2024-02-29)
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect transformer annotations ([5114baf](https://github.com/AtomiCloud/nitroso.helium/commit/5114baf6842d23f112f5d91d2be0b6734bbd82cb))
+
 ## [1.11.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.11.0...v1.11.1) (2024-02-28)
 
 
