@@ -83,7 +83,6 @@ class SearchCore {
     const referer = "https://online.ktmb.com.my/";
 
     const proxy1 = this.proxy;
-    this.#logger.info({ proxy: proxy1 }, "Using Proxy");
     const resp = await f("https://shuttleonline.ktmb.com.my/Home/Shuttle", {
       headers: {
         ...defaultHeaders,
@@ -139,7 +138,6 @@ class SearchCore {
     };
 
     const proxy1 = this.proxy;
-    this.#logger.info({ proxy: proxy1 }, "Using Proxy");
     const resp = await f("https://shuttleonline.ktmb.com.my/ShuttleTrip", {
       headers: {
         ...htmlHeaders,
@@ -175,7 +173,6 @@ class SearchCore {
     const referer = "https://shuttleonline.ktmb.com.my/ShuttleTrip";
 
     const proxy1 = this.proxy;
-    this.#logger.info({ proxy: proxy1 }, "Using Proxy");
     const init = {
       headers: {
         ...jsonHeaders,
