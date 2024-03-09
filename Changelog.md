@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.12.0...v1.12.1) (2024-03-09)
+
+
+### 🐛 Bug Fixes 🐛
+
+* useless logs costing grafana cost ([966c724](https://github.com/AtomiCloud/nitroso.helium/commit/966c7248720637ac50105953d05652724b1bc3c6))
+
 ## [1.12.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.11.2...v1.12.0) (2024-02-29)
 
 
