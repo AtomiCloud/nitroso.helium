@@ -34,7 +34,7 @@ class Checker {
       return r.map((x) => {
         const d = this.zincDate.from(x.date!);
         const today = new Date();
-        const sixMonthsLater = addMonths(today, 6);
+        const sixMonthsLater = addMonths(today, 5);
         const lastDayOfMonth = endOfMonth(sixMonthsLater);
         return [d, lastDayOfMonth] as [Date, Date];
       });
