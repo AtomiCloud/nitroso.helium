@@ -1,3 +1,11 @@
+## [1.12.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.12.1...v1.12.2) (2024-07-11)
+
+
+### 🐛 Bug Fixes 🐛
+
+* decrease to 5 month for accuracy ([c2306c1](https://github.com/AtomiCloud/nitroso.helium/commit/c2306c1c2146627c335ead7e95cc0023806e16a8))
+* release script ([8d3dde5](https://github.com/AtomiCloud/nitroso.helium/commit/8d3dde5a512331adcc3cba6994e8c039c22f7d76))
+
 ## [1.12.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.12.0...v1.12.1) (2024-03-09)
 
 
