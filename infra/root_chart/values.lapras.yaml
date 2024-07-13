@@ -72,3 +72,12 @@ refunder:
     repository: nitroso-helium-refunder
   serviceTree:
     landscape: *landscape
+
+reverter:
+  schedule: "*/5 * * * *"
+  timeZone: "Asia/Singapore"
+  fullnameOverride: "helium-reverter"
+  image:
+    repository: nitroso-helium-reverter
+  serviceTree:
+    landscape: *landscape

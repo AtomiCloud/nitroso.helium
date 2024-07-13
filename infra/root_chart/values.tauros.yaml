@@ -62,3 +62,9 @@ refunder:
   fullnameOverride: "helium-refunder"
   serviceTree:
     landscape: *landscape
+
+reverter:
+  enable: true
+  fullnameOverride: "helium-reverter"
+  serviceTree:
+    landscape: *landscape

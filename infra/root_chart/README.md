@@ -10,7 +10,8 @@ Root Chart to a single Service
 |------------|------|---------|
 | file://../cron_chart | scheduler(bun-cron-chart) | 0.1.0 |
 | file://../cron_chart | refunder(bun-cron-chart) | 0.1.0 |
-| oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.19.1 |
+| file://../cron_chart | reverter(bun-cron-chart) | 0.1.0 |
+| oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.26.0 |
 | oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.4.0 |
 
 ## Values
@@ -38,6 +39,20 @@ Root Chart to a single Service
 | refunder.serviceTree.<<.service | string | `"helium"` |  |
 | refunder.serviceTree.module | string | `"refunder"` |  |
 | refunder.timeZone | string | `"Asia/Singapore"` |  |
+| reverter.command[0] | string | `"bun"` |  |
+| reverter.command[1] | string | `"run"` |  |
+| reverter.command[2] | string | `"index.js"` |  |
+| reverter.command[3] | string | `"reverter"` |  |
+| reverter.envFromSecret | string | `"nitroso-helium"` |  |
+| reverter.restartPolicy | string | `"Never"` |  |
+| reverter.schedule | string | `"*/5 * * * *"` |  |
+| reverter.serviceTree.<<.landscape | string | `"lapras"` |  |
+| reverter.serviceTree.<<.layer | string | `"2"` |  |
+| reverter.serviceTree.<<.module | string | `"pollee"` |  |
+| reverter.serviceTree.<<.platform | string | `"nitroso"` |  |
+| reverter.serviceTree.<<.service | string | `"helium"` |  |
+| reverter.serviceTree.module | string | `"reverter"` |  |
+| reverter.timeZone | string | `"Asia/Singapore"` |  |
 | scheduler.command[0] | string | `"bun"` |  |
 | scheduler.command[1] | string | `"run"` |  |
 | scheduler.command[2] | string | `"index.js"` |  |

@@ -8,6 +8,7 @@ import { Get } from "../lib/get.ts";
 import { AsciiTable3 } from "ascii-table3";
 import { Updater } from "../lib/updater.ts";
 import { Refunder } from "../lib/refunder.ts";
+import { Reverter } from "../lib/reverter.ts";
 
 class Cli {
   constructor(
@@ -18,6 +19,7 @@ class Cli {
     private readonly getter: Get,
     private readonly updater: Updater,
     private readonly refunder: Refunder,
+    private readonly reverter: Reverter,
   ) {}
 
   err(message: string): never {
@@ -64,6 +66,14 @@ class Cli {
       .description("Initiate Refund Process")
       .action(async () => {
         await this.refunder.Refund();
+        process.exit(0);
+      });
+
+    program
+      .command("reverter")
+      .description("Initiate Rerverting Process")
+      .action(async () => {
+        await this.reverter.Revert();
         process.exit(0);
       });
 

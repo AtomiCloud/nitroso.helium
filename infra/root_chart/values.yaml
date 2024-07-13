@@ -63,3 +63,20 @@ refunder:
   restartPolicy: "Never"
 
   envFromSecret: *target
+
+reverter:
+  serviceTree:
+    <<: *serviceTree
+    module: reverter
+
+  schedule: "*/5 * * * *"
+  timeZone: "Asia/Singapore"
+  command:
+    - "bun"
+    - "run"
+    - "index.js"
+    - "reverter"
+
+  restartPolicy: "Never"
+
+  envFromSecret: *target
