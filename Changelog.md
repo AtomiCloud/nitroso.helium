@@ -1,3 +1,10 @@
+## [1.13.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.12.2...v1.13.0) (2024-07-13)
+
+
+### ✨ Features ✨
+
+* allow buying reversion every 5 minutes ([419de5f](https://github.com/AtomiCloud/nitroso.helium/commit/419de5f7382dbfa91d4da090caefa624c75e5f4f))
+
 ## [1.12.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.12.1...v1.12.2) (2024-07-11)
 
 
