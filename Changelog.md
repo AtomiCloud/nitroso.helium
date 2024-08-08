@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.14.1...v1.14.2) (2024-08-08)
+
+
+### 🐛 Bug Fixes 🐛
+
+* not converting cli input to JS objects ([8e7c646](https://github.com/AtomiCloud/nitroso.helium/commit/8e7c6469d9eb23a9180a87b84d093aab4665eb98))
+
 ## [1.14.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.14.0...v1.14.1) (2024-08-08)
 
 
