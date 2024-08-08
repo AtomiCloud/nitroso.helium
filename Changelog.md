@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.14.0...v1.14.1) (2024-08-08)
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect nan check ([7827468](https://github.com/AtomiCloud/nitroso.helium/commit/782746884acc6e679b0b5169a954b1db68b95d18))
+
 ## [1.14.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.13.0...v1.14.0) (2024-08-08)
 
 
