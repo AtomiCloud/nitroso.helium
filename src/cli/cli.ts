@@ -10,6 +10,11 @@ import { Updater } from "../lib/updater.ts";
 import { Refunder } from "../lib/refunder.ts";
 import { Reverter } from "../lib/reverter.ts";
 
+interface WatchData {
+  date: string;
+  from: "JToW" | "WToJ";
+}
+
 class Cli {
   constructor(
     private readonly logger: Logger,
@@ -101,6 +106,43 @@ class Cli {
         }
         process.exit(0);
       });
+
+    program
+      .command("multi-watch")
+      .description(
+        "Start repeatedly poll and watch for changes for all days and directions",
+      )
+      .option("-d, --data <data>", "Polling data in JSON")
+      .option(
+        "-i, --interval <interval>",
+        `Interval to poll in seconds, default 180`,
+      )
+      .action(
+        async ({ data, interval }: { data: WatchData[]; interval: string }) => {
+          await tracer.startActiveSpan("watch", async (span) => {
+            if (data == null) this.err("Data is required, -d []");
+            if (interval == null)
+              this.err("Interval is required, -i <seconds>");
+            if (isNaN(i)) this.err("Interval must be a number");
+
+            const i = parseInt(interval);
+
+            const all: Promise<void>[] = [];
+
+            for (const { date, from } of data) {
+              const d = this.zincDate.from(date);
+              if (from !== "JToW" && from !== "WToJ")
+                this.err("From must be either 'JToW' or 'WToJ'");
+              const now = Date.now();
+              this.logger.info({ date, from, interval }, "Starting watch");
+              all.push(this.watcher.Watch(d, now, i, from));
+            }
+            await Promise.allSettled(all);
+            span.end();
+          });
+          process.exit(0);
+        },
+      );
 
     program
       .command("watch")
