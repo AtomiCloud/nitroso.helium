@@ -123,9 +123,10 @@ class Cli {
             if (data == null) this.err("Data is required, -d []");
             if (interval == null)
               this.err("Interval is required, -i <seconds>");
-            if (isNaN(i)) this.err("Interval must be a number");
 
             const i = parseInt(interval);
+
+            if (isNaN(i)) this.err("Interval must be a number");
 
             const all: Promise<void>[] = [];
 
