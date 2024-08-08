@@ -118,9 +118,9 @@ class Cli {
         `Interval to poll in seconds, default 180`,
       )
       .action(
-        async ({ data, interval }: { data: WatchData[]; interval: string }) => {
+        async ({ data, interval }: { data: string; interval: string }) => {
           await tracer.startActiveSpan("watch", async (span) => {
-            if (data == null) this.err("Data is required, -d []");
+            if (data == null) this.err("Data is required, -d '[]'");
             if (interval == null)
               this.err("Interval is required, -i <seconds>");
 
@@ -128,9 +128,11 @@ class Cli {
 
             if (isNaN(i)) this.err("Interval must be a number");
 
+            const dObj = JSON.parse(data);
+            this.logger.info({ jobData: dObj }, "Job data");
             const all: Promise<void>[] = [];
 
-            for (const { date, from } of data) {
+            for (const { date, from } of dObj) {
               const d = this.zincDate.from(date);
               if (from !== "JToW" && from !== "WToJ")
                 this.err("From must be either 'JToW' or 'WToJ'");
