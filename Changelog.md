@@ -1,3 +1,10 @@
+## [1.14.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.13.0...v1.14.0) (2024-08-08)
+
+
+### ✨ Features ✨
+
+* allow for multi-watch ([13d0348](https://github.com/AtomiCloud/nitroso.helium/commit/13d03482b26f214c0e1b622f39058c51ad940feb))
+
 ## [1.13.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.12.2...v1.13.0) (2024-07-13)
 
 
