@@ -1,3 +1,10 @@
+## [1.15.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.14.2...v1.15.0) (2024-08-11)
+
+
+### ✨ Features ✨
+
+* upgrade to use infisical ([ac0f3b9](https://github.com/AtomiCloud/nitroso.helium/commit/ac0f3b9816fb34cdbe2eb65da2375573942067fc))
+
 ## [1.14.2](https://github.com/AtomiCloud/nitroso.helium/compare/v1.14.1...v1.14.2) (2024-08-08)
 
 
