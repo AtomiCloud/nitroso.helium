@@ -1,24 +1,27 @@
 serviceTree: &serviceTree
   landscape: lapras
   platform: nitroso
-  service: helium
+  service: &service helium
   module: pollee
   layer: "2"
 
 bromine:
+  serviceTree:
+    <<: *serviceTree
   annotations:
     argocd.argoproj.io/sync-wave: "1"
   enable: true
   # -- Store name to create
-  storeName: nitroso-helium
+  storeName: *service
   # -- Secret of Secrets reference
   rootSecret:
-    # -- DOPPLER Token Reference
-    ref: "NITROSO_HELIUM"
+    name: *service
+    # -- Infisical Token Reference
+    ref:
+      clientId: NITROSO_HELIUM_CLIENT_ID
+      clientSecret: NITROSO_HELIUM_CLIENT_SECRET
 
-    name: "nitroso-helium-doppler"
-
-  target: &target "nitroso-helium"
+  target: &target helium
 
 appSettings: {}
 

@@ -2,6 +2,8 @@ serviceTree:
   landscape: &landscape tauros
 bromine:
   enable: true
+  serviceTree:
+    landscape: *landscape
 
 zinc:
   enable: true

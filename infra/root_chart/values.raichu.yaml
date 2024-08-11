@@ -21,6 +21,8 @@ securityContext: &securityContext
 
 bromine:
   enable: true
+  serviceTree:
+    landscape: *landscape
 
 fullnameOverride: "helium-pollee"
 

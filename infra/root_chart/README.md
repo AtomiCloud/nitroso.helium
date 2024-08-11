@@ -12,7 +12,7 @@ Root Chart to a single Service
 | file://../cron_chart | refunder(bun-cron-chart) | 0.1.0 |
 | file://../cron_chart | reverter(bun-cron-chart) | 0.1.0 |
 | oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.26.0 |
-| oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.4.0 |
+| oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.6.0 |
 
 ## Values
 
@@ -21,15 +21,20 @@ Root Chart to a single Service
 | appSettings | object | `{}` |  |
 | bromine.annotations."argocd.argoproj.io/sync-wave" | string | `"1"` |  |
 | bromine.enable | bool | `true` |  |
-| bromine.rootSecret | object | `{"name":"nitroso-helium-doppler","ref":"NITROSO_HELIUM"}` | Secret of Secrets reference |
-| bromine.rootSecret.ref | string | `"NITROSO_HELIUM"` | DOPPLER Token Reference |
-| bromine.storeName | string | `"nitroso-helium"` | Store name to create |
-| bromine.target | string | `"nitroso-helium"` |  |
+| bromine.rootSecret | object | `{"name":"helium","ref":{"clientId":"NITROSO_HELIUM_CLIENT_ID","clientSecret":"NITROSO_HELIUM_CLIENT_SECRET"}}` | Secret of Secrets reference |
+| bromine.rootSecret.ref | object | `{"clientId":"NITROSO_HELIUM_CLIENT_ID","clientSecret":"NITROSO_HELIUM_CLIENT_SECRET"}` | Infisical Token Reference |
+| bromine.serviceTree.<<.landscape | string | `"lapras"` |  |
+| bromine.serviceTree.<<.layer | string | `"2"` |  |
+| bromine.serviceTree.<<.module | string | `"pollee"` |  |
+| bromine.serviceTree.<<.platform | string | `"nitroso"` |  |
+| bromine.serviceTree.<<.service | string | `"helium"` |  |
+| bromine.storeName | string | `"helium"` | Store name to create |
+| bromine.target | string | `"helium"` |  |
 | refunder.command[0] | string | `"bun"` |  |
 | refunder.command[1] | string | `"run"` |  |
 | refunder.command[2] | string | `"index.js"` |  |
 | refunder.command[3] | string | `"refunder"` |  |
-| refunder.envFromSecret | string | `"nitroso-helium"` |  |
+| refunder.envFromSecret | string | `"helium"` |  |
 | refunder.restartPolicy | string | `"Never"` |  |
 | refunder.schedule | string | `"30 5-23 * * *"` |  |
 | refunder.serviceTree.<<.landscape | string | `"lapras"` |  |
@@ -43,7 +48,7 @@ Root Chart to a single Service
 | reverter.command[1] | string | `"run"` |  |
 | reverter.command[2] | string | `"index.js"` |  |
 | reverter.command[3] | string | `"reverter"` |  |
-| reverter.envFromSecret | string | `"nitroso-helium"` |  |
+| reverter.envFromSecret | string | `"helium"` |  |
 | reverter.restartPolicy | string | `"Never"` |  |
 | reverter.schedule | string | `"*/5 * * * *"` |  |
 | reverter.serviceTree.<<.landscape | string | `"lapras"` |  |
@@ -57,7 +62,7 @@ Root Chart to a single Service
 | scheduler.command[1] | string | `"run"` |  |
 | scheduler.command[2] | string | `"index.js"` |  |
 | scheduler.command[3] | string | `"schedule"` |  |
-| scheduler.envFromSecret | string | `"nitroso-helium"` |  |
+| scheduler.envFromSecret | string | `"helium"` |  |
 | scheduler.restartPolicy | string | `"Never"` |  |
 | scheduler.schedule | string | `"0 16 * * *"` |  |
 | scheduler.serviceTree.<<.landscape | string | `"lapras"` |  |
