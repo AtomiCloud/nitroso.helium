@@ -1,4 +1,4 @@
-import DescopeClient from "@descope/node-sdk";
+import DescopeClient from '@descope/node-sdk';
 
 interface RetrieveResult {
   date: Date;

@@ -1,8 +1,8 @@
-import * as yaml from "js-yaml";
-import { plainToInstance } from "class-transformer";
-import { validateSync } from "class-validator";
-import { merge, set } from "lodash";
-import { Constructor, RawConfig } from "./types.ts";
+import * as yaml from 'js-yaml';
+import { plainToInstance } from 'class-transformer';
+import { validateSync } from 'class-validator';
+import { merge, set } from 'lodash';
+import { Constructor, RawConfig } from './types.ts';
 
 class ConfigLoader<T extends object> {
   constructor(
@@ -14,14 +14,14 @@ class ConfigLoader<T extends object> {
 
   loadEnvironment(env: Record<string, string | undefined>): RawConfig {
     return Object.keys(env)
-      .filter((key) => key.startsWith(this.envPrefix))
-      .map((k) => {
+      .filter(key => key.startsWith(this.envPrefix))
+      .map(k => {
         const value = env[k];
-        const keyWithoutPrefix = k.replace(this.envPrefix, "");
+        const keyWithoutPrefix = k.replace(this.envPrefix, '');
         const key = keyWithoutPrefix
           .split(this.envDelimiter)
-          .map((x) => x.toLowerCase())
-          .join(".");
+          .map(x => x.toLowerCase())
+          .join('.');
         return { key, value };
       })
       .reduce((a, { key, value }) => set(a, key, value), {});
@@ -29,7 +29,7 @@ class ConfigLoader<T extends object> {
 
   async load(): Promise<T> {
     // load files
-    const configPromises = this.configPaths.map(async (path) => {
+    const configPromises = this.configPaths.map(async path => {
       try {
         const file = Bun.file(path);
         const content = await file.text();

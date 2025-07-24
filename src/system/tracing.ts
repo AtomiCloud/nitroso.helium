@@ -1,36 +1,25 @@
-import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-proto";
-import { OTLPMetricExporter } from "@opentelemetry/exporter-metrics-otlp-proto";
-import { NodeSDK } from "@opentelemetry/sdk-node";
-import {
-  BatchSpanProcessor,
-  ConsoleSpanExporter,
-  SpanProcessor,
-} from "@opentelemetry/sdk-trace-node";
-import { B3InjectEncoding, B3Propagator } from "@opentelemetry/propagator-b3";
-import * as process from "process";
-import { AsyncLocalStorageContextManager } from "@opentelemetry/context-async-hooks";
-import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
-import {
-  ConsoleMetricExporter,
-  PeriodicExportingMetricReader,
-} from "@opentelemetry/sdk-metrics";
-import { CompressionAlgorithm } from "@opentelemetry/otlp-exporter-base";
-import {
-  CompositePropagator,
-  W3CBaggagePropagator,
-  W3CTraceContextPropagator,
-} from "@opentelemetry/core";
-import { RootConfig } from "../config/root.config.ts";
-import { Logger } from "pino";
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
+import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-proto';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { BatchSpanProcessor, ConsoleSpanExporter, SpanProcessor } from '@opentelemetry/sdk-trace-node';
+import { B3InjectEncoding, B3Propagator } from '@opentelemetry/propagator-b3';
+import * as process from 'process';
+import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import { ConsoleMetricExporter, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
+import { CompressionAlgorithm } from '@opentelemetry/otlp-exporter-base';
+import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
+import { RootConfig } from '../config/root.config.ts';
+import { Logger } from 'pino';
 
 class OtelService {
   constructor(private readonly config: RootConfig) {}
 
   compressionAlgoMapper(algo: string): CompressionAlgorithm {
     switch (algo) {
-      case "gzip":
+      case 'gzip':
         return CompressionAlgorithm.GZIP;
-      case "none":
+      case 'none':
         return CompressionAlgorithm.NONE;
       default:
         throw new Error(`Invalid compression algorithm: ${algo}`);
@@ -43,37 +32,33 @@ class OtelService {
 
     const traceExporter: SpanProcessor | undefined = (() => {
       switch (otel.trace.exporter.use) {
-        case "console":
+        case 'console':
           return new BatchSpanProcessor(new ConsoleSpanExporter());
-        case "otlp":
+        case 'otlp':
           const otlp = otel.trace.exporter.otlp!;
           const url = otlp.url;
           const ex = new OTLPTraceExporter({
             url: `${url}/v1/traces`,
-            headers: Object.fromEntries(
-              otel.trace.exporter.otlp?.headers ?? [],
-            ),
+            headers: Object.fromEntries(otel.trace.exporter.otlp?.headers ?? []),
             timeoutMillis: otlp.timeout,
             compression: this.compressionAlgoMapper(otlp.compression),
           });
           return new BatchSpanProcessor(ex);
-        case "none":
+        case 'none':
           return undefined;
         default:
-          throw new Error(
-            `Invalid 'otel.trace.exporter.use': ${otel.trace.exporter.use}`,
-          );
+          throw new Error(`Invalid 'otel.trace.exporter.use': ${otel.trace.exporter.use}`);
       }
     })();
 
     const metricsExporter = (() => {
       switch (otel.metrics.exporter.use) {
-        case "console":
+        case 'console':
           return new PeriodicExportingMetricReader({
             exportIntervalMillis: otel.metrics.exporter.interval,
             exporter: new ConsoleMetricExporter(),
           });
-        case "otlp":
+        case 'otlp':
           const otlp = otel.metrics.exporter.otlp!;
           const url = otlp.url;
           return new PeriodicExportingMetricReader({
@@ -85,12 +70,10 @@ class OtelService {
               compression: this.compressionAlgoMapper(otlp.compression),
             }),
           });
-        case "none":
+        case 'none':
           return undefined;
         default:
-          throw new Error(
-            `Invalid 'otel.metrics.exporter.use': ${otel.metrics.exporter.use}`,
-          );
+          throw new Error(`Invalid 'otel.metrics.exporter.use': ${otel.metrics.exporter.use}`);
       }
     })();
 
@@ -122,14 +105,14 @@ class OtelService {
 
     const transport = logCfg.prettify
       ? {
-          target: "pino-pretty",
+          target: 'pino-pretty',
           options: {
             colorize: true,
           },
         }
       : undefined;
 
-    const pino: any = require("pino");
+    const pino: any = require('pino');
     const logger: Logger = pino({
       level: logCfg.level,
       name: `${this.config.app.platform}.${this.config.app.service}.${this.config.app.module}`,
@@ -138,8 +121,8 @@ class OtelService {
       transport,
     });
 
-    process.on("SIGTERM", () => {
-      sdk.shutdown().then(() => console.log("OTEL properly collector"));
+    process.on('SIGTERM', () => {
+      sdk.shutdown().then(() => console.log('OTEL properly collector'));
     });
     return logger;
   }

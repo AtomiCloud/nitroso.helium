@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 
 services:
   consumer:
@@ -9,7 +9,7 @@ services:
   redis:
     image: docker.dragonflydb.io/dragonflydb/dragonfly
     ports:
-      - "6379:6379"
+      - '6379:6379'
     ulimits:
       memlock: -1
     environment:

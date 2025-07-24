@@ -14,7 +14,7 @@ zinc:
     enabled: true
     replicaCount: 1
     configMountPath: /app/Config
-    fullnameOverride: "zinc-api"
+    fullnameOverride: 'zinc-api'
 
     service:
       type: ClusterIP
@@ -38,35 +38,35 @@ zinc:
 
   maincache:
     enable: true
-    fullnameOverride: "zinc-maincache"
+    fullnameOverride: 'zinc-maincache'
     resources:
       requests:
-        memory: "128Mi"
-        cpu: "100m"
+        memory: '128Mi'
+        cpu: '100m'
       limits:
-        memory: "512Mi"
-        cpu: "250m"
+        memory: '512Mi'
+        cpu: '250m'
   maindb:
     enable: true
-    fullnameOverride: "zinc-maindb"
+    fullnameOverride: 'zinc-maindb'
   mainstorage:
     enable: true
-    fullnameOverride: "zinc-mainstorage"
+    fullnameOverride: 'zinc-mainstorage'
 
 scheduler:
   enable: true
-  fullnameOverride: "helium-scheduler"
+  fullnameOverride: 'helium-scheduler'
   serviceTree:
     landscape: *landscape
 
 refunder:
   enable: true
-  fullnameOverride: "helium-refunder"
+  fullnameOverride: 'helium-refunder'
   serviceTree:
     landscape: *landscape
 
 reverter:
   enable: true
-  fullnameOverride: "helium-reverter"
+  fullnameOverride: 'helium-reverter'
   serviceTree:
     landscape: *landscape

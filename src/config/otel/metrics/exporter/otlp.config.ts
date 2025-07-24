@@ -1,10 +1,4 @@
-import {
-  IsIn,
-  IsNumber,
-  IsOptional,
-  IsPositive,
-  IsString,
-} from "class-validator";
+import { IsIn, IsNumber, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class OtlpConfig {
   @IsString()
@@ -14,8 +8,8 @@ export class OtlpConfig {
   @IsPositive()
   timeout!: number;
 
-  @IsIn(["none", "gzip"])
-  compression!: "none" | "gzip";
+  @IsIn(['none', 'gzip'])
+  compression!: 'none' | 'gzip';
 
   @IsOptional()
   @IsString({

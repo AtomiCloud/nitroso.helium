@@ -1,5 +1,5 @@
-import { IFixedScheduleSearcher, TrainSchedule } from "../interface.ts";
-import { MainPageToken, ProxyToken, SearchCore } from "../search_core.ts";
+import { IFixedScheduleSearcher, TrainSchedule } from '../interface.ts';
+import { MainPageToken, ProxyToken, SearchCore } from '../search_core.ts';
 
 class FixedScheduleSearcher implements IFixedScheduleSearcher {
   constructor(

@@ -1,12 +1,8 @@
-import { SearchCore } from "../search_core.ts";
-import {
-  From,
-  IFixedScheduleSearcher,
-  IScheduleSearcher,
-} from "../interface.ts";
-import { StatelessScheduleSearcher } from "./stateless_schedule_searcher.ts";
-import { LoadedScheduleSearcher } from "./loaded_schedule_searcher.ts";
-import { FixedScheduleSearcher } from "./fixed_schedule_searcher.ts";
+import { SearchCore } from '../search_core.ts';
+import { From, IFixedScheduleSearcher, IScheduleSearcher } from '../interface.ts';
+import { StatelessScheduleSearcher } from './stateless_schedule_searcher.ts';
+import { LoadedScheduleSearcher } from './loaded_schedule_searcher.ts';
+import { FixedScheduleSearcher } from './fixed_schedule_searcher.ts';
 
 class SearcherBuilder {
   constructor(private readonly searchCore: SearchCore) {}

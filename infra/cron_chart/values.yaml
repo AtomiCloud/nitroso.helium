@@ -4,7 +4,7 @@ serviceTree:
   service: helium
   module: scheduler
 
-schedule: "@midnight"
+schedule: '@midnight'
 
 appSettings: {}
 
@@ -17,16 +17,16 @@ configMountPath: /app/config/app
 image:
   repository: nitroso-helium-scheduler
   pullPolicy: IfNotPresent
-  tag: ""
+  tag: ''
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 serviceAccount:
   create: false
   annotations: {}
-  name: ""
+  name: ''
 
 podAnnotations: {}
 

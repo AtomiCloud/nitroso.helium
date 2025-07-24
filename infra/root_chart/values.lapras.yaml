@@ -15,7 +15,7 @@ zinc:
     enabled: true
     replicaCount: 1
     configMountPath: /app/Config
-    fullnameOverride: "zinc-api"
+    fullnameOverride: 'zinc-api'
     appSettings:
       Database:
         MAIN:
@@ -39,45 +39,45 @@ zinc:
     enabled: false
   streamcache:
     enable: true
-    fullnameOverride: "zinc-streamcache"
+    fullnameOverride: 'zinc-streamcache'
   maincache:
     enable: true
-    fullnameOverride: "zinc-maincache"
+    fullnameOverride: 'zinc-maincache'
     resources:
       requests:
-        memory: "128Mi"
-        cpu: "100m"
+        memory: '128Mi'
+        cpu: '100m'
       limits:
-        memory: "512Mi"
-        cpu: "250m"
+        memory: '512Mi'
+        cpu: '250m'
   maindb:
     enable: true
-    fullnameOverride: "zinc-maindb"
+    fullnameOverride: 'zinc-maindb'
   mainstorage:
     enable: true
-    fullnameOverride: "zinc-mainstorage"
+    fullnameOverride: 'zinc-mainstorage'
 
 scheduler:
-  schedule: "02 12 * * *"
-  fullnameOverride: "helium-scheduler"
+  schedule: '02 12 * * *'
+  fullnameOverride: 'helium-scheduler'
   image:
     repository: nitroso-helium-scheduler
   serviceTree:
     landscape: *landscape
 
 refunder:
-  schedule: "0 10-23 * * *"
-  timezone: "Asia/Singapore"
-  fullnameOverride: "helium-refunder"
+  schedule: '0 10-23 * * *'
+  timezone: 'Asia/Singapore'
+  fullnameOverride: 'helium-refunder'
   image:
     repository: nitroso-helium-refunder
   serviceTree:
     landscape: *landscape
 
 reverter:
-  schedule: "*/5 * * * *"
-  timeZone: "Asia/Singapore"
-  fullnameOverride: "helium-reverter"
+  schedule: '*/5 * * * *'
+  timeZone: 'Asia/Singapore'
+  fullnameOverride: 'helium-reverter'
   image:
     repository: nitroso-helium-reverter
   serviceTree:

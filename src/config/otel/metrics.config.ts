@@ -1,6 +1,6 @@
-import { ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
-import { ExporterConfig } from "./metrics/exporter.config";
+import { ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+import { ExporterConfig } from './metrics/exporter.config';
 
 export class MetricsConfig {
   @ValidateNested()

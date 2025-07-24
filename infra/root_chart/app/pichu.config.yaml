@@ -15,8 +15,8 @@ cache:
 
 auth:
   descope:
-    id: "P2Ya3WPmBmUBwJzhWoVB5uNeK7gg"
-    key: ""
+    id: 'P2Ya3WPmBmUBwJzhWoVB5uNeK7gg'
+    key: ''
 
 otel:
   logging:
@@ -32,7 +32,7 @@ otel:
         compression: gzip
         headers: {}
         timeout: 3000
-        url: "http://silicon-otlp-collector.sulfoxide.svc:4318"
+        url: 'http://silicon-otlp-collector.sulfoxide.svc:4318'
   trace:
     exporter:
       use: otlp
@@ -40,4 +40,4 @@ otel:
         compression: gzip
         headers: {}
         timeout: 3000
-        url: "http://silicon-otlp-collector.sulfoxide.svc:4318"
+        url: 'http://silicon-otlp-collector.sulfoxide.svc:4318'

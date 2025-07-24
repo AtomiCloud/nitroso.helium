@@ -1,17 +1,17 @@
-import Redis, { RedisOptions } from "ioredis";
-import { RootConfig } from "./config/root.config.ts";
-import { Auth, Descope } from "./lib/interfaces.ts";
-import { DescopeConfig } from "./config/auth/descope.config.ts";
-import DescopeClient from "@descope/node-sdk";
-import { Api } from "./lib/zinc/Api.ts";
-import { ApiConfig } from "./lib/zinc/http-client.ts";
-import { ZincConfig } from "./config/zinc.config.ts";
+import Redis, { RedisOptions } from 'ioredis';
+import { RootConfig } from './config/root.config.ts';
+import { Auth, Descope } from './lib/interfaces.ts';
+import { DescopeConfig } from './config/auth/descope.config.ts';
+import DescopeClient from '@descope/node-sdk';
+import { Api } from './lib/zinc/Api.ts';
+import { ApiConfig } from './lib/zinc/http-client.ts';
+import { ZincConfig } from './config/zinc.config.ts';
 
 const loadRedis = (config: RootConfig): Map<string, Redis> => {
   return new Map(
     [...config.cache.entries()].map(([k, v]) => {
-      const endpoint = v.endpoints.get("0")!;
-      const [host, port] = endpoint.split(":") as [string, string];
+      const endpoint = v.endpoints.get('0')!;
+      const [host, port] = endpoint.split(':') as [string, string];
 
       const o: RedisOptions = {
         name: k,

@@ -6,18 +6,18 @@ app:
   platform: nitroso
   service: helium
   module: pollee
-  version: "1.0"
+  version: '1.0'
   populator:
     delay: 0.5
   watcher:
     delay: 1
 auth:
   descope:
-    id: "P2Ya46UVwFV8nTwNGZWpxRtyL7Jj"
-    key: ""
+    id: 'P2Ya46UVwFV8nTwNGZWpxRtyL7Jj'
+    key: ''
 
 zinc:
-  domain: "zinc-api"
+  domain: 'zinc-api'
   scheme: http
 
 error:
@@ -32,7 +32,7 @@ cache:
     enableAutoPipelining: true
     endpoints:
       0: tin-livecache-master:6379
-    keyPrefix: ""
+    keyPrefix: ''
     password: supersecret
     readOnly: false
     tls: false

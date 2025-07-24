@@ -3,13 +3,13 @@ serviceTree: &serviceTree
   platform: nitroso
   service: &service helium
   module: pollee
-  layer: "2"
+  layer: '2'
 
 bromine:
   serviceTree:
     <<: *serviceTree
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: '1'
   enable: true
   # -- Store name to create
   storeName: *service
@@ -39,14 +39,14 @@ scheduler:
     <<: *serviceTree
     module: scheduler
 
-  schedule: "0 16 * * *"
+  schedule: '0 16 * * *'
   command:
-    - "bun"
-    - "run"
-    - "index.js"
-    - "schedule"
+    - 'bun'
+    - 'run'
+    - 'index.js'
+    - 'schedule'
 
-  restartPolicy: "Never"
+  restartPolicy: 'Never'
 
   envFromSecret: *target
 
@@ -55,15 +55,15 @@ refunder:
     <<: *serviceTree
     module: refunder
 
-  schedule: "30 5-23 * * *"
-  timeZone: "Asia/Singapore"
+  schedule: '30 5-23 * * *'
+  timeZone: 'Asia/Singapore'
   command:
-    - "bun"
-    - "run"
-    - "index.js"
-    - "refunder"
+    - 'bun'
+    - 'run'
+    - 'index.js'
+    - 'refunder'
 
-  restartPolicy: "Never"
+  restartPolicy: 'Never'
 
   envFromSecret: *target
 
@@ -72,14 +72,14 @@ reverter:
     <<: *serviceTree
     module: reverter
 
-  schedule: "*/5 * * * *"
-  timeZone: "Asia/Singapore"
+  schedule: '*/5 * * * *'
+  timeZone: 'Asia/Singapore'
   command:
-    - "bun"
-    - "run"
-    - "index.js"
-    - "reverter"
+    - 'bun'
+    - 'run'
+    - 'index.js'
+    - 'reverter'
 
-  restartPolicy: "Never"
+  restartPolicy: 'Never'
 
   envFromSecret: *target

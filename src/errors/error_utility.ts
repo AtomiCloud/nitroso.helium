@@ -1,9 +1,9 @@
-import type { ProblemDetails } from "./problem_details";
-import type { ProblemConstructor } from "./error_info";
-import { problems } from "./error_info";
-import type { Problem } from "./problem";
-import { ErrorConfig } from "../config/error.config.ts";
-import { AppConfig } from "../config/app.config.ts";
+import type { ProblemDetails } from './problem_details';
+import type { ProblemConstructor } from './error_info';
+import { problems } from './error_info';
+import type { Problem } from './problem';
+import { ErrorConfig } from '../config/error.config.ts';
+import { AppConfig } from '../config/app.config.ts';
 
 class DetailFactory {
   constructor(
@@ -15,11 +15,11 @@ class DetailFactory {
     const errorInfo = problems.get(problem.constructor as ProblemConstructor);
     if (errorInfo == null) {
       return {
-        detail: "Error parsed not registered",
-        title: "Error occurred when parsing Error",
+        detail: 'Error parsed not registered',
+        title: 'Error occurred when parsing Error',
         status: 500,
-        traceId: "local",
-        type: "none",
+        traceId: 'local',
+        type: 'none',
         data: {
           original: problem,
         },
@@ -34,7 +34,7 @@ class DetailFactory {
       detail: problem.detail,
       title: errorInfo.title,
       status: errorInfo.status,
-      traceId: "local",
+      traceId: 'local',
       type: `${ep.scheme}://${ep.host}/docs/${ap.landscape}/${ap.platform}/${ap.service}/${ap.module}/${errorInfo.version}/${errorInfo.id}`,
       data: p,
     };

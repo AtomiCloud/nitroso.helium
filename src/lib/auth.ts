@@ -1,5 +1,5 @@
-import { Auth, Descope } from "./interfaces.ts";
-import { DescopeConfig } from "../config/auth/descope.config.ts";
+import { Auth, Descope } from './interfaces.ts';
+import { DescopeConfig } from '../config/auth/descope.config.ts';
 
 class DescopeAuth implements Auth {
   #token?: string;

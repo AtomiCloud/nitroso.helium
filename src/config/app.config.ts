@@ -1,8 +1,8 @@
-import { IsString, MinLength, ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
-import { SearcherConfig } from "./searcher.config";
-import { PopulatorConfig } from "./populator.config";
-import { WatcherConfig } from "./watcher.config";
+import { IsString, MinLength, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+import { SearcherConfig } from './searcher.config';
+import { PopulatorConfig } from './populator.config';
+import { WatcherConfig } from './watcher.config';
 
 export class AppConfig {
   @IsString()
