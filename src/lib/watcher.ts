@@ -1,9 +1,9 @@
-import { Logger } from "pino";
-import Redis from "ioredis";
-import { SearcherBuilder } from "../domain/searcher/builder.ts";
-import { ZincDate } from "../util/zinc_date.ts";
-import { __ } from "../utility.ts";
-import { WatcherConfig } from "../config/watcher.config.ts";
+import { Logger } from 'pino';
+import Redis from 'ioredis';
+import { SearcherBuilder } from '../domain/searcher/builder.ts';
+import { ZincDate } from '../util/zinc_date.ts';
+import { __ } from '../utility.ts';
+import { WatcherConfig } from '../config/watcher.config.ts';
 
 class Watcher {
   constructor(
@@ -14,8 +14,8 @@ class Watcher {
     private readonly zincDate: ZincDate,
   ) {}
 
-  async Watch(d: Date, startTime: number, i: number, f: "JToW" | "WToJ") {
-    const a = await this.builder.BuildFixed(f, d);
+  async Watch(d: Date, startTime: number, i: number, f: 'JToW' | 'WToJ') {
+    const a = await this.builder.BuildStateless();
     const loopDuration = i * 1000;
     let index = 0;
     const od = this.zincDate.to(d);
@@ -29,22 +29,23 @@ class Watcher {
         if (elapsedTime >= loopDuration) break;
 
         // run the searcher
-        const sch = await a.Search();
+        const sch = await a.Search(f, d);
         const timing: Record<string, number> = {};
         for (const s of sch) timing[s.departure_time] = s.available_seats;
         const key = `ktmb:schedule:${f}:${od}`;
         const _ = await this.redis.publish(key, JSON.stringify(timing));
         await __(this.config.delay);
       } catch (e) {
-        this.logger.error({ error: e }, "Failed to poll schedule");
+        console.error(e);
+        this.logger.error({ error: e }, 'Failed to poll schedule');
         failureCount++;
         if (failureCount > 10) {
-          this.logger.error("Failed to poll schedule too many times, exiting");
+          this.logger.error('Failed to poll schedule too many times, exiting');
           throw e;
         }
       }
     }
-    this.logger.info({ index: index++ }, "Watch complete");
+    this.logger.info({ index: index++ }, 'Watch complete');
   }
 }
 

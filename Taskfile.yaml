@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 vars:
   PLATFORM: nitroso
   SERVICE: helium
@@ -19,7 +19,7 @@ tasks:
   setup:
     desc: Setups
     cmds:
-      - ./scripts/local/secrets.sh
+      # - ./scripts/local/secrets.sh
       - bun i
   dev:
     desc: Run in development
@@ -50,6 +50,6 @@ tasks:
   sdk:gen:
     desc: Generate the SDK
     env:
-      ZINC_API: "{{.ZINC_API}}"
+      ZINC_API: '{{.ZINC_API}}'
     cmds:
       - ./scripts/local/gen-sdk.sh v1
