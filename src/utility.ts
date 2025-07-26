@@ -1,8 +1,8 @@
-import { ProblemDetails } from './errors/problem_details.ts';
-import { Problem } from './errors/problem.ts';
-import { HttpResponse } from './lib/zinc/http-client.ts';
-import { Err, Ok, Res, Result } from './lib/core/result.ts';
-import { DetailFactory } from './errors/error_utility.ts';
+import type { ProblemDetails } from './errors/problem_details.ts';
+import type { Problem } from './errors/problem.ts';
+import type { HttpResponse } from './lib/zinc/http-client.ts';
+import { Err, Ok, Res, type Result } from './lib/core/result.ts';
+import type { DetailFactory } from './errors/error_utility.ts';
 import { Unauthenticated } from './errors/v1/unauthenticated.ts';
 import { Unauthorized } from './errors/v1/unauthorized.ts';
 import { LocalStringError } from './errors/v1/local_string_error.ts';
@@ -32,7 +32,7 @@ class Utility {
   constructor(private readonly detail: DetailFactory) {}
 
   toResult<T>(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Generic HTTP requires generic any
     f: () => Promise<HttpResponse<T, any>>,
     localErrorDetail: string,
   ): Result<T, ProblemDetails> {
@@ -55,7 +55,7 @@ class Utility {
   }
 
   async parseErrorResponse<T>(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Generic HTTP requires generic any
     r: HttpResponse<T, any>,
   ): Promise<ProblemDetails> {
     if (!isProblemDetail(r.error) && (r.status === 401 || r.status === 403)) {
@@ -79,15 +79,10 @@ class Utility {
 
   parseError(detail: string, error: unknown): Problem {
     console.error(error);
-    if (error instanceof Error) {
-      return new LocalExceptionError(detail, error);
-    } else if (typeof error === 'string') {
-      return new LocalStringError(detail, error);
-    } else if (isProblem(error)) {
-      return error;
-    } else {
-      return new LocalUnknownError(detail, error);
-    }
+    if (error instanceof Error) return new LocalExceptionError(detail, error);
+    if (typeof error === 'string') return new LocalStringError(detail, error);
+    if (isProblem(error)) return error;
+    return new LocalUnknownError(detail, error);
   }
 }
 
@@ -100,7 +95,6 @@ function compare(a?: string | null, b?: string | null): boolean {
   return x.includes(y) || y.includes(x);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
 export { Utility, noop, compare, __, isProblemDetail, isProblem, isResponse };

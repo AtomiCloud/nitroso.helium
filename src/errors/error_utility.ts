@@ -2,8 +2,8 @@ import type { ProblemDetails } from './problem_details';
 import type { ProblemConstructor } from './error_info';
 import { problems } from './error_info';
 import type { Problem } from './problem';
-import { ErrorConfig } from '../config/error.config.ts';
-import { AppConfig } from '../config/app.config.ts';
+import type { ErrorConfig } from '../config/error.config.ts';
+import type { AppConfig } from '../config/app.config.ts';
 
 class DetailFactory {
   constructor(
@@ -23,7 +23,7 @@ class DetailFactory {
         data: {
           original: problem,
         },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignore lint/suspicious/noExplicitAny: problem not known at build time
       } as any;
     }
     const p: T = JSON.parse(JSON.stringify(problem));

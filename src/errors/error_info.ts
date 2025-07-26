@@ -14,7 +14,7 @@ interface ErrorInfoResp {
 }
 
 interface ProblemConstructor {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: constructor can take in anything
   new (...input: any[]): Problem;
 }
 

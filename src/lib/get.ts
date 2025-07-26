@@ -1,4 +1,4 @@
-import { SearcherBuilder } from '../domain/searcher/builder.ts';
+import type { SearcherBuilder } from '../domain/searcher/builder.ts';
 
 class Get {
   constructor(private readonly builder: SearcherBuilder) {}

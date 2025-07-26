@@ -2,7 +2,7 @@ import * as yaml from 'js-yaml';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
 import { merge, set } from 'lodash';
-import { Constructor, RawConfig } from './types.ts';
+import type { Constructor, RawConfig } from './types.ts';
 
 class ConfigLoader<T extends object> {
   constructor(

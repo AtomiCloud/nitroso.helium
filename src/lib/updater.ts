@@ -1,13 +1,13 @@
-import { Api } from './zinc/Api.ts';
-import { Utility } from '../utility.ts';
-import { ZincDate } from '../util/zinc_date.ts';
-import { Checker } from './checker.ts';
-import { Logger } from 'pino';
-import { Populator } from './populator.ts';
-import { Result } from './core/result.ts';
-import { TimingRes } from './zinc/data-contracts.ts';
-import { RetrieveResult } from './interfaces.ts';
-import { ProblemDetails } from '../errors/problem_details.ts';
+import type { Api } from './zinc/Api.ts';
+import type { Utility } from '../utility.ts';
+import type { ZincDate } from '../util/zinc_date.ts';
+import type { Checker } from './checker.ts';
+import type { Logger } from 'pino';
+import type { Populator } from './populator.ts';
+import type { Result } from './core/result.ts';
+import type { TimingRes } from './zinc/data-contracts.ts';
+import type { RetrieveResult } from './interfaces.ts';
+import type { ProblemDetails } from '../errors/problem_details.ts';
 
 class Updater {
   constructor(

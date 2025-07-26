@@ -7,6 +7,7 @@ pre-commit-lib.run {
     # formatter
     treefmt = {
       enable = true;
+      package = formatter;
       excludes = [
         "infra/.*chart.*/templates/.*(yaml|yml)"
         "infra/.*chart.*/.*(MD|md)"
@@ -15,15 +16,23 @@ pre-commit-lib.run {
     };
 
     # linters From https://github.com/cachix/pre-commit-hooks.nix
-    shellcheck = {
-      enable = false;
+    shellcheck.enable = false;
+
+    a-biome = {
+      enable = true;
+      name = "Biome Lint";
+      entry = "${packages.biome}/bin/biome lint --write";
+      files = ".*ts$";
+      excludes = [ ".*/src/lib/zinc/.*" ];
+      language = "system";
+      pass_filenames = true;
     };
 
     a-infisical = {
       enable = true;
       name = "Secrets Scanning";
       description = "Scan for possible secrets";
-      entry = "${packages.infisical}/bin/infisical scan . -v";
+      entry = "${packages.infisical}/bin/infisical scan . --verbose";
       language = "system";
       pass_filenames = false;
     };
@@ -41,9 +50,9 @@ pre-commit-lib.run {
       enable = true;
       name = "Gitlint";
       description = "Lints git commit message";
-      entry = "${packages.gitlint}/bin/gitlint --staged --msg-filename .git/COMMIT_EDITMSG";
+      entry = "${packages.gitlint}/bin/gitlint --staged --msg-filename";
       language = "system";
-      pass_filenames = false;
+      pass_filenames = true;
       stages = [ "commit-msg" ];
     };
 
@@ -69,17 +78,16 @@ pre-commit-lib.run {
     a-enforce-exec = {
       enable = true;
       name = "Enforce Shell Script executable";
-      entry = "${packages.coreutils}/bin/chmod +x";
+      entry = "${packages.atomiutils}/bin/chmod +x";
       files = ".*sh$";
       language = "system";
       pass_filenames = true;
     };
 
-
     a-hadolint = {
       enable = true;
       name = "Docker Linter";
-      entry = "${packages.hadolint}/bin/hadolint";
+      entry = "${packages.infralint}/bin/hadolint";
       files = ".*Dockerfile$";
       language = "system";
       pass_filenames = true;
@@ -88,7 +96,7 @@ pre-commit-lib.run {
     a-config-sync = {
       enable = true;
       name = "Sync configurations to helm charts";
-      entry = "${packages.bash}/bin/bash scripts/local/config-sync.sh";
+      entry = "${packages.atomiutils}/bin/bash scripts/local/config-sync.sh";
       files = "config/app/.*\\.yaml";
       language = "system";
       pass_filenames = false;
@@ -97,17 +105,11 @@ pre-commit-lib.run {
     a-helm-docs = {
       enable = true;
       name = "Helm Docs";
-      entry = "${packages.helm-docs}/bin/helm-docs";
+      entry = "${packages.infralint}/bin/helm-docs";
       files = ".*";
       language = "system";
       pass_filenames = false;
     };
 
-  };
-
-  settings = {
-    treefmt = {
-      package = formatter;
-    };
   };
 }

@@ -1,5 +1,5 @@
-import { From, IScheduleSearcher, TrainSchedule } from '../interface.ts';
-import { MainPageToken, SearchCore } from '../search_core.ts';
+import type { From, IScheduleSearcher, TrainSchedule } from '../interface.ts';
+import type { MainPageToken, SearchCore } from '../search_core.ts';
 
 class LoadedScheduleSearcher implements IScheduleSearcher {
   constructor(

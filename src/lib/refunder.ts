@@ -1,9 +1,9 @@
-import { Logger } from 'pino';
-import { Api } from './zinc/Api.ts';
-import { Utility } from '../utility.ts';
+import type { Logger } from 'pino';
+import type { Api } from './zinc/Api.ts';
+import type { Utility } from '../utility.ts';
 import { Res } from './core/result.ts';
-import { BookingPrincipalRes } from './zinc/data-contracts.ts';
-import { ProblemDetails } from '../errors/problem_details.ts';
+import type { BookingPrincipalRes } from './zinc/data-contracts.ts';
+import type { ProblemDetails } from '../errors/problem_details.ts';
 import { AggregatedError } from '../errors/v1/aggregate_error.ts';
 
 class Refunder {

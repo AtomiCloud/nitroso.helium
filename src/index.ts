@@ -12,7 +12,7 @@ import { Get } from './lib/get.ts';
 import { Watcher } from './lib/watcher.ts';
 import { loadDescope, loadRedis, loadZinc } from './constructors.ts';
 import { DescopeAuth } from './lib/auth.ts';
-import { Auth } from './lib/interfaces.ts';
+import type { Auth } from './lib/interfaces.ts';
 import { DetailFactory } from './errors/error_utility.ts';
 import { Utility } from './utility.ts';
 import { Checker } from './lib/checker.ts';

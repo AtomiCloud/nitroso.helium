@@ -1,23 +1,23 @@
-import Redis, { RedisOptions } from 'ioredis';
-import { RootConfig } from './config/root.config.ts';
-import { Auth, Descope } from './lib/interfaces.ts';
-import { DescopeConfig } from './config/auth/descope.config.ts';
+import Redis, { type RedisOptions } from 'ioredis';
+import type { RootConfig } from './config/root.config.ts';
+import type { Auth, Descope } from './lib/interfaces.ts';
+import type { DescopeConfig } from './config/auth/descope.config.ts';
 import DescopeClient from '@descope/node-sdk';
 import { Api } from './lib/zinc/Api.ts';
-import { ApiConfig } from './lib/zinc/http-client.ts';
-import { ZincConfig } from './config/zinc.config.ts';
+import type { ApiConfig } from './lib/zinc/http-client.ts';
+import type { ZincConfig } from './config/zinc.config.ts';
 
 const loadRedis = (config: RootConfig): Map<string, Redis> => {
   return new Map(
     [...config.cache.entries()].map(([k, v]) => {
-      const endpoint = v.endpoints.get('0')!;
-      const [host, port] = endpoint.split(':') as [string, string];
+      const endpoint = v.endpoints.get('0');
+      const [host, port] = endpoint?.split(':') as [string, string];
 
       const o: RedisOptions = {
         name: k,
         host,
         db: 0,
-        port: parseInt(port),
+        port: Number.parseInt(port),
         autoResubscribe: v.autoResubscribe,
         commandTimeout: v.commandTimeout,
         connectTimeout: v.connectTimeout,

@@ -1,4 +1,4 @@
-{ pkgs, pkgs-2305, atomi, pkgs-feb-23-24 }:
+{ pkgs, atomi, pkgs-2505, pkgs-unstable }:
 let
   all = {
     atomipkgs = (
@@ -6,50 +6,39 @@ let
       {
         inherit
           mirrord
+          atomiutils
+          infrautils
+          infralint
           swagger_typescript_api
-          infisical
           pls
           sg;
       }
     );
-    nix-2305 = (
-      with pkgs-2305;
+    nix-unstable = (
+      with pkgs-unstable;
       { }
     );
-    feb-23-24 = (
-      with pkgs-feb-23-24;
+    nix-2505 = (
+      with pkgs-2505;
       {
-        nodejs = nodejs_18;
-        npm = nodePackages.npm;
-        helm = kubernetes-helm;
-        inherit
-          coreutils
-          yq-go
-          gnused
-          gnugrep
-          bash
-          jq
-          findutils
-          hadolint
-          helm-docs
-          kubectl
-          docker
-          skopeo
-          k3d
-          tilt
-          git
-          doppler
 
-          bun
+        inherit
+          # standard
+          git
+          infisical
+
           treefmt
           gitlint
           shellcheck
-          ;
+          biome
+
+          # language
+          bun;
       }
     );
   };
 in
 with all;
-nix-2305 //
-atomipkgs //
-feb-23-24
+nix-2505 //
+nix-unstable //
+atomipkgs

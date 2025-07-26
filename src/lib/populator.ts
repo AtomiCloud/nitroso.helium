@@ -1,8 +1,8 @@
-import { Logger } from 'pino';
-import { SearcherBuilder } from '../domain/searcher/builder.ts';
+import type { Logger } from 'pino';
+import type { SearcherBuilder } from '../domain/searcher/builder.ts';
 import { addDays, differenceInDays } from 'date-fns';
-import { RetrieveResult } from './interfaces.ts';
-import { PopulatorConfig } from '../config/populator.config.ts';
+import type { RetrieveResult } from './interfaces.ts';
+import type { PopulatorConfig } from '../config/populator.config.ts';
 import { __ } from '../utility.ts';
 
 class Populator {

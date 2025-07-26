@@ -5,7 +5,7 @@ import { OtelConfig } from './otel.config';
 import { CacheConfig } from './cache.config';
 import { AuthConfig } from './auth.config';
 import { ZincConfig } from './zinc.config';
-import { ErrorConfig } from './error.config';
+import type { ErrorConfig } from './error.config';
 
 export class RootConfig {
   @ValidateNested()

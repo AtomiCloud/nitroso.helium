@@ -1,10 +1,10 @@
 import * as cheerio from 'cheerio';
 import fetchCookie from 'fetch-cookie';
 import moment from 'moment';
-import { Logger } from 'pino';
-import { stringify } from 'querystring';
-import { SearcherConfig } from '../config/searcher.config.ts';
-import { From, TrainSchedule } from './interface.ts';
+import type { Logger } from 'pino';
+import { stringify } from 'node:querystring';
+import type { SearcherConfig } from '../config/searcher.config.ts';
+import type { From, TrainSchedule } from './interface.ts';
 
 const f = fetchCookie(fetch);
 
@@ -266,7 +266,7 @@ class SearchCore {
           train_service: rowData.train_service,
           departure_time: rowData.departure_time,
           arrival_time: rowData.arrival_time,
-          available_seats: parseInt(rowData.available_seats, 10),
+          available_seats: Number.parseInt(rowData.available_seats, 10),
           min_fare: rowData.min_fare,
         } satisfies TrainSchedule;
       })
@@ -276,4 +276,4 @@ class SearchCore {
   }
 }
 
-export { MainPageToken, ProxyToken, SearchCore };
+export { type MainPageToken, type ProxyToken, SearchCore };

@@ -1,9 +1,9 @@
-import { Api } from './zinc/Api.ts';
-import { Utility } from '../utility.ts';
-import { Err, Ok, Res, Result } from './core/result.ts';
-import { LatestScheduleRes } from './zinc/data-contracts.ts';
-import { ProblemDetails } from '../errors/problem_details.ts';
-import { ZincDate } from '../util/zinc_date.ts';
+import type { Api } from './zinc/Api.ts';
+import type { Utility } from '../utility.ts';
+import { Err, Ok, Res, type Result } from './core/result.ts';
+import type { LatestScheduleRes } from './zinc/data-contracts.ts';
+import type { ProblemDetails } from '../errors/problem_details.ts';
+import type { ZincDate } from '../util/zinc_date.ts';
 import { addDays, addMonths, endOfMonth } from 'date-fns';
 
 class Checker {
@@ -23,7 +23,7 @@ class Checker {
       const r: Result<LatestScheduleRes, ProblemDetails> = await result.match({
         ok: v => Ok(v),
         err: e => {
-          if (e.status == 404) {
+          if (e.status === 404) {
             const ddd = this.zincDate.to(new Date());
             return Ok({ date: ddd } satisfies LatestScheduleRes);
           }

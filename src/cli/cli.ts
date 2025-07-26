@@ -1,14 +1,14 @@
 import { program } from 'commander';
 import type { Logger } from 'pino';
 import { trace } from '@opentelemetry/api';
-import { RootConfig } from '../config/root.config.ts';
-import { ZincDate } from '../util/zinc_date.ts';
-import { Watcher } from '../lib/watcher.ts';
-import { Get } from '../lib/get.ts';
+import type { RootConfig } from '../config/root.config.ts';
+import type { ZincDate } from '../util/zinc_date.ts';
+import type { Watcher } from '../lib/watcher.ts';
+import type { Get } from '../lib/get.ts';
 import { AsciiTable3 } from 'ascii-table3';
-import { Updater } from '../lib/updater.ts';
-import { Refunder } from '../lib/refunder.ts';
-import { Reverter } from '../lib/reverter.ts';
+import type { Updater } from '../lib/updater.ts';
+import type { Refunder } from '../lib/refunder.ts';
+import type { Reverter } from '../lib/reverter.ts';
 
 interface WatchData {
   date: string;
@@ -105,15 +105,15 @@ class Cli {
       .command('multi-watch')
       .description('Start repeatedly poll and watch for changes for all days and directions')
       .option('-d, --data <data>', 'Polling data in JSON')
-      .option('-i, --interval <interval>', `Interval to poll in seconds, default 180`)
+      .option('-i, --interval <interval>', 'Interval to poll in seconds, default 180')
       .action(async ({ data, interval }: { data: string; interval: string }) => {
         await tracer.startActiveSpan('watch', async span => {
           if (data == null) this.err("Data is required, -d '[]'");
           if (interval == null) this.err('Interval is required, -i <seconds>');
 
-          const i = parseInt(interval);
+          const i = Number.parseInt(interval);
 
-          if (isNaN(i)) this.err('Interval must be a number');
+          if (Number.isNaN(i)) this.err('Interval must be a number');
 
           const dObj = JSON.parse(data);
           this.logger.info({ jobData: dObj }, 'Job data');
@@ -136,8 +136,8 @@ class Cli {
       .command('watch')
       .description('Start repeatedly poll and watch for changes for a fixed day and direction')
       .option('-d, --date <date>', 'Date to poll')
-      .option('-f, --from <from>', `Direction to poll, either 'JToW' or 'WToJ'`)
-      .option('-i, --interval <interval>', `Interval to poll in seconds, default 180`)
+      .option('-f, --from <from>', "Direction to poll, either 'JToW' or 'WToJ'")
+      .option('-i, --interval <interval>', 'Interval to poll in seconds, default 180')
       .action(async ({ date, from, interval }: { date: string; from: string; interval: string }) => {
         await tracer.startActiveSpan('watch', async span => {
           if (date == null) this.err('Date is required, -d <dd-mm-yyyy>');
@@ -145,10 +145,10 @@ class Cli {
           if (interval == null) this.err('Interval is required, -i <seconds>');
 
           const d = this.zincDate.from(date);
-          const i = parseInt(interval);
+          const i = Number.parseInt(interval);
           const f = from as 'JToW' | 'WToJ';
 
-          if (isNaN(i)) this.err('Interval must be a number');
+          if (Number.isNaN(i)) this.err('Interval must be a number');
           if (from !== 'JToW' && from !== 'WToJ') this.err("From must be either 'JToW' or 'WToJ'");
           const now = Date.now();
           this.logger.info({ date, from, interval }, 'Starting watch');

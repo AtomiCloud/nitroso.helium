@@ -2,29 +2,18 @@
 with packages;
 {
   system = [
-    coreutils
-    findutils
-    gnugrep
-    gnused
-    yq-go
-    jq
+    atomiutils
   ];
 
   dev = [
     pls
     git
     swagger_typescript_api
-    skopeo
-    doppler
     mirrord
   ];
 
   infra = [
-    k3d
-    tilt
-    helm
-    kubectl
-    docker
+    atomiutils
   ];
 
   main = [
@@ -41,8 +30,6 @@ with packages;
   ];
 
   releaser = [
-    nodejs
     sg
-    npm
   ];
 }

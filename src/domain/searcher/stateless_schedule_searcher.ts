@@ -1,5 +1,5 @@
-import { From, IScheduleSearcher, TrainSchedule } from '../interface.ts';
-import { SearchCore } from '../search_core.ts';
+import type { From, IScheduleSearcher, TrainSchedule } from '../interface.ts';
+import type { SearchCore } from '../search_core.ts';
 
 class StatelessScheduleSearcher implements IScheduleSearcher {
   constructor(private readonly searchCore: SearchCore) {}

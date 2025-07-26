@@ -69,10 +69,6 @@ echo "  ✅ Commit Cache: ${CACHE_COMMIT}"
 echo "  ✅ Branch Cache: ${CACHE_BRANCH}"
 echo "  ✅ Latest Cache: ${CACHE_LATEST}"
 
-# build image
-export AWS_ACCESS_KEY_ID="${S3_KEY_ID}"
-export AWS_SECRET_ACCESS_KEY="${S3_KEY_SECRET}"
-
 echo "🔨 Building Dockerfile..."
 args=""
 if [ "$BRANCH" = "$LATEST_BRANCH" ]; then
@@ -89,8 +85,3 @@ docker buildx build \
   -t "${COMMIT_IMAGE_REF}" $args \
   -t "${BRANCH_IMAGE_REF}"
 echo "✅ Pushed branch image!"
-
-#--cache-from "type=s3,endpoint_url=${S3_URL},region=${S3_REGION},bucket=${S3_BUCKET},name=${CACHE_COMMIT}" \
-#  --cache-from "type=s3,endpoint_url=${S3_URL},region=${S3_REGION},bucket=${S3_BUCKET},name=${CACHE_BRANCH}" \
-#  --cache-from "type=s3,endpoint_url=${S3_URL},region=${S3_REGION},bucket=${S3_BUCKET},name=${CACHE_LATEST}" \
-#  --cache-to "type=s3,endpoint_url=${S3_URL},region=${S3_REGION},bucket=${S3_BUCKET},ref=${CACHE_COMMIT};${CACHE_BRANCH};${CACHE_LATEST},mode=max" \

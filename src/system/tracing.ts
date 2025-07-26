@@ -1,16 +1,16 @@
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-proto';
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { BatchSpanProcessor, ConsoleSpanExporter, SpanProcessor } from '@opentelemetry/sdk-trace-node';
+import { BatchSpanProcessor, ConsoleSpanExporter, type SpanProcessor } from '@opentelemetry/sdk-trace-node';
 import { B3InjectEncoding, B3Propagator } from '@opentelemetry/propagator-b3';
-import * as process from 'process';
+import * as process from 'node:process';
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { ConsoleMetricExporter, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { CompressionAlgorithm } from '@opentelemetry/otlp-exporter-base';
 import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
-import { RootConfig } from '../config/root.config.ts';
-import { Logger } from 'pino';
+import type { RootConfig } from '../config/root.config.ts';
+import type { Logger } from 'pino';
 
 class OtelService {
   constructor(private readonly config: RootConfig) {}
@@ -112,6 +112,7 @@ class OtelService {
         }
       : undefined;
 
+    // biome-ignore lint/suspicious/noExplicitAny: No typing for pino
     const pino: any = require('pino');
     const logger: Logger = pino({
       level: logCfg.level,

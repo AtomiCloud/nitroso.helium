@@ -1,4 +1,4 @@
-﻿FROM oven/bun:1.0.27 as builder
+﻿FROM oven/bun:1.2.13 as builder
 WORKDIR /app
 COPY package.json .
 COPY bun.lockb .
@@ -6,7 +6,7 @@ RUN bun i
 COPY . .
 RUN bun build ./src/index.ts --target bun --outdir ./build
 
-FROM oven/bun:1.0.18
+FROM oven/bun:1.2.13
 WORKDIR /app
 COPY --from=builder /app/build/index.js /app/index.js
 COPY --from=builder /app/package.json /app/package.json

@@ -1,4 +1,4 @@
-import DescopeClient from '@descope/node-sdk';
+import type DescopeClient from '@descope/node-sdk';
 
 interface RetrieveResult {
   date: Date;
@@ -14,4 +14,4 @@ interface Auth {
   Token(): Promise<string>;
 }
 
-export { RetrieveResult, Auth, Descope };
+export type { RetrieveResult, Auth, Descope };

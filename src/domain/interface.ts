@@ -16,4 +16,4 @@ interface IFixedScheduleSearcher {
   Search(): Promise<TrainSchedule[]>;
 }
 
-export { TrainSchedule, IScheduleSearcher, IFixedScheduleSearcher, From };
+export type { TrainSchedule, IScheduleSearcher, IFixedScheduleSearcher, From };

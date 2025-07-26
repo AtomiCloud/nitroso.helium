@@ -1,9 +1,9 @@
-import { Logger } from 'pino';
-import Redis from 'ioredis';
-import { SearcherBuilder } from '../domain/searcher/builder.ts';
-import { ZincDate } from '../util/zinc_date.ts';
+import type { Logger } from 'pino';
+import type Redis from 'ioredis';
+import type { SearcherBuilder } from '../domain/searcher/builder.ts';
+import type { ZincDate } from '../util/zinc_date.ts';
 import { __ } from '../utility.ts';
-import { WatcherConfig } from '../config/watcher.config.ts';
+import type { WatcherConfig } from '../config/watcher.config.ts';
 
 class Watcher {
   constructor(

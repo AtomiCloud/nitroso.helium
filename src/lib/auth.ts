@@ -1,5 +1,5 @@
-import { Auth, Descope } from './interfaces.ts';
-import { DescopeConfig } from '../config/auth/descope.config.ts';
+import type { Auth, Descope } from './interfaces.ts';
+import type { DescopeConfig } from '../config/auth/descope.config.ts';
 
 class DescopeAuth implements Auth {
   #token?: string;
@@ -14,7 +14,7 @@ class DescopeAuth implements Auth {
     if (this.#exp) {
       const now = Math.floor(Date.now() / 1000);
       if (this.#exp > now) {
-        return this.#token!;
+        return this.#token || '';
       }
     }
     const [token, exp] = await this.getTokenRaw();
