@@ -1,3 +1,18 @@
+## [1.16.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.15.0...v1.16.0) (2025-07-26)
+
+
+### ✨ Features ✨
+
+* upgrade to latest infra ([8ae496a](https://github.com/AtomiCloud/nitroso.helium/commit/8ae496abfe2d686e59ea915245dedc85d2f5ce03))
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect releaser config ([5ff85d9](https://github.com/AtomiCloud/nitroso.helium/commit/5ff85d98732b05db4eab27be31803ce656a5ba4f))
+* missing prettierrc ([655090d](https://github.com/AtomiCloud/nitroso.helium/commit/655090d9615399defb648b2fc83e24c1242b6f77))
+* revert to older ci scripts ([61c8886](https://github.com/AtomiCloud/nitroso.helium/commit/61c888641160fddaaaff213406057b4ddf41adcb))
+* use stateless search for better polling performance ([584aeb7](https://github.com/AtomiCloud/nitroso.helium/commit/584aeb748964c9c6ad92cd7ab6b6ab3fee1bbf09))
+
 ## [1.15.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.14.2...v1.15.0) (2024-08-11)
 
 
