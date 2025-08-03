@@ -1,7 +1,7 @@
 dependencies:
 - name: sulfoxide-bromine
   repository: oci://ghcr.io/atomicloud/sulfoxide.bromine
-  version: 1.6.0
+  version: 1.8.0
 - name: root-chart
   repository: oci://ghcr.io/atomicloud/nitroso.zinc
   version: 1.26.0
@@ -14,5 +14,5 @@ dependencies:
 - name: bun-cron-chart
   repository: file://../cron_chart
   version: 0.1.0
-digest: sha256:48aafdaf15ada64ebd67f1791fe8ccc637bb38c4a28b0e90e2394892f364d3d3
-generated: "2024-08-11T20:36:09.076471+08:00"
+digest: sha256:856f3f7d6b4a0b21d9cd6e677e129a7595e7faad9557498a2ecd3e1b4e243480
+generated: "2025-08-03T23:24:38.462371+08:00"
