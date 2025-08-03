@@ -1,3 +1,11 @@
+## [1.17.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.16.0...v1.17.0) (2025-08-03)
+
+
+### ✨ Features ✨
+
+* **eso:** use v1 instead of v1beta ([bd919df](https://github.com/AtomiCloud/nitroso.helium/commit/bd919df1d72d51e0ce83221ff8c9340aef44f8f5))
+* **eso:** use v1 instead of v1beta ([8cdeff5](https://github.com/AtomiCloud/nitroso.helium/commit/8cdeff58d5f31aa1c113d8c8c0429254cad69563))
+
 ## [1.16.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.15.0...v1.16.0) (2025-07-26)
 
 
