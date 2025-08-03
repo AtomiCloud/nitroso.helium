@@ -12,7 +12,7 @@ Root Chart to a single Service
 | file://../cron_chart | refunder(bun-cron-chart) | 0.1.0 |
 | file://../cron_chart | reverter(bun-cron-chart) | 0.1.0 |
 | oci://ghcr.io/atomicloud/nitroso.zinc | zinc(root-chart) | 1.26.0 |
-| oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.6.0 |
+| oci://ghcr.io/atomicloud/sulfoxide.bromine | bromine(sulfoxide-bromine) | 1.8.0 |
 
 ## Values
 
