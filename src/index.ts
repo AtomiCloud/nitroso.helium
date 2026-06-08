@@ -51,7 +51,7 @@ const utility = new Utility(detailFactory);
 
 const watcher = new Watcher(cfg.app.watcher, logger, caches.get('live')!, searchBuilder, zincDate);
 const poller = new Poller(logger, caches.get('live')!, zincDate);
-const streamer = new Streamer(logger, searchBuilder, poller);
+const streamer = new Streamer(logger, searchBuilder, poller, zincDate);
 const authenticator = new Authenticator(logger, mobileSearchCore);
 const getter = new Get(searchBuilder);
 const zinc = loadZinc(cfg.zinc, auth);
