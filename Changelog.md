@@ -1,3 +1,15 @@
+## [1.18.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.17.0...v1.18.0) (2026-06-08)
+
+
+### ✨ Features ✨
+
+* mobile transport, x-real-ip spoof, settings-based multi-watch ([fa9cc03](https://github.com/AtomiCloud/nitroso.helium/commit/fa9cc03bb8e340cb28ac161d2b886d73d5187f93))
+
+
+### 🚀 Performance Improvement 🚀
+
+* extract tokens via regex, drop per-poll logging ([7bf3779](https://github.com/AtomiCloud/nitroso.helium/commit/7bf377951fb3b655c053e0ad65aaa17f595bf658))
+
 ## [1.17.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.16.0...v1.17.0) (2025-08-03)
 
 
