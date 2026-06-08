@@ -1,3 +1,10 @@
+## [1.19.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.18.1...v1.19.0) (2026-06-08)
+
+
+### ✨ Features ✨
+
+* print per-stream poll tally at end of multi-watch ([df51f5b](https://github.com/AtomiCloud/nitroso.helium/commit/df51f5b0ac0001079522c79498bb9ec238be3521))
+
 ## [1.18.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.18.0...v1.18.1) (2026-06-08)
 
 
