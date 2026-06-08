@@ -11,7 +11,7 @@ app:
     mode: web
     apiUrl: 'https://shuttleonline-api.ktmb.com.my'
     appUrl: 'https://online-api.ktmb.com.my'
-    requestSignature: ''
+    requestSignature: '4dcc60f2-91ba-478b-a849-834202a1a542'
   populator:
     delay: 0.5
   watcher:
