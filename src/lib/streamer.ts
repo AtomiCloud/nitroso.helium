@@ -70,12 +70,19 @@ class Streamer {
       }),
     );
 
-    const totalPolls = tallies.reduce((acc, t) => acc + t.polls, 0);
-    const totalFails = tallies.reduce((acc, t) => acc + t.fails, 0);
-    this.logger.info(
-      { streams: tallies, totalPolls, totalFails, count: tallies.length },
-      'multi-watch summary: polls per date/direction/type',
-    );
+    // One flat log line per stream (LogQL parses flat fields, not arrays),
+    // then a totals line.
+    let totalPolls = 0;
+    let totalFails = 0;
+    for (const t of tallies) {
+      totalPolls += t.polls;
+      totalFails += t.fails;
+      this.logger.info(
+        { date: t.date, from: t.from, mode: t.mode, type: t.type, polls: t.polls, fails: t.fails },
+        'multi-watch stream summary',
+      );
+    }
+    this.logger.info({ count: tallies.length, totalPolls, totalFails }, 'multi-watch total summary');
   }
 }
 
