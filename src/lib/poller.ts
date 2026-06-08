@@ -42,14 +42,14 @@ class Poller {
         const sch = await searcher.Search(from, d);
         const timing: Record<string, number> = {};
         for (const s of sch) timing[s.departure_time] = s.available_seats;
-        // The fetch succeeded — surface the schedule regardless of redis.
-        this.logger.info({ label, key, timing }, 'Polled schedule');
         polls++;
         failureCount = 0;
 
-        // Publishing is best-effort: a redis outage must not be treated as a
-        // poll failure (we already have the data). Skip entirely on dry-run.
-        if (!dryRun) {
+        // dry-run: surface the schedule (testing). Production: just publish —
+        // per-poll logging is expensive at high poll rates.
+        if (dryRun) {
+          this.logger.info({ label, key, timing }, 'Polled schedule (dry-run)');
+        } else {
           try {
             await this.redis.publish(key, JSON.stringify(timing));
           } catch (e) {

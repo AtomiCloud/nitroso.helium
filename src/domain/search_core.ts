@@ -10,6 +10,16 @@ import { randomIp } from '../util/random_ip.ts';
 // Optional X-Real-IP header (rotates KTMB's rate-limit bucket when spoofing).
 const realIp = (spoofIp: boolean): Record<string, string> => (spoofIp ? { 'X-Real-IP': randomIp() } : {});
 
+const escapeRegExp = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// Pull a hidden <input>'s value by id/name WITHOUT building a full DOM. Much
+// cheaper than cheerio for the handful of tokens we extract from large pages
+// (robust to attribute order and quote style within the tag).
+const inputValue = (html: string, attr: 'id' | 'name', name: string): string | undefined => {
+  const tag = html.match(new RegExp(`<input\\b[^>]*\\b${attr}=["']${escapeRegExp(name)}["'][^>]*>`, 'i'))?.[0];
+  return tag?.match(/\bvalue=["']([^"']*)["']/i)?.[1];
+};
+
 // A cookie-jar-bound fetch. Each web polling session gets its own (see
 // SearchCore.newSession) so concurrent streams don't clobber each other's
 // antiforgery/session cookies in a shared jar.
@@ -107,11 +117,9 @@ class SearchCore {
     const resp = await fetcher('https://shuttleonline.ktmb.com.my/Home/Shuttle', init);
     const text = await resp.text();
 
-    const $ = cheerio.load(text);
-
-    const from = $('#FromStationData').attr('value');
-    const to = $('#ToStationData').attr('value');
-    const token = $('input[name=__RequestVerificationToken]').attr('value');
+    const from = inputValue(text, 'id', 'FromStationData');
+    const to = inputValue(text, 'id', 'ToStationData');
+    const token = inputValue(text, 'name', '__RequestVerificationToken');
 
     if (from == null || to == null || token == null) throw new Error('Unable to find from or to station');
 
@@ -167,10 +175,8 @@ class SearchCore {
     const resp = await fetcher('https://shuttleonline.ktmb.com.my/ShuttleTrip', init);
 
     const t = await resp.text();
-    const $ = cheerio.load(t);
-
-    const searchData = $('#SearchData').attr('value');
-    const formValidationCode = $('#FormValidationCode').attr('value');
+    const searchData = inputValue(t, 'id', 'SearchData');
+    const formValidationCode = inputValue(t, 'id', 'FormValidationCode');
     if (searchData == null || formValidationCode == null)
       throw new Error('Unable to find search data or form validation code');
     return {
