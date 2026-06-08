@@ -1,5 +1,5 @@
 import type { IFixedScheduleSearcher, TrainSchedule } from '../interface.ts';
-import type { MainPageToken, ProxyToken, SearchCore } from '../search_core.ts';
+import type { Fetcher, MainPageToken, ProxyToken, SearchCore } from '../search_core.ts';
 
 class FixedScheduleSearcher implements IFixedScheduleSearcher {
   constructor(
@@ -7,6 +7,10 @@ class FixedScheduleSearcher implements IFixedScheduleSearcher {
     private readonly main: MainPageToken,
     private readonly proxy: ProxyToken,
     private readonly date: Date,
+    // Network proxy for the data fetch (resolved at build time).
+    private readonly netProxy?: string,
+    // Cookie jar the session was built with.
+    private readonly session?: Fetcher,
   ) {}
 
   Search(): Promise<TrainSchedule[]> {
@@ -15,6 +19,9 @@ class FixedScheduleSearcher implements IFixedScheduleSearcher {
       this.proxy.searchData,
       this.proxy.formValidationCode,
       this.date,
+      this.netProxy,
+      false,
+      this.session,
     );
   }
 }
