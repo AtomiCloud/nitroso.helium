@@ -696,3 +696,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# local secrets / scratch (never commit)
+ktmb.token
+proxy.txt
+*.csv

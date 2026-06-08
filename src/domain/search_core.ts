@@ -5,8 +5,26 @@ import type { Logger } from 'pino';
 import { stringify } from 'node:querystring';
 import type { SearcherConfig } from '../config/searcher.config.ts';
 import type { From, TrainSchedule } from './interface.ts';
+import { randomIp } from '../util/random_ip.ts';
 
+// Optional X-Real-IP header (rotates KTMB's rate-limit bucket when spoofing).
+const realIp = (spoofIp: boolean): Record<string, string> => (spoofIp ? { 'X-Real-IP': randomIp() } : {});
+
+const escapeRegExp = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// Pull a hidden <input>'s value by id/name WITHOUT building a full DOM. Much
+// cheaper than cheerio for the handful of tokens we extract from large pages
+// (robust to attribute order and quote style within the tag).
+const inputValue = (html: string, attr: 'id' | 'name', name: string): string | undefined => {
+  const tag = html.match(new RegExp(`<input\\b[^>]*\\b${attr}=["']${escapeRegExp(name)}["'][^>]*>`, 'i'))?.[0];
+  return tag?.match(/\bvalue=["']([^"']*)["']/i)?.[1];
+};
+
+// A cookie-jar-bound fetch. Each web polling session gets its own (see
+// SearchCore.newSession) so concurrent streams don't clobber each other's
+// antiforgery/session cookies in a shared jar.
 const f = fetchCookie(fetch);
+type Fetcher = typeof f;
 
 const htmlHeaders = {
   accept:
@@ -78,25 +96,30 @@ class SearchCore {
     return arr[randomIndex];
   }
 
-  async mainKTMBPage(proxy?: string): Promise<MainPageToken> {
+  // Fresh isolated cookie jar for one web polling session. Pass it through the
+  // main-page → post → trip calls so each stream keeps its own session.
+  newSession(): Fetcher {
+    return fetchCookie(fetch);
+  }
+
+  async mainKTMBPage(proxy?: string, spoofIp = false, fetcher: Fetcher = f): Promise<MainPageToken> {
     const referer = 'https://online.ktmb.com.my/';
     const init = {
       headers: {
         ...defaultHeaders,
         ...htmlHeaders,
         Referer: referer,
+        ...realIp(spoofIp),
       },
-      proxy: proxy || this.proxy,
+      proxy,
       method: 'GET',
     };
-    const resp = await f('https://shuttleonline.ktmb.com.my/Home/Shuttle', init);
+    const resp = await fetcher('https://shuttleonline.ktmb.com.my/Home/Shuttle', init);
     const text = await resp.text();
 
-    const $ = cheerio.load(text);
-
-    const from = $('#FromStationData').attr('value');
-    const to = $('#ToStationData').attr('value');
-    const token = $('input[name=__RequestVerificationToken]').attr('value');
+    const from = inputValue(text, 'id', 'FromStationData');
+    const to = inputValue(text, 'id', 'ToStationData');
+    const token = inputValue(text, 'name', '__RequestVerificationToken');
 
     if (from == null || to == null || token == null) throw new Error('Unable to find from or to station');
 
@@ -114,6 +137,8 @@ class SearchCore {
     woodlandToken: string,
     requestVerificationToken: string,
     proxy?: string,
+    spoofIp = false,
+    fetcher: Fetcher = f,
   ): Promise<ProxyToken> {
     const d = moment(date).format('D MMM YYYY');
 
@@ -140,19 +165,18 @@ class SearchCore {
         ...htmlHeaders,
         ...defaultHeaders,
         Referer: referer,
+        ...realIp(spoofIp),
       },
-      proxy: proxy || this.proxy,
+      proxy,
       body: stringify(queryParams),
       method: 'POST',
     };
 
-    const resp = await f('https://shuttleonline.ktmb.com.my/ShuttleTrip', init);
+    const resp = await fetcher('https://shuttleonline.ktmb.com.my/ShuttleTrip', init);
 
     const t = await resp.text();
-    const $ = cheerio.load(t);
-
-    const searchData = $('#SearchData').attr('value');
-    const formValidationCode = $('#FormValidationCode').attr('value');
+    const searchData = inputValue(t, 'id', 'SearchData');
+    const formValidationCode = inputValue(t, 'id', 'FormValidationCode');
     if (searchData == null || formValidationCode == null)
       throw new Error('Unable to find search data or form validation code');
     return {
@@ -167,6 +191,8 @@ class SearchCore {
     formValidation: string,
     date: Date,
     proxy?: string,
+    spoofIp = false,
+    fetcher: Fetcher = f,
   ): Promise<TrainSchedule[]> {
     const DepartDate = moment(date).format('YYYY-MM-DD');
 
@@ -178,8 +204,9 @@ class SearchCore {
         ...defaultHeaders,
         RequestVerificationToken: token,
         Referer: referer,
+        ...realIp(spoofIp),
       },
-      proxy: proxy || this.proxy,
+      proxy,
       body: JSON.stringify({
         SearchData: searchData,
         FormValidationCode: formValidation,
@@ -190,7 +217,7 @@ class SearchCore {
       method: 'POST',
     };
 
-    const r = await f('https://shuttleonline.ktmb.com.my/ShuttleTrip/Trip', init);
+    const r = await fetcher('https://shuttleonline.ktmb.com.my/ShuttleTrip/Trip', init);
 
     let o: TrainScheduleResp | null = null;
     const text = await r.text();
@@ -276,4 +303,4 @@ class SearchCore {
   }
 }
 
-export { type MainPageToken, type ProxyToken, SearchCore };
+export { type MainPageToken, type ProxyToken, type Fetcher, SearchCore };

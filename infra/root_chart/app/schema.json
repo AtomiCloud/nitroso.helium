@@ -198,7 +198,48 @@
     },
     "SearcherConfig": {
       "properties": {
+        "apiUrl": {
+          "type": "string"
+        },
+        "appUrl": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": ["mobile", "web"],
+          "type": "string"
+        },
         "proxy": {
+          "type": "string"
+        },
+        "requestSignature": {
+          "type": "string"
+        },
+        "streams": {
+          "items": {
+            "$ref": "#/definitions/StreamConfig"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "StreamConfig": {
+      "properties": {
+        "delay": {
+          "type": "number"
+        },
+        "mode": {
+          "enum": ["mobile", "web"],
+          "type": "string"
+        },
+        "proxy": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "type": {
+          "enum": ["held", "stateless"],
           "type": "string"
         }
       },
