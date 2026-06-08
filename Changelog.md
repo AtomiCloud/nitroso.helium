@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.18.0...v1.18.1) (2026-06-08)
+
+
+### 🐛 Bug Fixes 🐛
+
+* set ktmb requestSignature in config ([6a74f45](https://github.com/AtomiCloud/nitroso.helium/commit/6a74f45ad6ac11ddc53b9bcd93eb3da47c08422d))
+
 ## [1.18.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.17.0...v1.18.0) (2026-06-08)
 
 
