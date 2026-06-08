@@ -27,12 +27,13 @@ class Poller {
     // When true, log the fetched schedule instead of publishing to redis.
     // Useful for local testing where `live` redis is unreachable.
     dryRun = false,
-  ): Promise<void> {
+  ): Promise<{ polls: number; fails: number }> {
     const od = this.zincDate.to(d);
     const key = `ktmb:schedule:${from}:${od}`;
 
     let failureCount = 0;
     let polls = 0;
+    let fails = 0;
 
     while (true) {
       const elapsed = Date.now() - startTime;
@@ -60,6 +61,7 @@ class Poller {
         const message = e instanceof Error ? e.message : String(e);
         this.logger.error({ err: e, label, message }, 'Failed to poll schedule');
         failureCount++;
+        fails++;
         if (failureCount > 10) {
           this.logger.error({ label }, 'Failed to poll schedule too many times, stopping poller');
           break;
@@ -69,7 +71,8 @@ class Poller {
       await new Promise(resolve => setTimeout(resolve, delayMs));
     }
 
-    this.logger.info({ label, polls }, 'Poller complete');
+    this.logger.info({ label, polls, fails }, 'Poller complete');
+    return { polls, fails };
   }
 }
 
