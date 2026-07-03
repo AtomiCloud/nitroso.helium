@@ -1,3 +1,11 @@
+## [1.19.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.19.0...v1.19.1) (2026-07-03)
+
+
+### 🐛 Bug Fixes 🐛
+
+* **reverter:** remove reverter cron that corrupts completed bookings ([a0b9992](https://github.com/AtomiCloud/nitroso.helium/commit/a0b99920abc4e51d704077ead39d3835d4d01b42))
+* **helm:** sync Chart.lock after removing reverter dependency ([9c1dfc3](https://github.com/AtomiCloud/nitroso.helium/commit/9c1dfc3733c6dc31fc0a42f078f624f8139cece5))
+
 ## [1.19.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.18.1...v1.19.0) (2026-06-08)
 
 
