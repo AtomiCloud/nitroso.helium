@@ -24,14 +24,3 @@ def start(landscape, platform, service, port, live):
 
     )
 
-    reverter_image_name = platform + "-" + service + "-reverter"
-    docker_build(
-        reverter_image_name,
-        '.',
-        dockerfile = './infra/dev.Dockerfile',
-        entrypoint='bun run ./src/index.ts reverter',
-        live_update=[
-            sync('.', '/app'),
-        ]
-
-    )
