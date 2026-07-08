@@ -129,7 +129,7 @@ class Cli {
 
     program
       .command('reverter')
-      .description('Initiate Rerverting Process')
+      .description('Initiate Reverting Process')
       .action(async () => {
         await this.reverter.Revert();
         process.exit(0);

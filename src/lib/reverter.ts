@@ -49,11 +49,8 @@ class Reverter {
         return results.mapErr(
           x =>
             ({
-              data: new AggregatedError(
-                'Failed to revert tickets',
-                x.map(y => y),
-              ),
-              detail: 'Failed to some revert tickets, see sub-problems',
+              data: new AggregatedError('Failed to revert tickets', x),
+              detail: 'Failed to revert some tickets, see sub-problems',
               type: 'aggregate_error',
               status: 400,
               title: 'Failed to revert tickets',
@@ -65,7 +62,6 @@ class Reverter {
         err: e => this.logger.error({ error: e }, 'Failed to revert tickets'),
         ok: ok => this.logger.info({ result: ok }, 'Completed reverting'),
       });
-    this.logger.info('Completed reverting');
   }
 }
 
