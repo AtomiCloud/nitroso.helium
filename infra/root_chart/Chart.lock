@@ -11,5 +11,8 @@ dependencies:
 - name: bun-cron-chart
   repository: file://../cron_chart
   version: 0.1.0
-digest: sha256:d031c4eb0a81b332574b92e55a82f9c56ebd11eeb6eeaf45282b6f089c9c8ee4
-generated: "2026-07-02T23:07:39.579587-07:00"
+- name: bun-cron-chart
+  repository: file://../cron_chart
+  version: 0.1.0
+digest: sha256:856f3f7d6b4a0b21d9cd6e677e129a7595e7faad9557498a2ecd3e1b4e243480
+generated: "2025-08-03T23:24:38.462371+08:00"
