@@ -1,3 +1,15 @@
+## [1.20.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.19.1...v1.20.0) (2026-07-08)
+
+
+### ✨ Features ✨
+
+* **reverter:** revive reverter against zinc's guarded non-force revert ([c105e3e](https://github.com/AtomiCloud/nitroso.helium/commit/c105e3ec43d77f30326262154f3501bfe44f5881))
+
+
+### 🐛 Bug Fixes 🐛
+
+* **reverter:** tidy revert logging and error copy ([8754798](https://github.com/AtomiCloud/nitroso.helium/commit/87547983943b5fd34a6dcd47e2453206ebcd09f9))
+
 ## [1.19.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.19.0...v1.19.1) (2026-07-03)
 
 
