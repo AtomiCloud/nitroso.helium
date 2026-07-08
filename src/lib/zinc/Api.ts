@@ -126,6 +126,10 @@ export class Api<SecurityDataType = unknown> extends HttpClient<SecurityDataType
       Status?: string;
       Time?: string;
       UserId?: string;
+      PassportNumber?: string;
+      /** only bookings stuck in Buying for more than this many minutes (hand-added, pending SDK regen) */
+      /** @format int32 */
+      StuckForMinutes?: number;
       /** @format int32 */
       Limit?: number;
       /** @format int32 */
