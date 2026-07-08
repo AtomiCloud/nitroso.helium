@@ -13,6 +13,12 @@ class Reverter {
     private readonly utility: Utility,
   ) {}
 
+  // Only bookings stuck in Buying past this age are listed and reverted.
+  // zinc's non-force revert enforces the same threshold server-side, so even
+  // a mislisted booking can never be reverted mid-purchase (the race that got
+  // the original reverter removed).
+  static readonly stuckForMinutes = 5;
+
   async Revert(): Promise<void> {
     this.logger.info('Starting reverting');
 
@@ -21,6 +27,7 @@ class Reverter {
         () =>
           this.zinc.vBookingDetail('1.0', {
             Status: 'Buying',
+            StuckForMinutes: Reverter.stuckForMinutes,
           }),
         'Failed to list of bookings that is in the buying state',
       )

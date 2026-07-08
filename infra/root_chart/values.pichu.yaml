@@ -65,7 +65,7 @@ refunder:
 
 reverter:
   enable: true
-  schedule: '0 0 * * 0'
+  schedule: '*/5 * * * *'
   image:
     repository: ghcr.io/atomicloud/nitroso.helium/nitroso-helium
   serviceTree:
