@@ -8,6 +8,7 @@ import type { Get } from '../lib/get.ts';
 import { AsciiTable3 } from 'ascii-table3';
 import type { Updater } from '../lib/updater.ts';
 import type { Refunder } from '../lib/refunder.ts';
+import type { Reverter } from '../lib/reverter.ts';
 import type { Streamer, WatchEntry } from '../lib/streamer.ts';
 import type { Authenticator } from '../lib/authenticator.ts';
 import type { From, StreamSpec } from '../domain/interface.ts';
@@ -21,6 +22,7 @@ class Cli {
     private readonly getter: Get,
     private readonly updater: Updater,
     private readonly refunder: Refunder,
+    private readonly reverter: Reverter,
     private readonly streamer: Streamer,
     private readonly authenticator: Authenticator,
   ) {}
@@ -122,6 +124,14 @@ class Cli {
       .description('Initiate Refund Process')
       .action(async () => {
         await this.refunder.Refund();
+        process.exit(0);
+      });
+
+    program
+      .command('reverter')
+      .description('Initiate Rerverting Process')
+      .action(async () => {
+        await this.reverter.Revert();
         process.exit(0);
       });
 

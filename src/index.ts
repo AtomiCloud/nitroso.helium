@@ -23,6 +23,7 @@ import { Checker } from './lib/checker.ts';
 import { Updater } from './lib/updater.ts';
 import { Populator } from './lib/populator.ts';
 import { Refunder } from './lib/refunder.ts';
+import { Reverter } from './lib/reverter.ts';
 
 // start up that cannot use DI
 const landscape = process.env.LANDSCAPE;
@@ -59,7 +60,8 @@ const populator = new Populator(cfg.app.populator, logger, searchBuilder);
 const updater = new Updater(zinc, utility, zincDate, checker, logger, populator);
 
 const refunder = new Refunder(logger, zinc, utility);
+const reverter = new Reverter(logger, zinc, utility);
 
-const cli = new Cli(logger, cfg, zincDate, watcher, getter, updater, refunder, streamer, authenticator);
+const cli = new Cli(logger, cfg, zincDate, watcher, getter, updater, refunder, reverter, streamer, authenticator);
 
 await cli.start();
