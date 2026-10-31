@@ -19,15 +19,15 @@ env:
 jobs:
   precommit:
     name: Pre-commit Check
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-nitroso-helium-nix-store-cache
-      - nscloud-git-mirror-1gb
+    runs-on: ubuntu-22.04
     steps:
       # Setup
       - uses: AtomiCloud/actions.setup-nix@v2
+        with:
+          namespacelabs: 'false'
       - uses: AtomiCloud/actions.cache-bun@v1
+        with:
+          namespacelabs: 'false'
 
       # Action
       - name: Run pre-commit
@@ -54,6 +54,8 @@ jobs:
     steps:
       # Setup
       - uses: AtomiCloud/actions.setup-docker@v1
+        with:
+          namespacelabs: 'false'
 
       # Action
       - uses: rlespinasse/github-slug-action@v3.x
@@ -88,14 +90,12 @@ jobs:
       contents: read
       id-token: write
       packages: write
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-nitroso-helium-nix-store-cache
-      - nscloud-git-mirror-1gb
+    runs-on: ubuntu-22.04
     steps:
       # Setup
       - uses: AtomiCloud/actions.setup-nix@v2
+        with:
+          namespacelabs: 'false'
 
       # Action
       - name: Publish
@@ -117,15 +117,15 @@ jobs:
       - precommit
       - build
     if: github.ref == 'refs/heads/main'
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-releaser-nitroso-helium-nix-store-cache
-      - nscloud-git-mirror-1gb
+    runs-on: ubuntu-22.04
     steps:
       # Setup
       - uses: AtomiCloud/actions.setup-nix@v2
+        with:
+          namespacelabs: 'false'
       - uses: AtomiCloud/actions.cache-npm@v1
+        with:
+          namespacelabs: 'false'
 
       # Action
       - name: Release
