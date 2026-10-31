@@ -24,10 +24,10 @@ jobs:
       # Setup
       - uses: AtomiCloud/actions.setup-nix@v2
         with:
-          namespacelabs: "false"
+          namespacelabs: 'false'
       - uses: AtomiCloud/actions.cache-bun@v1
         with:
-          namespacelabs: "false"
+          namespacelabs: 'false'
 
       # Action
       - name: Run pre-commit
@@ -55,7 +55,7 @@ jobs:
       # Setup
       - uses: AtomiCloud/actions.setup-docker@v1
         with:
-          namespacelabs: "false"
+          namespacelabs: 'false'
 
       # Action
       - uses: rlespinasse/github-slug-action@v3.x
@@ -95,7 +95,7 @@ jobs:
       # Setup
       - uses: AtomiCloud/actions.setup-nix@v2
         with:
-          namespacelabs: "false"
+          namespacelabs: 'false'
 
       # Action
       - name: Publish
@@ -122,10 +122,10 @@ jobs:
       # Setup
       - uses: AtomiCloud/actions.setup-nix@v2
         with:
-          namespacelabs: "false"
+          namespacelabs: 'false'
       - uses: AtomiCloud/actions.cache-npm@v1
         with:
-          namespacelabs: "false"
+          namespacelabs: 'false'
 
       # Action
       - name: Release
