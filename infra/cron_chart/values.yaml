@@ -6,6 +6,9 @@ serviceTree:
 
 schedule: '@midnight'
 
+# -- Allow, Forbid or Replace overlapping runs (unset = Kubernetes default Allow)
+concurrencyPolicy: ''
+
 appSettings: {}
 
 annotations: {}

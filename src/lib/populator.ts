@@ -38,6 +38,14 @@ class Populator {
         const j2wR = j2w.map(s => `${s.departure_time}:00`);
         const w2jR = w2j.map(s => `${s.departure_time}:00`);
 
+        // KTMB answers "no trains" (not an error) for dates it has not
+        // released yet. Stop there: storing them as empty would hide them from
+        // the next run, which starts from the last date that has trains.
+        if (j2wR.length === 0 && w2jR.length === 0) {
+          this.logger.info({ currentDate }, 'No trains yet; stopping at the release edge');
+          break;
+        }
+
         ret.push({
           date: currentDate,
           jToW: j2wR,

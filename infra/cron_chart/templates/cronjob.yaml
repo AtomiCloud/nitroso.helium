@@ -6,6 +6,9 @@ metadata:
   annotations: {{- include "bun-cron-chart.annotations" . | nindent 4 }}
 spec:
   schedule: "{{ .Values.schedule }}"
+  {{- with .Values.concurrencyPolicy }}
+  concurrencyPolicy: "{{ . }}"
+  {{- end }}
   {{- with .Values.timeZone }}
   timeZone: "{{ . }}"
   {{- end }}

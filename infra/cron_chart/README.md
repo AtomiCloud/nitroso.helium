@@ -11,6 +11,7 @@ A Chart to deploy Bun Cronjob
 | affinity | object | `{}` |  |
 | annotations | object | `{}` |  |
 | appSettings | object | `{}` |  |
+| concurrencyPolicy | string | `""` | Allow, Forbid or Replace overlapping runs (unset = Kubernetes default Allow) |
 | configMountPath | string | `"/app/config/app"` |  |
 | envFromSecret | string | `"nitroso-helium"` |  |
 | fullnameOverride | string | `""` |  |

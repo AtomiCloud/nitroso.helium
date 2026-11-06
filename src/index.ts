@@ -24,6 +24,7 @@ import { Updater } from './lib/updater.ts';
 import { Populator } from './lib/populator.ts';
 import { Refunder } from './lib/refunder.ts';
 import { Reverter } from './lib/reverter.ts';
+import { ReleaseBoost } from './lib/release_boost.ts';
 
 // start up that cannot use DI
 const landscape = process.env.LANDSCAPE;
@@ -57,7 +58,13 @@ const getter = new Get(searchBuilder);
 const zinc = loadZinc(cfg.zinc, auth);
 const checker = new Checker(zinc, utility, zincDate);
 const populator = new Populator(cfg.app.populator, logger, searchBuilder);
-const updater = new Updater(zinc, utility, zincDate, checker, logger, populator);
+const releaseBoost = new ReleaseBoost(
+  caches.get('live')!,
+  logger,
+  cfg.app.populator.boostHours,
+  cfg.app.populator.releases ?? [],
+);
+const updater = new Updater(zinc, utility, zincDate, checker, logger, populator, releaseBoost);
 
 const refunder = new Refunder(logger, zinc, utility);
 const reverter = new Reverter(logger, zinc, utility);

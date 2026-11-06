@@ -62,9 +62,10 @@ Root Chart to a single Service
 | scheduler.command[1] | string | `"run"` |  |
 | scheduler.command[2] | string | `"index.js"` |  |
 | scheduler.command[3] | string | `"schedule"` |  |
+| scheduler.concurrencyPolicy | string | `"Forbid"` |  |
 | scheduler.envFromSecret | string | `"helium"` |  |
 | scheduler.restartPolicy | string | `"Never"` |  |
-| scheduler.schedule | string | `"0 16 * * *"` |  |
+| scheduler.schedule | string | `"*/10 * * * *"` |  |
 | scheduler.serviceTree.<<.landscape | string | `"lapras"` |  |
 | scheduler.serviceTree.<<.layer | string | `"2"` |  |
 | scheduler.serviceTree.<<.module | string | `"pollee"` |  |
