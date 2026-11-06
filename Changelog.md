@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.20.0...v1.20.1) (2026-11-06)
+
+
+### 🐛 Bug Fixes 🐛
+
+* KTMB token decoding + direct schedule updater ([#34](https://github.com/AtomiCloud/nitroso.helium/issues/34)) ([9eb8ace](https://github.com/AtomiCloud/nitroso.helium/commit/9eb8acec301f4c9fc244dda7bdec354e267ccda9)), closes [#x2](https://github.com/AtomiCloud/nitroso.helium/issues/x2)
+
 ## [1.20.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.19.1...v1.20.0) (2026-07-08)
 
 
