@@ -17,8 +17,20 @@ const escapeRegExp = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/g, '\\
 // (robust to attribute order and quote style within the tag).
 const inputValue = (html: string, attr: 'id' | 'name', name: string): string | undefined => {
   const tag = html.match(new RegExp(`<input\\b[^>]*\\b${attr}=["']${escapeRegExp(name)}["'][^>]*>`, 'i'))?.[0];
-  return tag?.match(/\bvalue=["']([^"']*)["']/i)?.[1];
+  const raw = tag?.match(/\bvalue=["']([^"']*)["']/i)?.[1];
+  return raw == null ? undefined : decodeEntities(raw);
 };
+
+// Attribute values arrive HTML-encoded: KTMB (ASP.NET) writes the base64
+// station tokens' `+` as `&#x2B;`. Sending them back undecoded makes KTMB
+// answer "Error when retrieving station" (the old cheerio path decoded them).
+const NAMED: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
+const decodeEntities = (s: string): string =>
+  s.replace(/&(#x[0-9a-f]+|#[0-9]+|[a-z]+);/gi, (m, e: string) => {
+    if (e[0] !== '#') return NAMED[e.toLowerCase()] ?? m;
+    const code = e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+    return Number.isFinite(code) ? String.fromCodePoint(code) : m;
+  });
 
 // A cookie-jar-bound fetch. Each web polling session gets its own (see
 // SearchCore.newSession) so concurrent streams don't clobber each other's
