@@ -39,7 +39,11 @@ scheduler:
     <<: *serviceTree
     module: scheduler
 
-  schedule: '0 16 * * *'
+  # every 10 minutes: catch a KTMB release fast (cheap when nothing changed)
+  schedule: '*/10 * * * *'
+  concurrencyPolicy: 'Forbid'
+  # a hung run must not block later runs (Forbid) for long
+  activeDeadlineSeconds: 900
   command:
     - 'bun'
     - 'run'

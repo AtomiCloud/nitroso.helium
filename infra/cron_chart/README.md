@@ -8,9 +8,11 @@ A Chart to deploy Bun Cronjob
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| activeDeadlineSeconds | int | `0` | Kill a run after this many seconds (unset = no limit) |
 | affinity | object | `{}` |  |
 | annotations | object | `{}` |  |
 | appSettings | object | `{}` |  |
+| concurrencyPolicy | string | `""` | Allow, Forbid or Replace overlapping runs (unset = Kubernetes default Allow) |
 | configMountPath | string | `"/app/config/app"` |  |
 | envFromSecret | string | `"nitroso-helium"` |  |
 | fullnameOverride | string | `""` |  |
