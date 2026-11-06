@@ -36,12 +36,24 @@ const dateRange = (from: string, to: string): string[] => {
   return out;
 };
 
+// A release config problem, or undefined when it is usable: a parseable
+// `at`, real calendar dates, and from <= to.
+const releaseProblem = (r: ScheduledRelease): string | undefined => {
+  if (!Number.isFinite(Date.parse(r.at))) return 'unparseable at';
+  // a real calendar date round-trips through dateRange (31-02 would not)
+  if (dateRange(r.from, r.from)[0] !== r.from || dateRange(r.to, r.to)[0] !== r.to) return 'not a real calendar date';
+  if (dateRange(r.from, r.to).length === 0) return 'from is after to';
+  return undefined;
+};
+
 // Scheduled releases that are open right now: [at, at + hours).
 const activeReleases = (releases: ScheduledRelease[], nowSec: number, hours: number) =>
   releases
+    .filter(r => releaseProblem(r) === undefined)
     .map(r => ({ r, atSec: Math.floor(Date.parse(r.at) / 1000) }))
-    .filter(({ atSec }) => Number.isFinite(atSec) && atSec <= nowSec && nowSec < atSec + hours * 3600)
-    .map(({ r, atSec }) => ({ dates: dateRange(r.from, r.to), untilSec: atSec + hours * 3600 }));
+    .map(({ r, atSec }) => ({ r, atSec, untilSec: Math.floor(atSec + hours * 3600) }))
+    .filter(({ atSec, untilSec }) => atSec <= nowSec && nowSec < untilSec)
+    .map(({ r, untilSec }) => ({ dates: dateRange(r.from, r.to), untilSec }));
 
 class ReleaseBoost {
   constructor(
@@ -50,7 +62,12 @@ class ReleaseBoost {
     private readonly hours: number = RELEASE_BOOST_HOURS,
     private readonly releases: ScheduledRelease[] = [],
     private readonly key: string = RELEASE_BOOST_KEY,
-  ) {}
+  ) {
+    for (const r of releases) {
+      const problem = releaseProblem(r);
+      if (problem) this.logger.error({ release: r, problem }, 'Ignoring invalid scheduled release');
+    }
+  }
 
   // Boost newly detected dates plus any announced release that is open now.
   async Add(detected: string[]): Promise<void> {
@@ -58,19 +75,23 @@ class ReleaseBoost {
     const scheduled = activeReleases(this.releases, nowSec, this.hours);
     if (detected.length === 0 && scheduled.length === 0) return;
 
+    // A read failure throws (the caller logs it): never overwrite live boosts
+    // we could not read. Only unparseable content starts a fresh map.
+    const raw = await this.redis.get(this.key);
     let dates: BoostDates = {};
-    try {
-      const raw = await this.redis.get(this.key);
-      if (raw) dates = (JSON.parse(raw) as { dates?: BoostDates }).dates ?? {};
-    } catch (e) {
-      this.logger.error({ error: e }, 'Failed to read release boost; starting a fresh one');
+    if (raw) {
+      try {
+        dates = (JSON.parse(raw) as { dates?: BoostDates }).dates ?? {};
+      } catch (e) {
+        this.logger.error({ error: e }, 'Unparseable release boost; starting a fresh one');
+      }
     }
-    dates = mergeBoost(dates, detected, nowSec, nowSec + this.hours * 3600);
+    dates = mergeBoost(dates, detected, nowSec, Math.floor(nowSec + this.hours * 3600));
     for (const s of scheduled) dates = mergeBoost(dates, s.dates, nowSec, s.untilSec);
 
     const exps = Object.values(dates);
     if (exps.length === 0) return;
-    await this.redis.set(this.key, JSON.stringify({ dates }), 'EX', Math.max(...exps) - nowSec);
+    await this.redis.set(this.key, JSON.stringify({ dates }), 'EX', Math.max(1, Math.max(...exps) - nowSec));
     this.logger.info(
       { detected, scheduled: scheduled.map(s => s.dates.length), total: exps.length, hours: this.hours },
       'Release boost: dates at full power',
@@ -78,4 +99,4 @@ class ReleaseBoost {
   }
 }
 
-export { ReleaseBoost, mergeBoost, dateRange, activeReleases, RELEASE_BOOST_KEY, RELEASE_BOOST_HOURS };
+export { ReleaseBoost, mergeBoost, dateRange, activeReleases, releaseProblem, RELEASE_BOOST_KEY, RELEASE_BOOST_HOURS };

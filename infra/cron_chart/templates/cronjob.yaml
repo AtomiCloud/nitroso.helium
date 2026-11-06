@@ -17,6 +17,9 @@ spec:
       labels: {{- include "bun-cron-chart.labels" . | nindent 8 }}
       annotations: {{- include "bun-cron-chart.annotations" . | nindent 8 }}
     spec:
+      {{- with .Values.activeDeadlineSeconds }}
+      activeDeadlineSeconds: {{ . }}
+      {{- end }}
       {{ with .Values.backoffLimit }}
       backoffLimit: {{ . }}
       {{ end }}

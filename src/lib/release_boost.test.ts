@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { activeReleases, dateRange, mergeBoost } from './release_boost.ts';
+import { activeReleases, dateRange, mergeBoost, releaseProblem } from './release_boost.ts';
 import { newlyReleased } from './updater.ts';
 import { hasTrains } from './checker.ts';
 
@@ -57,5 +57,21 @@ describe('hasTrains', () => {
   });
   test('a row with any timing left has trains', () => {
     expect(hasTrains({ confirmed: true, jToWExcluded: ['05:00:00'], wToJExcluded: w }, j, w)).toBe(true);
+  });
+});
+
+describe('release config validation', () => {
+  test('flags bad releases', () => {
+    expect(releaseProblem({ at: 'nope', from: '01-03-2027', to: '31-03-2027' })).toBe('unparseable at');
+    expect(releaseProblem({ at: '2026-12-01T12:00:00+08:00', from: '31-03-2027', to: '01-03-2027' })).toBe(
+      'from is after to',
+    );
+    expect(releaseProblem({ at: '2026-12-01T12:00:00+08:00', from: '31-02-2027', to: '01-03-2027' })).toBe(
+      'not a real calendar date',
+    );
+    expect(releaseProblem({ at: '2026-12-01T12:00:00+08:00', from: '01-03-2027', to: '31-03-2027' })).toBeUndefined();
+  });
+  test('hasTrains treats missing timing data as open', () => {
+    expect(hasTrains({ confirmed: true, jToWExcluded: [], wToJExcluded: [] }, [], [])).toBe(true);
   });
 });

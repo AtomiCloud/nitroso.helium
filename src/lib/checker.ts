@@ -18,8 +18,12 @@ interface CheckResult {
 
 // A stored schedule row "has trains" when it does not exclude every timing in
 // some direction. Rows written for not-yet-released dates exclude everything.
+// With no timing data at all we cannot tell, so treat the row as open: never
+// re-announce stored dates as fresh releases because timings were missing.
 const hasTrains = (s: SchedulePrincipalRes, jTimings: string[], wTimings: string[]): boolean =>
-  (s.jToWExcluded?.length ?? 0) < jTimings.length || (s.wToJExcluded?.length ?? 0) < wTimings.length;
+  (jTimings.length === 0 && wTimings.length === 0) ||
+  (s.jToWExcluded?.length ?? 0) < jTimings.length ||
+  (s.wToJExcluded?.length ?? 0) < wTimings.length;
 
 class Checker {
   constructor(

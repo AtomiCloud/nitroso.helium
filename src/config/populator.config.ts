@@ -1,4 +1,4 @@
-import { IsNumber, IsOptional, IsPositive, IsString, Matches, ValidateNested } from 'class-validator';
+import { IsISO8601, IsNumber, IsOptional, IsPositive, Matches, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
 // A KTMB release KTMB has announced ahead (e.g. "March 2027 opens 1 Dec 12pm").
@@ -6,7 +6,7 @@ import { Type } from 'class-transformer';
 // power, even when KTMB's search already shows those dates before sales open.
 export class ScheduledRelease {
   // ISO time the release opens, with offset, e.g. 2026-12-01T12:00:00+08:00
-  @IsString()
+  @IsISO8601({ strict: true })
   at!: string;
 
   // first and last released travel dates, dd-mm-yyyy
