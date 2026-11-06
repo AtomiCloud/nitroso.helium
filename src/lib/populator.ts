@@ -42,6 +42,12 @@ class Populator {
         // released yet. Stop there: storing them as empty would hide them from
         // the next run, which starts from the last date that has trains.
         if (j2wR.length === 0 && w2jR.length === 0) {
+          // The first date can be today with every train already gone (late
+          // at night): skip it rather than mistake it for the release edge.
+          if (i === 0) {
+            await __(this.config.delay);
+            continue;
+          }
           this.logger.info({ currentDate }, 'No trains yet; stopping at the release edge');
           break;
         }
