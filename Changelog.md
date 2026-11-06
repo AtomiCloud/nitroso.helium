@@ -1,3 +1,10 @@
+## [1.21.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.20.1...v1.21.0) (2026-11-06)
+
+
+### ✨ Features ✨
+
+* release boost for newly opened KTMB dates ([#35](https://github.com/AtomiCloud/nitroso.helium/issues/35)) ([8c8a522](https://github.com/AtomiCloud/nitroso.helium/commit/8c8a522a0b41cb17aadaf364899a50429227ad35))
+
 ## [1.20.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.20.0...v1.20.1) (2026-11-06)
 
 
