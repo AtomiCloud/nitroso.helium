@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/AtomiCloud/nitroso.helium/compare/v1.21.0...v1.21.1) (2026-11-06)
+
+
+### 🐛 Bug Fixes 🐛
+
+* don't stop the schedule walk on its first date ([#36](https://github.com/AtomiCloud/nitroso.helium/issues/36)) ([0f287eb](https://github.com/AtomiCloud/nitroso.helium/commit/0f287ebbaa4a4b5adcad50ef5224d9a0b12e50f4))
+
 ## [1.21.0](https://github.com/AtomiCloud/nitroso.helium/compare/v1.20.1...v1.21.0) (2026-11-06)
 
 
