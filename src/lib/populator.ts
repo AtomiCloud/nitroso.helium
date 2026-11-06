@@ -13,7 +13,10 @@ class Populator {
   ) {}
 
   async Retrieve(from: Date, to: Date): Promise<RetrieveResult[]> {
-    const searcher = await this.builder.BuildLoaded();
+    // Direct to KTMB with a spoofed X-Real-IP, like the live multi-watch
+    // streams. The legacy proxy pool answers 407 for every proxy (Nov 2026),
+    // and a failed date stops the walk, so a dead pool froze new dates.
+    const searcher = await this.builder.BuildLoaded(undefined, true, false);
 
     const ret: RetrieveResult[] = [];
 
